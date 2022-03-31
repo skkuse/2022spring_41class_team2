@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {call} from '../service/APIService';
+import {Link} from "react-router-dom";
 
 function UserInfoPage() {
   const [username, setUserName] = useState('');
@@ -31,6 +32,11 @@ function UserInfoPage() {
     <div>
         <h1> 이름 : {username}</h1>
         <h1> 이메일 : {userEmail}</h1>
+        <Link to = "/codeEdit">
+          <button>코드를 쳐볼까요?</button>
+        </Link>
+
+
     </div>
   );
 }
