@@ -1,5 +1,7 @@
-from .test_view import create_user_endpoints
+from .test_view import create_test_endpoints
+from .user_view import create_login_endpoints
 
 __all__ = [
-    'create_user_endpoints'
+    'create_login_endpoints',
+    'create_test_endpoints'
 ]

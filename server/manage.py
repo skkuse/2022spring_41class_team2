@@ -1,8 +1,10 @@
 import os 
 from flask_script import Manager 
+from flask_cors import CORS
 from app import create_app 
 
-app = create_app(os.getenv("TEST_APP") or "dev") 
+app = create_app(os.getenv("TEST_APP") or "dev")
+CORS(app) 
 
 manager = Manager(app) 
 

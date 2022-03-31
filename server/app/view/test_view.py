@@ -2,7 +2,7 @@
 import json
 from flask import request, jsonify, make_response
 
-def create_user_endpoints(app): #[1]
+def create_test_endpoints(app): #[1]
     
     @app.route('/test', methods=['GET']) #[2]
     def connectionTest():

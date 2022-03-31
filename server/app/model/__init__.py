@@ -1,5 +1,5 @@
-#UserDAO 모듈화 해주는 부분
-from .user_dao import UserDao
+from .user import User
+
 __all__ = [
-    'UserDao'
+    'User'
 ]
