@@ -5,19 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4e2e9f19-2e25-40cb-8eae-b84fb0df527d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/example/server/ServerApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/test/java/com/example/server/ServerApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/logo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/TestCodingPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/TestCodingPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/service/APIService.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/service/APIService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/app/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/app/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/app/model/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/app/view/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/app/view/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/app/view/test_view.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/app/view/test_view.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/resources/application.properties" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,6 +75,7 @@
       <updated>1648361640235</updated>
       <workItem from="1648361641449" duration="698000" />
       <workItem from="1648559297830" duration="206000" />
+      <workItem from="1648631462474" duration="170000" />
     </task>
     <servers />
   </component>

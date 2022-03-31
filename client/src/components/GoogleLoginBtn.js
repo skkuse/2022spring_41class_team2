@@ -6,8 +6,13 @@ const clientId = '923198322735-8m8aomqof0no00kcp1u145hr9ung1gbq.apps.googleuserc
 
 export default function GoogleLoginBtn(){
     const onSuccess = async(response) => {
-        const { googleId, profileObj : { email, name } } = response;
-        console.log(response);
+        call("/login", "POST", response)
+        .then(
+            response =>{
+                sessionStorage.setItem("ACCESS_TOKEN", response.data.token)
+                window.location.href = '/';
+            }
+        );
     }
     
     const onFailure = (error) => {
