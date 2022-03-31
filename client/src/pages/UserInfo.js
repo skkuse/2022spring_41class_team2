@@ -10,7 +10,7 @@ function UserInfoPage() {
       if(token == null){
         window.location.href = '/login';
       }
-      call("/user", "POST", {'token' : token})
+      call("/user", "GET")
       .then(
         response => {
             setUserName(response['data']['name'])

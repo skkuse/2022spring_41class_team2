@@ -5,6 +5,7 @@ export function call(api, method, request){
         "Content-Type" : "application/json",
     });
     const accessToken = sessionStorage.getItem('ACCESS_TOKEN');
+    
     if(accessToken && accessToken !== null){
         headers.append("Authorization", "Bearer " + accessToken);
     }

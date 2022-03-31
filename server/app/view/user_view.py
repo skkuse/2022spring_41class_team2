@@ -25,11 +25,10 @@ def create_login_endpoints(app):
             response = {'error' : 'Invalid Token', 'status_code' : 401 , 'data' : {}}
             return jsonify(response), 401
 
-    @app.route("/user", methods = ['POST'])
+    @app.route("/user", methods = ['GET'])
     def getUserInfo():
-        data = request.json
         try : 
-            token = data['token']
+            token = request.headers.get("Authorization").split(' ')[1]
             valid_token = id_token.verify_oauth2_token(token, requests.Request(), CLIENT_ID)
             name = valid_token['name']
             email = valid_token['email']
