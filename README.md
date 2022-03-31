@@ -6,7 +6,6 @@
 - Node : 17.5
 - Python : 3.7
 
-### 파이썬 가상환경을 만들고 진행하기를 권장합니다.
 
 ## 프론트엔드 세팅 방법
 ```shell
@@ -15,6 +14,12 @@ npm install .
 ```
 
 ## 벡엔드 세팅 방법
+### 가상환경 가져오기
+```shell
+conda env create --file serverEnv.yml
+```
+
+### 가상환경을 만들어서 할 때
 ```shell
 cd server
 pip install .
