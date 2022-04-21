@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import CodeEditor from '@uiw/react-textarea-code-editor';
 import { call } from '../service/APIService';
 
-
 function TestCodePage() {
 
     const [code, setCode] = useState('');
@@ -15,10 +14,13 @@ function TestCodePage() {
             response => {
             
                 const codeResult = response['codeResult'];
+                console.log(codeResult);
                 setCodeResult(codeResult);
             }
         )
     }
+
+
 
     return (
         <div>
@@ -36,8 +38,10 @@ function TestCodePage() {
                 }}
             />
             <button onClick={SendingCode}>코드 실행</button>
-            <h1>코드 실행 결과</h1>
+            <h1>
             {codeResult}
+            </h1>
+            
         </div>
     );
 }

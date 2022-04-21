@@ -2,23 +2,26 @@
 from urllib import response
 from flask import Flask 
 from app.config import config_by_name
-from .view.code_view import create_code_endpoints
+from .view.lecture_view import create_code_endpoints
 from .view.test_view import create_test_endpoints 
 from .view.user_view import create_login_endpoints
+from .db import db_conection
 from .dto.responseDto import ResponseDTO
+from .model.user_model import USER_MODEL
 from .service.user_service import UserService
-from .service.code_service import CodeService
+from .service.lecture_service import CodeService
 
 def create_app(config_name="prod"): 
     app = Flask(__name__) 
     app.config.from_object(config_by_name[config_name])
-
+    db = db_conection.Database()
     create_test_endpoints(app)
-    # User Endpoint 설정
     response_DTO = ResponseDTO()
-    user_service = UserService() 
+    # User Endpoint 설정
     
-    create_login_endpoints(app, user_service, response_DTO)
+    user_model = USER_MODEL(db)
+    user_service = UserService(user_model) 
+    create_login_endpoints(app, user_service)
 
     # Code Endpoint 설정
     
