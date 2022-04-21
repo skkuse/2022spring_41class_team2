@@ -1,5 +1,5 @@
-from .db import init_db_command
+from .db_conection import Database
 
 __all__ =[
-    'init_db_command'
+    'DataBase'
 ]

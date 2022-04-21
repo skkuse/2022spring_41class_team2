@@ -2,15 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1abf35c1-87fa-45c6-b082-4371bb103859" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/logo.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/pages/TestCodingPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/pages/TestCodingPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/test_view.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/test_view.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/model/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/user.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/service/user_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/service/user_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/user_view.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/user_view.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +40,7 @@
       <option name="presentableId" value="Default" />
       <updated>1648694272633</updated>
       <workItem from="1648694274173" duration="682000" />
+      <workItem from="1649023538229" duration="1000" />
     </task>
     <servers />
   </component>
