@@ -35,3 +35,5 @@ npm install concurrently
 npm run dev
 ```
 
+우리 팀 화이팅
+
