@@ -28,6 +28,7 @@ def create_login_endpoints(app, user_service):
         data = request.json
         try :
             output = user_service.signin(data)
+            print(output)
             if output == 400 :
                 return jsonify(make_response("Existing User", 400, None)), 400
             else :

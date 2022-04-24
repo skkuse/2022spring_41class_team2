@@ -8,7 +8,6 @@ function TestCodePage() {
     const [codeResult, setCodeResult] = useState('');
 
     const SendingCode = () =>{
-        console.log(code)
         call("/executeCode", "POST", {'code' : code.toString()})
         .then(
             response => {
