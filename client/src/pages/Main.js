@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom"
 import '../css/mainPage.css'
 import React, { Component, useEffect, useState } from 'react';
+import MainPageNav from '../components/MainPageNav'
+import { call } from '../service/APIService';
+
 
 function Main() {
 
@@ -9,6 +12,17 @@ function Main() {
 	const changeCheck = () => {
 		setclicked((clicked) => !clicked);
 	};
+
+	const [tmpsession, settmpsession] = useState(false);
+	const changesession = () => {
+		settmpsession((tmpsession) => true);
+	};
+
+
+	const getUserInfo = () => {
+		var token = sessionStorage.getItem("ACCESS_TOKEN");
+		return token;
+	}
 
 	return (
 		<div>
@@ -30,22 +44,8 @@ function Main() {
 						</header>
 						<div className="mp_c_1">
 
-							<div id="nav">
-								<div className="v12_13 padding">
-									<div>
-										<button className="button" type="button">강의</button>
-									</div>
-									<div>
-										<button className="button" type="button">QA</button>
-									</div>
+							<MainPageNav sessionV={getUserInfo()}></MainPageNav>
 
-									<div className="v12_12">
-										<Link to="./login">
-											<button className="button_green" type="button">로그인</button>
-										</Link>
-									</div>
-								</div>
-							</div>
 							<div id="search" className="mp_c_1">
 								<div style={{ padding: '0 2em' }}>
 									<form>
