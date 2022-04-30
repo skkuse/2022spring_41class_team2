@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1abf35c1-87fa-45c6-b082-4371bb103859" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/app/model/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/user.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/service/user_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/service/user_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/pages/TestCodePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/pages/TestCodePage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/db/db_conection.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/db/db_conection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/lecture_view.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/lecture_view.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/view/user_view.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/user_view.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -23,14 +26,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "/Users/jin/workspace/School/2022spring_41class_team2/server",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  }
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

@@ -8,8 +8,9 @@ from .view.user_view import create_login_endpoints
 from .db import db_conection
 from .dto.responseDto import ResponseDTO
 from .model.user_model import USER_MODEL
+from .model.lecture_model import LECTURE_MODEL
 from .service.user_service import UserService
-from .service.lecture_service import CodeService
+from .service.lecture_service import LectureService
 
 def create_app(config_name="prod"): 
     app = Flask(__name__) 
@@ -24,7 +25,7 @@ def create_app(config_name="prod"):
     create_login_endpoints(app, user_service)
 
     # Code Endpoint 설정
-    
-    code_service = CodeService()
-    create_code_endpoints(app, code_service)
+    lecture_model = LECTURE_MODEL(db)
+    lecture_service = LectureService(lecture_model)
+    create_code_endpoints(app, lecture_service)
     return app
