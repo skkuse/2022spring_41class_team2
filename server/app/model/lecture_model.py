@@ -15,3 +15,21 @@ class LECTURE_MODEL:
        self.db_connection.executeOne(SQL, [lecture_seq, lecture_content_description, like_count, lecture_content_difficulty, create_time, None, lecture_content_metadata, None])
        self.db_connection.commit()
        return 200
+    
+    def getLectureAnswer(self, lecture_content_seq):
+        SQL = "select lecture_answer from lecture_content where lecture_content_seq = %s"
+        result = self.db_connection.executeOne(SQL, lecture_content_seq)
+        return result
+
+    def userDoneLectureContent(self,lecture_content_seq, user_seq, done):
+        SQL = "update attending set attending_done = %s where lecture_content_seq = %s and user_seq = %s;"
+        result = self.db_connection.executeAll(SQL, [done, lecture_content_seq, user_seq])
+        return result
+    
+    def getUserLectureContentDone(self,lecture_content_seq, user_seq, done):
+        SQL = "select attending_done from attending where lecture_content_seq = %s and user_seq = %s;"
+        result = self.db_connection.executeOne(SQL, [lecture_content_seq, user_seq])
+        return result
+    
+    def commit(self):
+        return self.db_connection.commit()

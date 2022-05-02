@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1abf35c1-87fa-45c6-b082-4371bb103859" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../client/src/pages/TestCodePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/pages/TestCodePage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/db/db_conection.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/db/db_conection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/model/lecture_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/lecture_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/service/lecture_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/service/lecture_service.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/view/lecture_view.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/lecture_view.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/user_view.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/user_view.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +27,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
     "last_opened_file_path": "/Users/jin/workspace/School/2022spring_41class_team2/server",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
@@ -44,6 +42,7 @@
       <updated>1648694272633</updated>
       <workItem from="1648694274173" duration="682000" />
       <workItem from="1649023538229" duration="1000" />
+      <workItem from="1651483652193" duration="281000" />
     </task>
     <servers />
   </component>

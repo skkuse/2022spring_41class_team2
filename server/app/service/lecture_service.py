@@ -62,5 +62,30 @@ class LectureService() :
             return results
         except Exception:
             return 400
+
+    def checkResult(self, code_result, lecture_content_seq):
+        try:
+            answer = self.lecture_model.getLectureAnswer(lecture_content_seq)
+            if answer['lecture_answer'] == str(bytes(code_result, 'utf-8')):
+                return True
+            else :
+                return False
+        except Exception as e:
+            print(e.args)
+            return 400
         
-        
+    def userDoneLectureContent(self, lecture_content_seq, user_seq, done):
+        try:
+            self.lecture_model.userDoneLectureContent(lecture_content_seq, user_seq, done)
+            self.lecture_model.commit()
+            result = self.lecture_model.getUserLectureContentDone(lecture_content_seq, user_seq, done)
+            print(lecture_content_seq)
+            print(user_seq)
+            print(result)
+            if result['attending_done'] == done:
+                return True
+            else :
+                return False
+        except Exception as e:
+            print(e.args)
+            return 400
