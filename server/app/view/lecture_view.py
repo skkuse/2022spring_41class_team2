@@ -70,6 +70,7 @@ def create_code_endpoints(app, lecture_service):
             else :
                 data = {'error': "입력 형식 문제", 'status_code': 400, "codeResult": []}
                 return jsonify(data), 400
+                
         except Exception as e:
        
             data = {'error': "", 'status_code': 400, "codeResult": [e.args]}
