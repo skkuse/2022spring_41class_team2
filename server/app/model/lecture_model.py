@@ -24,12 +24,16 @@ class LECTURE_MODEL:
     def userDoneLectureContent(self,lecture_content_seq, user_seq, done):
         SQL = "update attending set attending_done = %s where lecture_content_seq = %s and user_seq = %s;"
         result = self.db_connection.executeAll(SQL, [done, lecture_content_seq, user_seq])
+        self.db_connection.commit()
         return result
     
     def getUserLectureContentDone(self,lecture_content_seq, user_seq, done):
         SQL = "select attending_done from attending where lecture_content_seq = %s and user_seq = %s;"
         result = self.db_connection.executeOne(SQL, [lecture_content_seq, user_seq])
         return result
-    
-    def commit(self):
-        return self.db_connection.commit()
+
+    def saveQA(self, lecture_content_seq, user_seq, qa_title, qa_content, create_time):
+        SQL = "insert into qa(lecture_content_seq, user_seq, qa_title, qa_content, create_time) values(%s, %s, %s, %s, %s)"
+        result = self.db_connection.executeAll(SQL, [done, lecture_content_seq, user_seq])
+        self.db_connection.commit()
+        return result

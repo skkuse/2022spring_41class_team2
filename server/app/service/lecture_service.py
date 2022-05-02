@@ -77,11 +77,7 @@ class LectureService() :
     def userDoneLectureContent(self, lecture_content_seq, user_seq, done):
         try:
             self.lecture_model.userDoneLectureContent(lecture_content_seq, user_seq, done)
-            self.lecture_model.commit()
             result = self.lecture_model.getUserLectureContentDone(lecture_content_seq, user_seq, done)
-            print(lecture_content_seq)
-            print(user_seq)
-            print(result)
             if result['attending_done'] == done:
                 return True
             else :
@@ -89,3 +85,12 @@ class LectureService() :
         except Exception as e:
             print(e.args)
             return 400
+
+    def saveQA(self, lecture_content_seq, user_seq,qa_title, qa_content):
+        try:
+            create_time = datetime.now()
+            self.lecture_model.saveQA(lecture_content_seq, user_seq, qa_title, qa_content, create_time)
+            return True
+        except Exception as e:
+            print(e.args)
+            return False
