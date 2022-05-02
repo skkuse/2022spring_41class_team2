@@ -1,5 +1,6 @@
 import React from 'react';
 import '../css/QuestionListPage.css';
+import { Link } from "react-router-dom";
 
 function QuestionListPage() {
 
@@ -8,19 +9,21 @@ function QuestionListPage() {
     <div className="App">
       <body>
         <header>
-          <section class = "question-header">
-                  <div class = "question-header_content">
-                      <h2 class= "question-header_title">CrawlLearn</h2>
-                      <p class = "question-header_sub-title">파이썬 기초부터 크롤링 심화까지! 모든 강의와 실습을 한번에 즐겨보세요.</p>
+          <section className = "question-header">
+                  <div className = "question-header_content">
+                      <h2 className= "question-header_title">CrawlLearn</h2>
+                      <p className = "question-header_sub-title">파이썬 기초부터 크롤링 심화까지! 모든 강의와 실습을 한번에 즐겨보세요.</p>
                   </div>
           </section>
-            <nav class="navbar">
-              <div class="navbar-menu">
-                <div class="navbar-container">
-                    <a class="navbar-item" href="#home">강의</a>
-                    <a class="navbar-item" href="#news">Q&A</a>
-                  <div class="navbar-right">
-                    <a class="write-button" href="#search" data-role="button" data-inline="true" >작성하기</a>
+            <nav className="navbar">
+              <div className="navbar-menu">
+                <div className="navbar-container">
+                    <a className="navbar-item" href="#home">강의</a>
+                    <a className="navbar-item" href="#news">Q&A</a>
+                  <div className="navbar-right">
+                    <Link to="./qnaMain">
+                      <button className="write-button">작성하기</button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -28,23 +31,23 @@ function QuestionListPage() {
         </header>
 
         <main>
-            <section class = "question-body">
-                <div class = "question-body_content">
-                    <div class = "question-list-container">
-                        <ul class = "question-list">
-                            <li class = "question-container"> 
-                                <div class = "question">
-                                    <div class="question__info"> 
-                                        <div class="question__title">
-                                            <h3 class="title__text">제목</h3>
+            <section className = "question-body">
+                <div className = "question-body_content">
+                    <div className = "question-list-container">
+                        <ul className = "question-list">
+                            <li className = "question-container"> 
+                                <div className = "question">
+                                    <div className="question__info"> 
+                                        <div className="question__title">
+                                            <h3 className="title__text">제목</h3>
                                         </div>
-                                        <div class="question__body">
+                                        <div className="question__body">
 
                                         </div>
-                                        <div class="question__footer">
+                                        <div className="question__footer">
                                             <span>질문자</span>
                                             <span>&nbsp;&nbsp;시각</span>
-                                            <div class="question__comment"> 댓글</div>
+                                            <div className="question__comment"> 댓글</div>
                                         </div>
                                     </div>
                                 </div>

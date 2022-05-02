@@ -1,4 +1,5 @@
-import { Route, HashRouter as Router, } from 'react-router-dom';
+//import { Route, HashRouter, BrowserRouter as Router, BrowserRouter, } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Main from './pages/Main'
 import SignInPage from './pages/SignInPage'
 import UserInfoPage from './pages/UserInfo';
@@ -7,9 +8,27 @@ import LoginPage from './pages/LoginPage';
 import QuestionPage from './pages/QuestionPage';
 import QuestionListPage from './pages/QuestionListPage';
 
+
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/main" component={Main} />
+        <Route exact path="/signIn" component={SignInPage} />
+        <Route exact path="/login" component={LoginPage}/>
+        <Route exact path="/userInfo" component={UserInfoPage}/>
+        <Route exact path="/codeEdit" component={TestCodePage}/> 
+        <Route exact path="/qnaMain" component={QuestionPage}/>
+        <Route exact path="/questionList" component={QuestionListPage}/>
+      </Switch>
+    </BrowserRouter>
+  );
+}
+
+export default App;
+
+
+{/* <Router>
         <Route exact path="/main" component={Main} />
         <Route exact path="/signIn" component={SignInPage} />
         <Route exact path="/login" component={LoginPage}/>
@@ -17,9 +36,4 @@ function App() {
         <Route exact path="/codeEdit" component={TestCodePage}/> 
         <Route exact path="/" component={QuestionPage}/>
         <Route exact path="/questionList" component={QuestionListPage}/>
-    </Router>
-    
-  );
-}
-
-export default App;
+    </Router> */}

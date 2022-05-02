@@ -1,7 +1,3 @@
-.App {
-    text-align: left;
-  }
-  
   main{
     position: absolute;
     width: 1440px;
@@ -11,12 +7,12 @@
   }
   
   .question-header{
+
     position: absolute;
     width: 100%;
     height: 70px;
     left: 0px;
-    top: 0;
-    margin: 0px;
+    top: 0px;
     padding: 20px 0 0 50px; /*top right bottom left*/
   
     background: rgba(125, 173, 71, 0.3);
@@ -25,8 +21,7 @@
     font-style: normal;
     font-weight: 400;
     font-size: 32px;
-  
-    
+
   }
   
   .return-button{

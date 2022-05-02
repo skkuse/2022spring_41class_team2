@@ -1,19 +1,22 @@
 import React from 'react';
-import '../css/QuestionPage.css';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import QuestionListPage from './QuestionListPage';
+import '../css/QuestionPage.css';
+import { Link } from "react-router-dom";
 
 function QuestionPage() {
+
   return (
-    <div className="App">
+    <div className="whole">
       <body>
         <header>
           <h1 className="question-header">Q&A</h1>
         </header>
         <main>
             <div className="question-body">
-              <button className="return-button" onClick={QuestionListPage}> &lt;목록가기</button>
+              <Link to="/questionList">
+                <button className="return-button"> &lt;목록가기</button>
+              </Link>
               <div className='form-wrapper'>
                 <div className="question-route">
                   <div>질문 경로</div>
