@@ -34,6 +34,6 @@ class LECTURE_MODEL:
 
     def saveQA(self, lecture_content_seq, user_seq, qa_title, qa_content, create_time):
         SQL = "insert into qa(lecture_content_seq, user_seq, qa_title, qa_content, create_time) values(%s, %s, %s, %s, %s)"
-        result = self.db_connection.executeAll(SQL, [done, lecture_content_seq, user_seq])
+        result = self.db_connection.executeAll(SQL, [lecture_content_seq, user_seq, qa_title, qa_content, create_time])
         self.db_connection.commit()
         return result
