@@ -51,7 +51,7 @@ def create_code_endpoints(app, lecture_service):
 
         except Exception as e:
        
-            data = {'error': "", 'status_code': 200, "codeResult": [e.args]}
+            data = {'error': "", 'status_code': 200, "data": [e.args]}
      
             return jsonify(data), 200
     
@@ -73,7 +73,7 @@ def create_code_endpoints(app, lecture_service):
 
         except Exception as e:
        
-            data = {'error': "", 'status_code': 400, "codeResult": [e.args]}
+            data = {'error': "", 'status_code': 400, "data": [e.args]}
      
             return jsonify(data), 400
     
@@ -94,6 +94,19 @@ def create_code_endpoints(app, lecture_service):
 
         except Exception as e:
        
-            data = {'error': "", 'status_code': 400, "codeResult": [e.args]}
+            data = {'error': "", 'status_code': 400, "data": [e.args]}
+     
+            return jsonify(data), 400
+
+    @app.route('/lectures/<lecture_seq>/lectureContent/<lecture_content_seq>/userSeqs/<user_seq>/qa/<int:qa_seq>', methods = ['GET'])
+    @cross_origin()
+    def getQA(lecture_seq, lecture_content_seq, user_seq, qa_seq):
+        try:
+            qa_content = lecture_service.getQA(qa_seq)
+            response = {'error': "", 'status_code': 200, "data": [qa_content]}
+            return jsonify(response), 200
+        except Exception as e:
+       
+            data = {'error': "", 'status_code': 400, "data": [e.args]}
      
             return jsonify(data), 400

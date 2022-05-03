@@ -37,3 +37,8 @@ class LECTURE_MODEL:
         result = self.db_connection.executeAll(SQL, [lecture_content_seq, user_seq, qa_title, qa_content, create_time])
         self.db_connection.commit()
         return result
+
+    def getQA(self, qa_seq):
+        SQL = "select qa_content from qa where qa_seq = %s"
+        result = self.db_connection.executeOne(SQL, qa_seq)
+        return result

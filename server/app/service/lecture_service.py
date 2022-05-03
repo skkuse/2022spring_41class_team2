@@ -94,3 +94,11 @@ class LectureService() :
         except Exception as e:
             print(e.args)
             return False
+        
+    def getQA(self, qa_seq):
+        try:
+            qa_content = self.lecture_model.getQA(qa_seq)
+            return qa_content['qa_content']
+        except Exception as e:
+            print(e.args)
+            return False
