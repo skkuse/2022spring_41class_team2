@@ -24,7 +24,27 @@ function TestCodePage() {
 
 
     return (
-        <div>
+        <div className='TestCode'>
+
+            function toggleDarkMode() {
+  if (document.documentElement.classList.contains("light")) {
+                document.documentElement.classList.remove("light")
+    document.documentElement.classList.add("dark")
+  } else if (document.documentElement.classList.contains("dark")) {
+                document.documentElement.classList.remove("dark")
+    document.documentElement.classList.add("light")
+  } else {
+    if (window?.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.documentElement.classList.add("light")
+            } else {
+                document.documentElement.classList.add("dark")
+            }
+  }
+}
+
+
+
+
             <body>
                 <header>
                     <br></br>
@@ -38,7 +58,7 @@ function TestCodePage() {
                     <bo1>강의 이름</bo1>
                     <button class="button_dark">dark</button>
                     <button class="button_light">light</button>
-                    <button class="button_exec" onclick="SendingCode">실행</button>
+                    <button class="button_exec" onClick="SendingCode">실행</button>
 
                 </nav>
 
@@ -59,7 +79,7 @@ function TestCodePage() {
                             fontSize: 12,
                             backgroundColor: "#f5f5f5",
                             fontFamily: 'ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace',
-                            width: "1094px", height: "570px", left: "0px", top: "35px", border: "1px solid #0F194A",
+                            width: "1214px", height: "570px", left: "0px", top: "35px", border: "1px solid #0F194A",
 
                         }}
                     />

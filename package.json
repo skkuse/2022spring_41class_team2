@@ -10,6 +10,7 @@
   "dependencies": {
     "concurrently": "^6.5.1",
     "express": "^4.17.2",
+    "styled-components": "^5.3.5",
     "yarn": "^1.22.17"
   },
   "description": "- Node : 17.5\r - Python : 3.7",

@@ -1,13 +1,20 @@
 @charset "utf-8";
 
+.TestCode {
+    float: center;
+    width: 100%;
+}
+
 header {
     position: absolute;
-    width: 1440px;
+    width: 100%;
     height: 60px;
     left: 0px;
     top: 0px;
 
     background: rgba(125, 173, 71, 0.3);
+    border: 1px solid #0F194A;
+    box-sizing: border-box;
 }
 
 he0 {
@@ -46,7 +53,7 @@ he2 {
     position: absolute;
     width: 99px;
     height: 19px;
-    left: 225px;
+    left: 260px;
     top: calc(50% - 19px/2 + 0.5px);
 
     font-family: 'Inter';
@@ -62,7 +69,7 @@ header>button {
     position: absolute;
     width: 90px;
     height: 35px;
-    left: 1335px;
+    left: 1380px;
     top: 12px;
 
     background: rgba(125, 173, 71, 0.6);
@@ -71,20 +78,20 @@ header>button {
 
 body {
     position: absolute;
-    width: 1440px;
+    width: 100%;
     height: 964px;
     left: 0px;
     top: 0px;
     bottom: 20px;
 
-    background: #FFFFFF;
+    /*background: #FFFFFF;
     border: 1px solid #0F194A;
-    box-sizing: border-box;
+    box-sizing: border-box;*/
 }
 
 nav {
     position: absolute;
-    width: 1440px;
+    width: 100%;
     height: 60px;
     left: 0px;
     top: 60px;
@@ -98,7 +105,7 @@ bo1 {
     position: absolute;
     width: 70px;
     height: 19px;
-    left: 44px;
+    left: 17px;
     top: 18px;
 
     font-family: 'Inter';
@@ -115,7 +122,7 @@ bo1 {
     position: absolute;
     width: 50px;
     height: 35px;
-    left: 1250px;
+    left: 1320px;
     top: 10px;
 
     background: rgba(239, 241, 236, 0.6);
@@ -126,7 +133,7 @@ bo1 {
     position: absolute;
     width: 50px;
     height: 35px;
-    left: 1300px;
+    left: 1370px;
     top: 10px;
 
     background: rgba(239, 241, 236, 0.6);
@@ -147,10 +154,10 @@ bo1 {
 
 article {
     position: absolute;
-    width: 344px;
+    width: 20%;
     height: 844px;
     left: 0px;
-    top: 120px;
+    top: 119px;
 
     border: 1px solid #0F194A;
     box-sizing: border-box;
@@ -163,9 +170,9 @@ form {
     padding: 0px;
 
     position: absolute;
-    width: 1096px;
+    width: 80%;
     height: 606px;
-    left: 344px;
+    left: 20%;
     top: 120px;
 
     border: 1px solid #0F194A;
@@ -189,25 +196,16 @@ bo2 {
     color: #000000;
 }
 
-.CodeEditor {
-    position: relative;
-    width: 1094px;
+/*.CodeEditor {
+    position: absolute;
+    width: 100%;
     height: 570px;
-    left: 0px;
+    left: 20%;
     top: 15px;
 
     border: 1px solid #0F194A;
     box-sizing: border-box;
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 1;
-    flex-grow: 0;
-    margin: 0px 0px;
-
-
-}
+}*/
 
 
 section {
@@ -217,18 +215,19 @@ section {
     padding: 0px;
 
     position: relative;
-    width: 1095px;
-    height: 235px;
-    left: 343px;
+    width: 80%;
+    height: 237px;
+    left: 20%;
     top: 726px;
 
-    border: 1px solid #444444;
+    /*border: 1px solid #444444;
+    border-left: 0px;*/
 }
 
 table {
     width: 100%;
     height: 100%;
-    border: 1px solid #444444;
+    /*border: 1px solid #444444;*/
     border-collapse: collapse;
 }
 
@@ -253,19 +252,18 @@ td {
 
 footer {
     position: absolute;
-    width: 1437px;
+    width: 99.85%;
     height: 60px;
-    left: -1px;
     top: 963px;
-    border: 2px solid #444444;
-    border-top: 1px solid #444444
+    border: 1px solid #444444;
+    /*border-top: 1px solid #444444*/
 }
 
 .qna {
     position: absolute;
     width: 50px;
     height: 35px;
-    left: 20px;
+    left: 40px;
     top: 12px;
 
     background: rgba(125, 173, 71, 0.6);
@@ -276,7 +274,7 @@ footer {
     position: absolute;
     width: 60px;
     height: 35px;
-    left: 1335px;
+    left: 1400px;
     top: 12px;
 
     background: rgba(125, 173, 71, 0.6);

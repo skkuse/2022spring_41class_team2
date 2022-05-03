@@ -4,8 +4,13 @@ import SignInPage from './pages/SignInPage'
 import UserInfoPage from './pages/UserInfo';
 import TestCodePage from './pages/TestCodePage';
 import LoginPage from './pages/LoginPage';
+//수정
+import React from 'react';
+import styled, { ThemeProvider } from 'styled-components';
 
 function App() {
+
+
   return (
     <Router>
       <Route exact path="/" component={TestCodePage} />
@@ -14,6 +19,7 @@ function App() {
       <Route exact path="/userInfo" component={UserInfoPage} />
       <Route exact path="/codeEdit" component={TestCodePage} /> */}
     </Router>
+
 
   );
 }
