@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="practice.css">
+    <title>Practice</title>
+</head>
+
+
+
+<body>
+    <header>
+        <br>
+        <CrawlLearn>CrawlLearn</CrawlLearn>
+        <he1>강의 대분류</he1>
+        <he2>>강의 소분류</he2>
+        <button>컴파일 옵션</button>
+    </header>
+
+    <nav>
+        <bo1>강의 이름</bo1>
+        <button class="button_dark">dark</button>
+        <button class="button_light">light</button>
+        <button class="button_exec">실행</button>
+    </nav>
+
+    <article>
+        여기 뭐하는 칸인지 아시는분?
+
+
+
+    </article>
+
+    <form>
+        <bo2>파일.py</bo2><br>
+        <CodeEditor value={code} language="python" placeholder="Please enter Python code." onChange={(evn)=>
+            setCode(evn.target.value)}
+            padding={15}
+            style={{
+            fontSize: 12,
+            backgroundColor: "#f5f5f5",
+            fontFamily: 'ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace',
+            }}
+            />
+    </form>
+
+    <section>
+        <table>
+            <tr class="tr1">
+                <td class="td1">
+                    결과
+                </td>
+            </tr>
+            <tr class="tr2">
+                <td class="td2"></td>
+            </tr>
+        </table>
+    </section>
+
+
+
+
+</body>
+
+<footer>
+    <button class="qna">Q&A</button>
+    <button class="help">도움말</button>
+
+</footer>
+
+</html>
