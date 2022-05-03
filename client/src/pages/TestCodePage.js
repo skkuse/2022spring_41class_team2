@@ -6,17 +6,29 @@ import { call } from '../service/APIService';
 function TestCodePage() {
 
     const [code, setCode] = useState('');
-    const [codeResult, setCodeResult] = useState('');
+    const [codeResult, setCodeResult] = useState('Null');
 
     const SendingCode = () => {
-        console.log(code)
-        call("/executeCode", "POST", { 'code': code.toString() })
+        console.log("호출된다")
+        call("/lectures/1/lectureContent/1/code", "POST", { 'code': code.toString() })
             .then(
                 response => {
+                    console.log(response)
+                    if (response['status_code'] == 400) {
 
-                    const codeResult = response['codeResult'];
-                    console.log(codeResult);
-                    setCodeResult(codeResult);
+                        setCodeResult(response['data'][0][0])
+                    }
+                    else {
+                        const codeResult = response['data'][0];
+                        if (codeResult) {
+                            console.log(codeResult)
+                            setCodeResult("맞았습니다");
+                        }
+                        else {
+                            setCodeResult("틀렸습니다");
+                        }
+                    }
+
                 }
             )
     }
@@ -25,25 +37,6 @@ function TestCodePage() {
 
     return (
         <div className='TestCode'>
-
-            function toggleDarkMode() {
-  if (document.documentElement.classList.contains("light")) {
-                document.documentElement.classList.remove("light")
-    document.documentElement.classList.add("dark")
-  } else if (document.documentElement.classList.contains("dark")) {
-                document.documentElement.classList.remove("dark")
-    document.documentElement.classList.add("light")
-  } else {
-    if (window?.matchMedia('(prefers-color-scheme: dark)').matches) {
-                document.documentElement.classList.add("light")
-            } else {
-                document.documentElement.classList.add("dark")
-            }
-  }
-}
-
-
-
 
             <body>
                 <header>
