@@ -37,8 +37,20 @@ class LECTURE_MODEL:
         result = self.db_connection.executeAll(SQL, [lecture_content_seq, user_seq, qa_title, qa_content, create_time])
         self.db_connection.commit()
         return result
+    
+    def saveQAWithOutLecture(self,user_seq, qa_title, qa_content, create_time):
+        SQL = "insert into qa(user_seq, qa_title, qa_content, create_time) values( %s, %s, %s, %s)"
+        result = self.db_connection.executeAll(SQL, [user_seq, qa_title, qa_content, create_time])
+        self.db_connection.commit()
+        return result
 
     def getQA(self, qa_seq):
         SQL = "select qa_content from qa where qa_seq = %s"
         result = self.db_connection.executeOne(SQL, qa_seq)
+        return result
+    
+    def saveComment(self, user_seq, qa_seq, qa_content, qa_createtime):
+        SQL = "insert into comment(user_seq, qa_seq, comment_content, comment_createtime) values(%s, %s, %s, %s)"
+        result = self.db_connection.executeAll(SQL, [user_seq, qa_seq, qa_content, qa_createtime])
+        self.db_connection.commit()
         return result

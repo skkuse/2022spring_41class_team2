@@ -84,13 +84,22 @@ def create_code_endpoints(app, lecture_service):
             request_data = request.json
             qa_title = request_data['qa_title']
             qa_content = request_data['qa_content']
-            isDone = lecture_service.saveQA(lecture_content_seq, user_seq,qa_title, qa_content)
-            if isDone:
-                response = {'error': "", 'status_code': 200, "data": []}
-                return jsonify(response), 200
+            if lecture_content_seq != "-1" :
+                isDone = lecture_service.saveQA(lecture_content_seq, user_seq,qa_title, qa_content)
+                if isDone:
+                    response = {'error': "", 'status_code': 200, "data": []}
+                    return jsonify(response), 200
+                else :
+                    response = {'error': "", 'status_code': 400, "data": []}
+                    return jsonify(response), 400
             else :
-                response = {'error': "", 'status_code': 400, "data": []}
-                return jsonify(response), 400
+                isDone = lecture_service.saveQA(None, user_seq ,qa_title, qa_content)
+                if isDone:
+                    response = {'error': "", 'status_code': 200, "data": []}
+                    return jsonify(response), 200
+                else :
+                    response = {'error': "", 'status_code': 400, "data": []}
+                    return jsonify(response), 400
 
         except Exception as e:
        
@@ -98,12 +107,27 @@ def create_code_endpoints(app, lecture_service):
      
             return jsonify(data), 400
 
-    @app.route('/lectures/<lecture_seq>/lectureContent/<lecture_content_seq>/userSeqs/<user_seq>/qa/<int:qa_seq>', methods = ['GET'])
+    @app.route('/lectures/<lecture_seq>/lectureContent/<lecture_content_seq>/userSeqs/<user_seq>/qa/<qa_seq>', methods = ['GET'])
     @cross_origin()
     def getQA(lecture_seq, lecture_content_seq, user_seq, qa_seq):
         try:
             qa_content = lecture_service.getQA(qa_seq)
             response = {'error': "", 'status_code': 200, "data": [qa_content]}
+            return jsonify(response), 200
+        except Exception as e:
+       
+            data = {'error': "", 'status_code': 400, "data": [e.args]}
+     
+            return jsonify(data), 400
+    
+    @app.route('/lectures/<lecture_seq>/lectureContent/<lecture_content_seq>/userSeqs/<user_seq>/qa/<qa_seq>/comment', methods = ['POST'])
+    @cross_origin()
+    def saveComment(lecture_seq, lecture_content_seq, user_seq, qa_seq):
+        try:
+            request_data = request.json
+            comment_content = request_data['comment_content']
+            lecture_service.saveComment(user_seq, qa_seq, comment_content)
+            response = {'error': "", 'status_code': 200, "data": []}
             return jsonify(response), 200
         except Exception as e:
        

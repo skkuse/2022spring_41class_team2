@@ -89,8 +89,12 @@ class LectureService() :
     def saveQA(self, lecture_content_seq, user_seq,qa_title, qa_content):
         try:
             create_time = datetime.now()
-            self.lecture_model.saveQA(lecture_content_seq, user_seq, qa_title, qa_content, create_time)
-            return True
+            if lecture_content_seq != None :
+                self.lecture_model.saveQA(lecture_content_seq, user_seq, qa_title, qa_content, create_time)
+                return True
+            else :
+                self.lecture_model.saveQAWithOutLecture(user_seq, qa_title, qa_content, create_time)
+                return True
         except Exception as e:
             print(e.args)
             return False
@@ -102,3 +106,13 @@ class LectureService() :
         except Exception as e:
             print(e.args)
             return False
+    
+    def saveComment(self,  user_seq, qa_seq, qa_content):
+        try :
+            qa_createtime = datetime.now()
+            self.lecture_model.saveComment(user_seq, qa_seq, qa_content, qa_createtime)
+            return True
+        except Exception as e:
+            print(e.args)
+            return False
+    
