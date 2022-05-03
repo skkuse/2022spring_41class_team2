@@ -8,6 +8,7 @@ function TestCodePage() {
     const [code, setCode] = useState('');
     const [codeResult, setCodeResult] = useState('');
 
+<<<<<<< HEAD
     const SendingCode = () => {
         console.log(code)
         call("/executeCode", "POST", { 'code': code.toString() })
@@ -19,6 +20,18 @@ function TestCodePage() {
                     setCodeResult(codeResult);
                 }
             )
+=======
+    const SendingCode = () =>{
+        call("/executeCode", "POST", {'code' : code.toString()})
+        .then(
+            response => {
+                console.log(response)
+                const codeResult = response['codeResult'];
+                console.log(codeResult);
+                setCodeResult(codeResult);
+            }
+        )
+>>>>>>> dev
     }
 
 

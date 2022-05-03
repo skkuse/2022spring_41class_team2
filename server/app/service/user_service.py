@@ -19,6 +19,7 @@ class UserService:
 
             name = data['Ru']['vY']
             email = data['Ru']['Hv']
+            print(name, email, token)
             if self.user_model.findUser(email):
                 return {'name' : name, 'email' : email, 'token' : token}
             else :
