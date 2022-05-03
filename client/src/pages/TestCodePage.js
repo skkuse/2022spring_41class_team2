@@ -6,32 +6,31 @@ import { call } from '../service/APIService';
 function TestCodePage() {
 
     const [code, setCode] = useState('');
-    const [codeResult, setCodeResult] = useState('');
+    const [codeResult, setCodeResult] = useState('Null');
 
-<<<<<<< HEAD
-    const SendingCode = () => {
-        console.log(code)
-        call("/executeCode", "POST", { 'code': code.toString() })
-            .then(
-                response => {
-
-                    const codeResult = response['codeResult'];
-                    console.log(codeResult);
-                    setCodeResult(codeResult);
-                }
-            )
-=======
     const SendingCode = () =>{
-        call("/executeCode", "POST", {'code' : code.toString()})
+        console.log("호출된다")
+        call("/lectures/1/lectureContent/1/code", "POST", {'code' : code.toString()})
         .then(
             response => {
                 console.log(response)
-                const codeResult = response['codeResult'];
-                console.log(codeResult);
-                setCodeResult(codeResult);
+                if(response['status_code'] == 400){
+ 
+                    setCodeResult(response['data'][0][0])
+                }
+                else{
+                    const codeResult = response['data'][0];
+                    if (codeResult){
+                        console.log(codeResult)
+                        setCodeResult("맞았습니다");
+                    }
+                    else{
+                        setCodeResult("틀렸습니다");
+                    }
+                }
+                
             }
         )
->>>>>>> dev
     }
 
 
@@ -51,7 +50,7 @@ function TestCodePage() {
                     <bo1>강의 이름</bo1>
                     <button class="button_dark">dark</button>
                     <button class="button_light">light</button>
-                    <button class="button_exec" onclick="SendingCode">실행</button>
+                    <button class="button_exec" onClick={SendingCode}>실행</button>
 
                 </nav>
 
@@ -82,16 +81,16 @@ function TestCodePage() {
                     <table>
                         <tr class="tr1">
                             <td class="td1">
-                                결과
+                                {codeResult}
                             </td>
                         </tr>
-                        <tr class="tr2">
+                        {/* <tr class="tr2">
                             <td class="td2">
 
-                                {codeResult}
+                                결과
 
                             </td>
-                        </tr>
+                        </tr> */}
                     </table>
                 </section>
 

@@ -46,12 +46,16 @@ def create_code_endpoints(app, lecture_service):
         try :
             result, _ = lecture_service.executeCode(data['code'])
             checkresult = lecture_service.checkResult(result, lecture_content_seq)
-            data = {'error': "", 'status_code': 200, "data": [checkresult]}
+            
+            if checkresult:
+                data = {'error': "", 'status_code': 200, "data": [checkresult]}
+            else :
+                data = {'error': "", 'status_code': 200, "data": [checkresult]}
             return jsonify(data), 200
 
         except Exception as e:
        
-            data = {'error': "", 'status_code': 200, "data": [e.args]}
+            data = {'error': "", 'status_code': 400, "data": [e.args]}
      
             return jsonify(data), 200
     
