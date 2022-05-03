@@ -115,9 +115,7 @@ def create_code_endpoints(app, lecture_service):
             response = {'error': "", 'status_code': 200, "data": [qa_content]}
             return jsonify(response), 200
         except Exception as e:
-       
             data = {'error': "", 'status_code': 400, "data": [e.args]}
-     
             return jsonify(data), 400
     
     @app.route('/lectures/<lecture_seq>/lectureContent/<lecture_content_seq>/userSeqs/<user_seq>/qa/<qa_seq>/comment', methods = ['POST'])
@@ -133,4 +131,26 @@ def create_code_endpoints(app, lecture_service):
        
             data = {'error': "", 'status_code': 400, "data": [e.args]}
      
+            return jsonify(data), 400
+
+    @app.route('/qna', methods = ['GET'])
+    def getFreeQnA():
+        try :
+            qa_content = lecture_service.getFreeQnA()
+            response = {'error' : "", 'status_code' : 200, 'data' : [qa_content]}
+            return jsonify(response), 200
+
+        except Exception as e :
+            data = {'error': "", 'status_code': 400, "data": [e.args]}
+            return jsonify(data), 400
+    
+    @app.route('/lectures/<lecture_seq>/lectureContents/<lecture_content_seq>', methods = ['GET'])
+    def getLectureQnA(lecture_seq, lecture_content_seq):
+        try :
+            qa_content = lecture_service.getLectureQnA_service(lecture_seq, lecture_content_seq)
+            response = {'error' : "", 'status_code' : 200, 'data' : [qa_content]}
+            return jsonify(response), 200
+
+        except Exception as e :
+            data = {'error': "", 'status_code': 400, "data": [e.args]}
             return jsonify(data), 400

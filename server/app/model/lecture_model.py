@@ -54,3 +54,14 @@ class LECTURE_MODEL:
         result = self.db_connection.executeAll(SQL, [user_seq, qa_seq, qa_content, qa_createtime])
         self.db_connection.commit()
         return result
+    
+    def getFreeQnA(self):
+        SQL = "select user_name, qa_title, qa_content, create_time from qa join user on user.user_seq = qa.qa_seq"
+        result = self.db_connection.executeAll(SQL)
+        return result
+    
+    def getLectureQnA_model(self, lecture_seq, lecuture_content_seq):
+        SQL = "select user_name, qa_title, qa_content, create_time from qa left join user on user.user_seq = qa.qa_seq where qa.lecture_content_seq = %s;"
+        result = self.db_connection.executeAll(SQL, [lecuture_content_seq])
+        print(result)
+        return result

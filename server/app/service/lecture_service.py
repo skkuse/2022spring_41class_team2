@@ -115,4 +115,18 @@ class LectureService() :
         except Exception as e:
             print(e.args)
             return False
+
+    def getFreeQnA(self):
+        try :
+            qa_contents = self.lecture_model.getFreeQnA()
+            return qa_contents
+        except Exception as e:
+            return e.args
     
+    def getLectureQnA_service(self, lecture_seq, lecuture_content_seq):
+        try :
+            qa_contents = self.lecture_model.getLectureQnA_model(lecture_seq, lecuture_content_seq)
+            print(qa_contents)
+            return qa_contents
+        except Exception as e:
+            return e.args
