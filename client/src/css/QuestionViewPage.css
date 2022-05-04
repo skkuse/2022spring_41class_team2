@@ -1,4 +1,4 @@
-  main{
+main{
     position: absolute;
     width: 1440px;
     height: 934px;
@@ -6,7 +6,7 @@
     top: 90px;
   }
  
-  .question-header{
+  .view-header{
     position: absolute;
     width: 100%;
     height: 70px;
@@ -21,7 +21,9 @@
     /* font-weight: 400;
     font-size: 32px; */
 
+
   }
+  
 
   .return-button{
     position: absolute;
@@ -36,7 +38,7 @@
   }
   
   
-  .form-wrapper{
+  .view-form-wrapper{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -47,91 +49,100 @@
     height: 627px;
     left: 220px;
     top: 153px;
-  
-    border: 1px solid rgba(15, 25, 74, 0.6);
-    box-sizing: border-box;
-  
-    margin: 0 auto;
-    border: 1px solid #333;
+
   }
-  
-  .route-input{
-    width: 171px;
-    height: 35px;
-   
-    margin: 10px 0px 10px 0px; 
-  
-    background: #FFFFFF;
+
+.view-question-header-container{
+    position: absolute;
+    width: 1000px;
+    height: 75px;
+    left: 0px;
+    top: 0px;
+
     border: 1px solid #0F194A;
     box-sizing: border-box;
-    border-radius: 5px;
-    
-  
-  }
-  
-  select{
-    width: 171px;
-    height: 35px;
-    margin-left: 10px;
-  }
-  
-  .title{
-    position: static;
-    width: 900px;
-    height: 80px;
-    left: 50px;
-    top: 163px;
-  }
-  
-  .title-input {
-    width: 900px;
-    height: 35px;
-    margin: 10px 0px 10px 0px; 
-  
-    background: #FFFFFF;
+    padding: 10px;
+}
+.view-title{
+    margin-bottom: 20px;
+}
+.view-question-body{
+    position: absolute;
+    width: 1000px;
+    height: 500px;
+    left: 0px;
+    top: 75px;
+
     border: 1px solid #0F194A;
     box-sizing: border-box;
-    border-radius: 5px;
-    
-  }
-  
-  .assign-button{
-  /* 
-    position: absolute; */
-    float: right;
+}
+
+.view-comment{
+    position: absolute;
+    width: 1000px;
+    height: 155px;
+    left: 0px;
+    top: 575px;
+
+}
+
+.view-comment-header{
+    position: absolute;
     width: 1000px;
     height: 35px;
-    left: 50px;
-    top: 450px;
-    margin: 20px 0px 0px 700px;
+    left: 0px;
+    top: 0px;
+
+    border: 1px solid #0F194A;
+    box-sizing: border-box;
+    padding: 10px;
+}
+  
+.view-comment-body{
+    position: absolute;
+    width: 1000px;
+    height: 120px;
+    left: 0px;
+    top: 35px;
+
+    border: 1px solid #0F194A;
+    box-sizing: border-box;
+}
+
+  
+  .view-assign-button{
+    position: absolute;
+    width: 1000px;
+    height: 120px;
+    left: 0px;
+    top: 35px;
+   
   
   }
   
-  .cancel-button{
+  .view-cancel-button{
   
-    width: 60px;
-    height: 35px;
-    left: 904px;
-    top: 0px;
+    position: absolute;
+    width: 45px;
+    height: 30px;
+    right: 71px;
+    bottom: 9px;
+
   
     background: rgba(125, 173, 71, 0.6);
     border-radius: 5px;
     border-color: white;
   }
   
-  .submit-button{
-    width: 60px;
-    height: 35px;
-    left: 840px;
-    top: 0px;
-    margin-left: 10px;
+  .view-submit-button{
+    position: absolute;
+    width: 45px;
+    height: 30px;
+    right: 11px;
+    bottom: 9px;
   
     background: rgba(125, 173, 71, 0.6);
     border-radius: 5px;
     border-color: white;
   }
   
-  .ck.ck-editor__editable:not(.ck-editor__nested-editable) {
-    width: 880px;
-    min-height: 200px;
-  }

@@ -6,7 +6,9 @@ import UserInfoPage from './pages/UserInfo';
 import TestCodePage from './pages/TestCodePage';
 import LoginPage from './pages/LoginPage';
 import QuestionPage from './pages/QuestionPage';
+import QuestionViewPage from './pages/QuestionViewPage';
 import QuestionListPage from './pages/QuestionListPage';
+
 
 
 function App() {
@@ -18,7 +20,8 @@ function App() {
         <Route exact path="/login" component={LoginPage}/>
         <Route exact path="/userInfo" component={UserInfoPage}/>
         <Route exact path="/codeEdit" component={TestCodePage}/> 
-        <Route exact path="/qnaMain" component={QuestionPage}/>
+        <Route exact path="/" component={QuestionPage}/>
+        <Route exact path="/questionView" component={QuestionViewPage}/>
         <Route exact path="/questionList" component={QuestionListPage}/>
       </Switch>
     </BrowserRouter>

@@ -7,10 +7,10 @@ import { Link } from "react-router-dom";
 function QuestionPage() {
 
   return (
-    <div className="whole">
+    <div className="QuestionPage">
       <body>
-        <header>
-          <h1 className="question-header">Q&A</h1>
+        <header className="question-header">
+          <h1>Q&A</h1>
         </header>
         <main>
             <div className="question-body">
