@@ -1,11 +1,50 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import '../css/QuestionListPage.css';
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import axios from 'axios';
+import Posts from './Post'
+import Pagination from './Pagination';
+import { call } from '../service/APIService';
 
 function QuestionListPage() {
-  const [searchTerm, setSearchTerm] = useState("");
 
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage, setPostsPerPage] = useState(5);
+
+
+  useEffect( () => { //no params, 익명 함수 
+    async function fetchData() {
+      setLoading(true);
+
+      //const response = await axios.get('https://jsonplaceholder.typicode.com/posts');
+
+      // setPosts(response.data);
+      // setLoading(false);
+
+
+      call("/qna", "GET")
+      .then(
+        response => {
+            setPosts(response[''])
+        }
+      )
+
+      setLoading(false);
+    
+    }
+    fetchData();
+  },[]);
+
+  /* page 별로 postsPerPage 만큼 보여주는 것*/
+  const indexOfLast = currentPage * postsPerPage;
+  const indexOfFirst = indexOfLast - postsPerPage;
+  function currentPosts(tmp) {
+    let currentPosts = 0;
+    currentPosts = tmp.slice(indexOfFirst, indexOfLast);
+    return currentPosts;
+  }
 
   
 
@@ -22,6 +61,7 @@ function QuestionListPage() {
           
         </header>
 
+
         <main>
         <nav className="navbar">
               <div className="navbar-menu">
@@ -33,27 +73,26 @@ function QuestionListPage() {
                 <Link to ="/">
                 <button className="write-button">작성하기</button>
                 </Link>
-                {/* <input
-                  type = "text"
-                  placeholder="Search"
-                  onChange={(e) => {
-                    setSearchTerm(e.target.value);
-                  }}
-                  {dummyData.filter((val) =>{
-                    if(searchTerm ==""){
-                      return val
-                    }else if (val.title.toLowerCase().includes(searchTerm.toLocaleLowerCase())){
-                      return val
-                    }
-
-                  }).map(data => {
-                    return <p>dummyData.title</p>
-                  })
-                }
-                /> */}
+          
                     <div className = "question-list-container">
                         <ul className = "question-list">
                           <Link to="/questionView">
+                          <Posts posts={currentPosts(posts)} loading={loading}></Posts>
+                          </Link>
+              
+                        </ul>
+                        <Pagination postsPerPage={postsPerPage} totalPosts={posts.length} paginate={setCurrentPage}></Pagination>
+                    </div>
+                </div>
+        </main>
+      </body>
+    </div>
+  );
+}
+
+export default QuestionListPage;
+
+{/* <Link to="/questionView">
                             <li className = "question-container">
                                 <div className="question__info"> 
                                     <div className="question__title">
@@ -67,13 +106,4 @@ function QuestionListPage() {
                                 </div>
                             </li>
                           </Link>
-                        </ul>
-                    </div>
-                </div>
-        </main>
-      </body>
-    </div>
-  );
-}
-
-export default QuestionListPage;
+                         */}

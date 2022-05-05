@@ -3,6 +3,8 @@ import '../css/QuestionViewPage.css';
 import { Link } from "react-router-dom";
 
 function QuestionViewPage(){
+
+
     return (
         <div className = "p">
             <body>
@@ -38,7 +40,6 @@ function QuestionViewPage(){
                         <button className="view-cancel-button">취소</button>
                         <button className="view-submit-button">등록</button>
                     </div>
-
                 </div>
 
                 
