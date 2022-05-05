@@ -20,11 +20,12 @@ function App() {
         <Route exact path="/login" component={LoginPage}/>
         <Route exact path="/userInfo" component={UserInfoPage}/>
         <Route exact path="/codeEdit" component={TestCodePage}/> 
-        <Route exact path="/" component={QuestionPage}/>
+        <Route exact path="/questionPage" component={QuestionPage}/>
         <Route exact path="/questionView" component={QuestionViewPage}/>
         <Route exact path="/questionList" component={QuestionListPage}/>
       </Switch>
     </BrowserRouter>
+
   );
 }
 
