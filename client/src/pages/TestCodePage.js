@@ -38,32 +38,32 @@ function TestCodePage() {
     return (
         <div className='TestCode'>
 
-            <body>
-                <header>
+            <code_body>
+                <code_header>
                     <br></br>
-                    <he0>CrawlLearn</he0>
-                    <he1>강의 대분류</he1>
-                    <he2>강의 소분류</he2>
+                    <code_he0>CrawlLearn</code_he0>
+                    <code_he1>강의 대분류</code_he1>
+                    <code_he2>강의 소분류</code_he2>
                     <button>컴파일 옵션</button>
-                </header>
+                </code_header>
 
-                <nav>
-                    <bo1>강의 이름</bo1>
+                <code_nav>
+                    <code_bo1>강의 이름</code_bo1>
                     <button class="button_dark">dark</button>
                     <button class="button_light">light</button>
                     <button class="button_exec" onClick="SendingCode">실행</button>
 
-                </nav>
+                </code_nav>
 
-                <article>
+                <code_article>
                     여기 뭐하는 칸인지 아시는분?
 
 
 
-                </article>
+                </code_article>
 
-                <form>
-                    <bo2>파일.py</bo2>
+                <code_form>
+                    <code_bo2>파일.py</code_bo2>
 
                     <CodeEditor class="CodeEditor" value={code} language="python" placeholder="Please enter Python code." onChange={(evn) =>
                         setCode(evn.target.value)}
@@ -76,9 +76,9 @@ function TestCodePage() {
 
                         }}
                     />
-                </form>
+                </code_form>
 
-                <section>
+                <code_section>
                     <table>
                         <tr class="tr1">
                             <td class="td1">
@@ -93,18 +93,18 @@ function TestCodePage() {
                             </td>
                         </tr>
                     </table>
-                </section>
+                </code_section>
 
 
 
 
-            </body>
+            </code_body>
 
-            <footer>
+            <code_footer>
                 <button class="qna">Q&A</button>
                 <button class="help">도움말</button>
 
-            </footer>
+            </code_footer>
         </div>
     );
 }

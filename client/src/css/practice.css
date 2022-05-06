@@ -5,7 +5,7 @@
     width: 100%;
 }
 
-header {
+code_header {
     position: absolute;
     width: 100%;
     height: 60px;
@@ -17,7 +17,7 @@ header {
     box-sizing: border-box;
 }
 
-he0 {
+code_he0 {
     position: absolute;
     width: 87px;
     height: 19px;
@@ -33,7 +33,7 @@ he0 {
     color: #000000;
 }
 
-he1 {
+code_he1 {
     position: absolute;
     width: 87px;
     height: 19px;
@@ -49,7 +49,7 @@ he1 {
     color: #000000;
 }
 
-he2 {
+code_he2 {
     position: absolute;
     width: 99px;
     height: 19px;
@@ -65,7 +65,7 @@ he2 {
     color: #000000;
 }
 
-header>button {
+code_header>button {
     position: absolute;
     width: 90px;
     height: 35px;
@@ -76,7 +76,7 @@ header>button {
     border-radius: 5px;
 }
 
-body {
+code_body {
     position: absolute;
     width: 100%;
     height: 964px;
@@ -89,7 +89,7 @@ body {
     box-sizing: border-box;*/
 }
 
-nav {
+code_nav {
     position: absolute;
     width: 100%;
     height: 60px;
@@ -101,7 +101,7 @@ nav {
 
 }
 
-bo1 {
+code_bo1 {
     position: absolute;
     width: 70px;
     height: 19px;
@@ -152,7 +152,7 @@ bo1 {
     border-radius: 5px;
 }
 
-article {
+code_article {
     position: absolute;
     width: 20%;
     height: 844px;
@@ -163,7 +163,7 @@ article {
     box-sizing: border-box;
 }
 
-form {
+code_form {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -179,7 +179,7 @@ form {
     box-sizing: border-box;
 }
 
-bo2 {
+code_bo2 {
     position: absolute;
     width: 70px;
     height: 19px;
@@ -208,7 +208,7 @@ bo2 {
 }*/
 
 
-section {
+code_section {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -250,7 +250,7 @@ td {
     padding-left: 9px;
 }
 
-footer {
+code_footer {
     position: absolute;
     width: 99.85%;
     height: 60px;
