@@ -10,9 +10,9 @@ class LECTURE_MODEL:
         else :
             return results
    
-    def saveLecture(self, lecture_seq, lecture_content_description, like_count, lecture_content_difficulty, lecture_content_metadata, create_time):
+    def saveLecture(self, lecture_seq, lecture_content_description, like_count, lecture_content_difficulty, lecture_content_metadata, create_time, lecture_answer = None):
        SQL = "INSERT INTO lecture_content(lecture_seq, lecture_content_description, like_count, lecture_content_difficulty, create_time, modification_time, lecture_content, lecture_answer) VALUES(%s, %s, %s, %s, %s, %s ,%s, %s);"
-       self.db_connection.executeOne(SQL, [lecture_seq, lecture_content_description, like_count, lecture_content_difficulty, create_time, None, lecture_content_metadata, None])
+       self.db_connection.executeOne(SQL, [lecture_seq, lecture_content_description, like_count, lecture_content_difficulty, create_time, None, lecture_content_metadata, lecture_answer])
        self.db_connection.commit()
        return 200
     
