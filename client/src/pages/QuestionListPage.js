@@ -27,7 +27,7 @@ function QuestionListPage() {
       call("/qna", "GET")
       .then(
         response => {
-            setPosts(response[''])
+            setPosts(response['data'][0])
         }
       )
 
@@ -45,8 +45,6 @@ function QuestionListPage() {
     currentPosts = tmp.slice(indexOfFirst, indexOfLast);
     return currentPosts;
   }
-
-  
 
   return (
     <div className="QuestionListPage">

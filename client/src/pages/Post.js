@@ -26,10 +26,18 @@ const Posts = ({ posts, loading }) => {
   <PageItemUl className="post">
   { posts.map(post=>(
       // <li className ="post-question-item-li" key={post.id}>
-      //   {post.title}
+      //   {post.qa_content}
       // </li>
       <li className ="post-question-item-li" key={post.user_name}>
-      {post.qa_content}
+         <div className="question__title">
+            <h3 className="title__text">{post.qa_title}</h3>
+       </div>
+       <div className="question__footer">
+            <span className="writer">{post.user_name}</span>
+            <span className="time">{post.create_time}</span>
+
+          {/* {post.qa_content} */}
+       </div>
     </li>
     ))}
   </PageItemUl>

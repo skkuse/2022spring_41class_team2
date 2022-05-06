@@ -1,10 +1,28 @@
 import React from 'react';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import '../css/QuestionPage.css';
+import '../css/QuestionWritePage.css';
 import { Link } from "react-router-dom";
 
+
 function QuestionPage() {
+
+  // const [text, setText] = useState('');
+  // const [textResult, setTextResult] = useState('');
+
+  // const SendingText = () =>{
+  //     call("/lecture/...", "POST", {'text' : text.toString()})
+  //     .then(
+  //         response => {
+  //             console.log(response)
+  //             const codeResult = response['codeResult'];
+  //             console.log(codeResult);
+  //             setCodeResult(codeResult);
+  //         }
+  //     )
+  // }
+
+
 
   return (
     <div className="QuestionPage">
@@ -37,6 +55,10 @@ function QuestionPage() {
                   <div>내용</div>
                   <CKEditor
                     editor={ClassicEditor}
+                    config={{
+                      removePlugins: ["EasyImage","ImageUpload","MediaEmbed"]
+                    }}
+                  
                     data="<p>Hello from CKEditor 5!</p>"
                     onReady={editor => {
                       // You can store the "editor" and use when it is needed.
