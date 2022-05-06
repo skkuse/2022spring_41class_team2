@@ -22,7 +22,7 @@ function App() {
         <Route exact path="/codeEdit" component={TestCodePage}/> 
         <Route exact path="/questionPage" component={QuestionPage}/>
         <Route exact path="/questionView" component={QuestionViewPage}/>
-        <Route exact path="/questionList" component={QuestionListPage}/>
+        <Route exact path="/" component={QuestionListPage}/>
       </Switch>
     </BrowserRouter>
 

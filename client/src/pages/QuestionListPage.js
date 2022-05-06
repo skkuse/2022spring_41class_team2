@@ -27,7 +27,7 @@ function QuestionListPage() {
       call("/qna", "GET")
       .then(
         response => {
-            setPosts(response[''])
+            setPosts(response['data'][0])
         }
       )
 
