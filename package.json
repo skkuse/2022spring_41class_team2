@@ -1,5 +1,5 @@
 {
-  "name": "dev",
+  "name": "start",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,6 +10,22 @@
   "dependencies": {
     "concurrently": "^6.5.1",
     "express": "^4.17.2",
+    "styled-components": "^5.3.5",
     "yarn": "^1.22.17"
-  }
+  },
+  "description": "- Node : 17.5\r - Python : 3.7",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skkuse/2022spring_41class_team2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/skkuse/2022spring_41class_team2/issues"
+  },
+  "homepage": "https://github.com/skkuse/2022spring_41class_team2#readme"
 }
