@@ -26,6 +26,6 @@ def create_app(config_name="prod"):
 
     # Code Endpoint 설정
     lecture_model = LECTURE_MODEL(db)
-    lecture_service = LectureService(lecture_model)
+    lecture_service = LectureService(lecture_model, user_model)
     create_code_endpoints(app, lecture_service)
     return app

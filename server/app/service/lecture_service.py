@@ -7,9 +7,11 @@ import os
 import json
 
 class LectureService() :
-    def __init__(self, lecture_model):
+    def __init__(self, lecture_model, user_model):
         self.dirname = os.path.join(os.path.dirname(__file__), 'buffer')
         self.lecture_model = lecture_model
+        self.user_model = user_model
+    
     def executeCode(self, code):
 
         codeOut = io.StringIO()
@@ -107,14 +109,22 @@ class LectureService() :
             print(e.args)
             return False
     
-    def saveComment(self,  user_seq, qa_seq, qa_content):
+    def saveComment(self,  user_email, qa_seq, comment_content):
         try :
+            user_seq = self.user_model.findUser(user_email)['user_seq']
             qa_createtime = datetime.now()
-            self.lecture_model.saveComment(user_seq, qa_seq, qa_content, qa_createtime)
+            self.lecture_model.saveComment(user_seq, qa_seq, comment_content, qa_createtime)
             return True
         except Exception as e:
             print(e.args)
             return False
+
+    def getComment(self, qa_seq):
+        try:
+            comment_list = self.lecture_model.getComment(qa_seq)
+            return comment_list
+        except Exception as e:
+            return 400
 
     def getFreeQnA(self):
         try :
