@@ -16,7 +16,7 @@ npm install .
 ## 벡엔드 세팅 방법
 ### 가상환경 가져오기
 ```shell
-conda env create --file serverEnv.yml
+conda env create --file env.yml
 ```
 
 ### 가상환경을 만들어서 할 때
