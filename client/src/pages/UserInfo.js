@@ -6,7 +6,7 @@ function UserInfoPage() {
   const [username, setUserName] = useState('');
   const [userEmail, setUserEmail] = useState('');
   
-  const getUserInfo = () =>{
+  /*const getUserInfo = () =>{
       var token = sessionStorage.getItem("ACCESS_TOKEN");
       if(token == null){
         window.location.href = '/login';
@@ -27,6 +27,8 @@ function UserInfoPage() {
   }
 
   getUserInfo()
+
+*/
 
   return (
     <div>

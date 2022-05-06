@@ -11,7 +11,7 @@ function TestCodePage() {
         call("/executeCode", "POST", {'code' : code.toString()})
         .then(
             response => {
-            
+                console.log(response)
                 const codeResult = response['codeResult'];
                 console.log(codeResult);
                 setCodeResult(codeResult);
