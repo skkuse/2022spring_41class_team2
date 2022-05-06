@@ -118,15 +118,33 @@ def create_code_endpoints(app, lecture_service):
             data = {'error': "", 'status_code': 400, "data": [e.args]}
             return jsonify(data), 400
     
-    @app.route('/lectures/<lecture_seq>/lectureContent/<lecture_content_seq>/userSeqs/<user_seq>/qa/<qa_seq>/comment', methods = ['POST'])
+    @app.route('/qa/<qa_seq>/comment', methods = ['POST'])
     @cross_origin()
-    def saveComment(lecture_seq, lecture_content_seq, user_seq, qa_seq):
+    def saveComment(qa_seq):
         try:
             request_data = request.json
             comment_content = request_data['comment_content']
-            lecture_service.saveComment(user_seq, qa_seq, comment_content)
+            user_email = request_data['user_email']
+            lecture_service.saveComment(user_email, qa_seq, comment_content)
             response = {'error': "", 'status_code': 200, "data": []}
             return jsonify(response), 200
+        except Exception as e:
+       
+            data = {'error': "", 'status_code': 400, "data": [e.args]}
+     
+            return jsonify(data), 400
+    
+    @app.route('/qa/<qa_seq>/comments', methods = ['GET'])
+    @cross_origin()
+    def getComment(qa_seq):
+        try:
+            comment_content = lecture_service.getComment(qa_seq)
+            if comment_content == 400 :
+                data = {'error': "", 'status_code': 400, "data": [e.args]}
+                return jsonify(data), 400
+            else:
+                response = {'error': "", 'status_code': 200, "data": [comment_content]}
+                return jsonify(response), 200
         except Exception as e:
        
             data = {'error': "", 'status_code': 400, "data": [e.args]}
@@ -154,3 +172,14 @@ def create_code_endpoints(app, lecture_service):
         except Exception as e :
             data = {'error': "", 'status_code': 400, "data": [e.args]}
             return jsonify(data), 400
+    
+    # @app.route('/lectures/<lecture_seq>/lectureContents/<lecture_content_seq>', methods = ['GET'])
+    # def getLectureQnA(lecture_seq, lecture_content_seq):
+    #     try :
+    #         qa_content = lecture_service.getLectureQnA_service(lecture_seq, lecture_content_seq)
+    #         response = {'error' : "", 'status_code' : 200, 'data' : [qa_content]}
+    #         return jsonify(response), 200
+
+    #     except Exception as e :
+    #         data = {'error': "", 'status_code': 400, "data": [e.args]}
+    #         return jsonify(data), 400
