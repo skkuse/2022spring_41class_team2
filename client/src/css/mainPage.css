@@ -1,0 +1,277 @@
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+	width: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+	width: 100%;
+	
+}
+
+.mp_u_1 {
+	list-style: none;
+	padding-left: 1rem;
+	font-size: 1.2rem;
+
+}
+
+#app {
+    min-height: 100%;
+	width: 100%;
+    position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+
+.wrap {
+  width: 100%;
+  min-height:80rem;
+  position: relative;
+  left: 0px;
+  overflow: hidden;
+  margin: 0;
+}
+
+
+.mp_f_1 {
+	height: auto;
+	position: relative;
+	margin-top: auto;
+	left: 0px;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	padding: 10px;
+}
+
+#upper {
+	width: 100%;
+	height: auto;
+	position: relative;
+	overflow: hidden;
+	top: 0;
+}
+
+.mp_h_1 {
+	width: 100%;
+	background-color: #D8E6C8;
+	height: auto;
+	position: relative;
+	overflow: hidden;
+}
+
+
+#lectureContents {
+	width: 90%;
+	height: 100%;
+	display: flex;
+	flex-direction: row;
+	margin: 0 auto;
+}
+
+#lectureList {
+	width: auto;
+	min-width: 12rem;
+	position: relative;
+	padding: 1rem;
+	margin-top: 0;
+	top: 0;
+	left: 0;
+}
+
+.lecturePlate {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+#lectureTable {
+	width: 100%;
+	margin: auto;
+	padding: 10px;
+	flex-wrap: wrap;
+	display: flex;
+	flex-direction: row;
+}
+
+#lecture {
+	min-height: 15em;
+	min-width: 20em;
+	border: solid 1px;
+	border-radius: 10px;
+	margin: 10px;
+	flex-basis: 30%;
+}
+
+#lectureTablePage{
+	width: 100%;
+	text-align: center;
+	font-size: 1em;
+	padding: 3em;
+}
+
+.mp_i_1 {
+	width: 100%;
+	box-sizing: border-box;
+}
+
+select {
+	box-sizing: border-box; 
+}
+
+
+
+.container{
+	width: 100%;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.contents {
+	width: 100%;
+	padding: 1rem;
+}
+
+.mp_c_1 {
+	width: auto;
+	padding: 1rem;
+}
+
+.button {
+	width: auto;
+	height: 40px;
+	padding: 0 10px;
+	margin: 0 20px;
+    font-size: 20px;
+    text-align: center;
+	border-radius: 10px;
+	text-align: center;
+	font-family: Inter;
+    font-size: 20px;
+	border: 0;
+	outline: 0;
+	background-color:transparent;
+}
+
+.button:hover {
+	background-color: #EFEFEF;
+}
+
+.button:active {
+	background-color: #E5E5E5;
+}
+
+.button_green {
+	width: auto;
+	height: 40px;
+	padding: 0 10px;
+	margin: 0 20px;
+	font-size: 20px;
+	text-align: center;
+	border-radius: 10px;
+	text-align: center;
+	font-family: Inter;
+	font-size: 20px;
+	border: 0;
+	outline: 0;
+	background-color: #B1CE91;
+}
+
+.button_green:hover {
+	background-color: #7DAD47;
+}
+
+.button_green:active {
+	background-color: #76A343;
+}
+
+
+.search_box {
+	height: 22px;
+	font-size: 16px;
+	margin: auto 10px;
+	color: #7D7D7D;
+}
+
+
+
+
+.v12_14 {
+  width: 100%;
+  height: auto;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+}
+
+.v12_14_2 {
+	flex: none;
+	display: flex;
+	flex-direction: column;
+	margin: 0px 5px;
+}
+
+.v12_13 {
+  height: auto;
+  width: 100%;
+  position: relative;
+  bottom: 0px;
+  left: 0px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+}
+
+
+.v12_12 {
+  width: auto;
+  position: relative;
+  top: 0px;
+  right: 0px;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  margin-left: auto;
+}
+
+
+.v5_26 {
+  width: auto;
+  color: rgba(0,0,0,1);
+  position: relative;
+  top: 0px;
+  left: 0px;
+  font-family: Inter;
+  font-size: 10px;
+  opacity: 1;
+  text-align: center;
+  flex-basis: auto;
+  margin: 0px 5px;
+}
+
+.v5_26_2 {
+  text-align: left;
+  padding-left: 10px;
+}
+
+.v5_26_3 {
+  font-size: 17px;
+  text-align: left;
+}
+
+.v5_33 {
+	font-size: 32px;
+}
+
