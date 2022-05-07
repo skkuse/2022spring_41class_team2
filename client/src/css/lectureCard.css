@@ -18,8 +18,8 @@
 }
 
 #like_count {
-    width: 6rem;
-    padding: 0.5rem 1rem;
+    width: 2rem;
+    padding: 0.5rem 2rem;
     margin-left: auto;
     display: flex;
     flex-direction: row;
@@ -32,7 +32,6 @@
 }
 
 #lecture_content_difficulty {
-    width: 6rem;
     padding: 0.5rem 1rem;
     margin-left: auto;
 }

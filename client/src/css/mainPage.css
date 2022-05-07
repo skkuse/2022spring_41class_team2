@@ -196,24 +196,36 @@ select {
 
 
 .search_box {
-	height: 22px;
-	font-size: 16px;
+	height: 1.5rem;
+	font-size: 1rem;
 	margin: auto 10px;
 	color: #7D7D7D;
 }
 
+.search_box2 {
+	height: 1.5rem;
+	font-size: 1rem;
+}
 
+.lecture_sequence_list {
+	text-decoration-line: none;
+	color:black;
+}
+
+.lecture_sequence_list:visited {
+	text-decoration-line: none;
+}
 
 
 .v12_14 {
-  width: 100%;
-  height: auto;
-  position: relative;
-  top: 0px;
-  left: 0px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: row;
+	width: 100%;
+	height: auto;
+	position: relative;
+	top: 0px;
+	left: 0px;
+	overflow: hidden;
+	display: flex;
+	flex-direction: row;
 }
 
 .v12_14_2 {
