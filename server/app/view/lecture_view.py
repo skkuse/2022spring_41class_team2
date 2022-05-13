@@ -1,4 +1,5 @@
 from audioop import cross
+import re
 from flask import request, jsonify
 from flask_cors import cross_origin
 
@@ -177,13 +178,28 @@ def create_code_endpoints(app, lecture_service):
             data = {'error': "", 'status_code': 400, "data": [e.args]}
             return jsonify(data), 400
     
-    # @app.route('/lectures/<lecture_seq>/lectureContents/<lecture_content_seq>', methods = ['GET'])
-    # def getLectureQnA(lecture_seq, lecture_content_seq):
-    #     try :
-    #         qa_content = lecture_service.getLectureQnA_service(lecture_seq, lecture_content_seq)
-    #         response = {'error' : "", 'status_code' : 200, 'data' : [qa_content]}
+    @app.route('/lectures/<lecture_seq>/search', methods = ['GET'])
+    def searchLecture(lecture_seq):
+        try:
+            request_data = request.json
+            search_option = request_data['search_option']
+            searched_lecture = lecture_service.searchLecture(lecture_seq, search_option)
+            response = {'error':"", 'status_code' : 200, 'data' :[searched_lecture]}
+            return jsonify(response), 200
+
+        except Exception as e :
+            data = {'error': "", 'status_code': 400, "data": [e.args]}
+            return jsonify(data), 400
+        
+    # @app.route('lectures/<lecture_seq>/lectureContent/<lecture_content_seq>/like', methods = ['PATCH'])
+    # def likeLectureContent(lecture_seq, lecture_content_seq):
+    #     try:
+    #         searched_lecture = lecture_service.likeLecture(lecture_content_seq)
+    #         response = {'error':"", 'status_code' : 200, 'data' :[searched_lecture]}
     #         return jsonify(response), 200
 
     #     except Exception as e :
     #         data = {'error': "", 'status_code': 400, "data": [e.args]}
     #         return jsonify(data), 400
+
+  

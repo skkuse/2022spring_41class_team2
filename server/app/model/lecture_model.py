@@ -70,3 +70,9 @@ class LECTURE_MODEL:
         result = self.db_connection.executeAll(SQL, [lecuture_content_seq])
         print(result)
         return result
+    
+    def searchLecutre(self, lecture_seq, search_option):
+        SQL = "select * from lecture_content where lecture_seq = %s and lecture_content_title REGEXP %s"
+        result = self.db_connection.executeAll(SQL, [lecture_seq, search_option])
+        print(result)
+        return result

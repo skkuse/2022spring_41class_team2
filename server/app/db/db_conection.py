@@ -19,6 +19,7 @@ class Database():
         return row
 
     def executeAll(self, query, args={}):
+        print(query)
         self.cursor.execute(query, args)
         row = self.cursor.fetchall()
         return row
