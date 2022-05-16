@@ -68,11 +68,26 @@ class LECTURE_MODEL:
     def getLectureQnA_model(self, lecture_seq, lecuture_content_seq):
         SQL = "select user_name, qa_title, qa_content, create_time from qa left join user on user.user_seq = qa.qa_seq where qa.lecture_content_seq = %s;"
         result = self.db_connection.executeAll(SQL, [lecuture_content_seq])
-        print(result)
         return result
     
     def searchLecutre(self, lecture_seq, search_option):
         SQL = "select * from lecture_content where lecture_seq = %s and lecture_content_title REGEXP %s"
         result = self.db_connection.executeAll(SQL, [lecture_seq, search_option])
-        print(result)
         return result
+    
+    def isAttending(self, lecture_content_seq, email):
+        SQL = "select attending_seq from attending where lecture_seq = %s and user_seq = (select user_seq from user where user_email = %s)"
+        result = self.db_connection.executeAll(SQL, [lecture_content_seq, email])
+        return result
+    
+    def isLiked(self, lecture_content_seq, email):
+        SQL = "select like from attending where lecture_seq = %s and user_seq = (select user_seq from user where user_email = %s)"
+        result = self.db_connection.executeAll(SQL, [lecture_content_seq, email])
+        return result
+
+    def LikeLectureContent(self, lecture_content_seq, email) :
+        SQL = "update attending set like = 1 where lecture_content_seq = %s and user_seq = (select user_seq from user where user_email = %s);"
+        result = self.db_connection.executeAll(SQL, [lecture_content_seq, email])
+        self.db_connection.commit()
+        return result
+    

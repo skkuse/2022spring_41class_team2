@@ -4,7 +4,10 @@ from datetime import datetime
 from werkzeug.utils import secure_filename
 from pathlib import Path
 import os
-import json
+from google.oauth2 import id_token
+from google.auth.transport import requests
+
+CLIENT_ID = os.environ.get("GOOGLE_CLIENT_ID", '923198322735-8m8aomqof0no00kcp1u145hr9ung1gbq.apps.googleusercontent.com')
 
 class LectureService() :
     def __init__(self, lecture_model, user_model):
@@ -137,3 +140,15 @@ class LectureService() :
             return searched_output
         except Exception as e :
             return False
+    
+    def likeLecture(self, lecture_content_seq, user_token):
+        valid_token = id_token.verify_oauth2_token(user_token, requests.Request(), CLIENT_ID)
+        email = valid_token['email']
+        if self.lecture_model.isAttending(lecture_content_seq, email) :
+            if self.lecture_model.isLiked(lecture_content_seq, email) :
+                self.lecture_model.LikeLectureContent(lecture_content_seq, email)
+                return 200
+            else :
+                return 400
+        else :
+            return 400

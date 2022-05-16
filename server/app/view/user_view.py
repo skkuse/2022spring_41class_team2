@@ -45,7 +45,17 @@ def create_login_endpoints(app, user_service):
             return jsonify(make_response(None, 200, data)), 200
         except ValueError :
             return jsonify(make_response(None, 400, None)), 400
-        
     
+    @app.route("/user/info", methods = ['GET'])
+    def userInfo():
+        try :
+            # token = request.headers.get("Authorization").split(' ')[1]
+            # data = user_service.get_info(token)
+            data = request.json
+            info = user_service.get_totalInfo(data)
+            return jsonify(make_response(None, 200, info)), 200
+        except Exception as e :
+            return jsonify(make_response(None, 400, e.args)), 400
+            
     def make_response(error, code, data) :
         return {'error' : error, 'status_code' : code , 'data' : data}
