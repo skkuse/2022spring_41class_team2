@@ -1,1 +1,0 @@
-https://cs.skku.edu/ko/guide/schedule 의 주소에서 학사일정을 크롤링하는 코드를 작성해보세요.
