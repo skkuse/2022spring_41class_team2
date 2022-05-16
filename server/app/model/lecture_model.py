@@ -1,3 +1,6 @@
+import re
+
+
 class LECTURE_MODEL:
     def __init__(self, db_conection):
         self.db_connection = db_conection
@@ -91,3 +94,7 @@ class LECTURE_MODEL:
         self.db_connection.commit()
         return result
     
+    def getLectureFileName(self, lecture_content_seq) :
+        SQL = "select lecture_content from lecture_content where lecture_content_seq = %s"
+        result = self.db_connection.executeAll(SQL, [lecture_content_seq])
+        return result

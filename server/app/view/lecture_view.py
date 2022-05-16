@@ -202,5 +202,15 @@ def create_code_endpoints(app, lecture_service):
         except Exception as e :
             data = {'error': "", 'status_code': 400, "data": [e.args]}
             return jsonify(data), 400
+        
+    @app.route('/lectures/lectureContents/<lecture_content_seq>', methods = ['GET'])
+    def getLectureContent(lecture_content_seq):
+        try :
+            data = lecture_service.getLectureContent(lecture_content_seq)
+            response = {'error':"", 'status_code' : 200, 'data' :[data]}
+            return jsonify(response), 200
 
+        except Exception as e :
+            data = {'error': "", 'status_code': 400, "data": [e.args]}
+            return jsonify(data), 400
   

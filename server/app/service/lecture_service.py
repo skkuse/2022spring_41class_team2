@@ -1,3 +1,4 @@
+from operator import le
 import sys
 import io
 from datetime import datetime
@@ -6,6 +7,7 @@ from pathlib import Path
 import os
 from google.oauth2 import id_token
 from google.auth.transport import requests
+import markdown
 
 CLIENT_ID = os.environ.get("GOOGLE_CLIENT_ID", '923198322735-8m8aomqof0no00kcp1u145hr9ung1gbq.apps.googleusercontent.com')
 
@@ -152,3 +154,12 @@ class LectureService() :
                 return 400
         else :
             return 400
+    
+    def getLectureContent(self, lecture_content_seq):
+        try:
+            lecture_file_name = self.lecture_model.getLectureFileName(lecture_content_seq)[0]['lecture_content'].decode('utf-8')
+            f = open(self.dirname + '/'+ lecture_file_name, 'r')
+            htmlmarkdown=markdown.markdown( f.read() )
+            return htmlmarkdown
+        except Exception as e :
+            return e.args
