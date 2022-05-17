@@ -10,7 +10,6 @@ CLIENT_ID = os.environ.get("GOOGLE_CLIENT_ID", '923198322735-8m8aomqof0no00kcp1u
 class UserService:
     def __init__(self, user_model) :
         self.user_model = user_model
-        pass
 
     def login(self, data):
         try:
@@ -66,6 +65,15 @@ class UserService:
             info_dict['like_lecture_info'] = like_lecture_info
             info_dict['qa_info'] = qa_info
             return info_dict
+        except Exception as e :
+            return e.args
+    
+    def fix_name(self, token, fixed_name):
+        try :
+            valid_token = id_token.verify_oauth2_token(token, requests.Request(), CLIENT_ID)
+            email = valid_token['email']
+            self.user_model.fix_name(email, fixed_name)
+            return {"name" : fixed_name, "email" : email}
         except Exception as e :
             return e.args
         

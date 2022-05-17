@@ -31,3 +31,9 @@ class USER_MODEL:
         SQL = "select qa_title from qa where user_seq = (select user_seq from user where user_email = %s);"
         result = self.db_connection.executeAll(SQL,[email])
         return result
+    
+    def fix_name(self, email, fixed_name):
+        SQL = "update user set user_name = %s where user_email = %s"
+        result = self.db_connection.executeAll(SQL, [fixed_name, email])
+        self.db_connection.commit()
+        return 200

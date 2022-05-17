@@ -46,6 +46,18 @@ def create_login_endpoints(app, user_service):
         except ValueError :
             return jsonify(make_response(None, 400, None)), 400
     
+    @app.route("/user/name", methods = ['PATCH'])
+    def changingName():
+        data = request.json
+        try:
+            token = request.headers.get("Authorization").split(' ')[1]
+            fixed_name = data['name']
+            data = user_service.fix_name(token, fixed_name)
+            return jsonify(make_response(None, 200, data)), 200
+        except Exception as e:
+            return jsonify(make_response(None, 200, [e.args])) , 400
+            
+    
     @app.route("/user/info", methods = ['GET'])
     def userInfo():
         try :
