@@ -34,44 +34,6 @@ class LECTURE_MODEL:
         SQL = "select attending_done from attending where lecture_content_seq = %s and user_seq = %s;"
         result = self.db_connection.executeOne(SQL, [lecture_content_seq, user_seq])
         return result
-
-    def saveQA(self, lecture_content_seq, user_seq, qa_title, qa_content, create_time):
-        SQL = "insert into qa(lecture_content_seq, user_seq, qa_title, qa_content, create_time) values(%s, %s, %s, %s, %s)"
-        result = self.db_connection.executeAll(SQL, [lecture_content_seq, user_seq, qa_title, qa_content, create_time])
-        self.db_connection.commit()
-        return result
-    
-    def saveQAWithOutLecture(self,user_seq, qa_title, qa_content, create_time):
-        SQL = "insert into qa(user_seq, qa_title, qa_content, create_time) values( %s, %s, %s, %s)"
-        result = self.db_connection.executeAll(SQL, [user_seq, qa_title, qa_content, create_time])
-        self.db_connection.commit()
-        return result
-
-    def getQA(self, qa_seq):
-        SQL = "select qa_content from qa where qa_seq = %s"
-        result = self.db_connection.executeOne(SQL, qa_seq)
-        return result
-    
-    def saveComment(self, user_seq, qa_seq, comment_content, qa_createtime):
-        SQL = "insert into comment(user_seq, qa_seq, comment_content, comment_createtime) values(%s, %s, %s, %s)"
-        result = self.db_connection.executeAll(SQL, [user_seq, qa_seq, comment_content, qa_createtime])
-        self.db_connection.commit()
-        return result
-    
-    def getComment(self, qa_seq):
-        SQL = "select * from comment where qa_seq = %s;"
-        result = self.db_connection.executeAll(SQL, [qa_seq])
-        return result
-    
-    def getFreeQnA(self):
-        SQL = "select user_name, qa_title, qa_content, create_time from qa join user on user.user_seq = qa.qa_seq"
-        result = self.db_connection.executeAll(SQL)
-        return result
-    
-    def getLectureQnA_model(self, lecture_seq, lecuture_content_seq):
-        SQL = "select user_name, qa_title, qa_content, create_time from qa left join user on user.user_seq = qa.qa_seq where qa.lecture_content_seq = %s;"
-        result = self.db_connection.executeAll(SQL, [lecuture_content_seq])
-        return result
     
     def searchLecutre(self, lecture_seq, search_option):
         SQL = "select * from lecture_content where lecture_seq = %s and lecture_content_title REGEXP %s"

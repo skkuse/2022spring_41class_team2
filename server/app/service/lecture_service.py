@@ -102,27 +102,6 @@ class LectureService() :
         except Exception as e:
             print(e.args)
             return 400
-
-    def saveQA(self, lecture_content_seq, user_seq,qa_title, qa_content):
-        try:
-            create_time = datetime.now()
-            if lecture_content_seq != None :
-                self.lecture_model.saveQA(lecture_content_seq, user_seq, qa_title, qa_content, create_time)
-                return True
-            else :
-                self.lecture_model.saveQAWithOutLecture(user_seq, qa_title, qa_content, create_time)
-                return True
-        except Exception as e:
-            print(e.args)
-            return False
-        
-    def getQA(self, qa_seq):
-        try:
-            qa_content = self.lecture_model.getQA(qa_seq)
-            return qa_content['qa_content']
-        except Exception as e:
-            print(e.args)
-            return False
     
     def saveComment(self,  user_seq, qa_seq, qa_content):
         try :
