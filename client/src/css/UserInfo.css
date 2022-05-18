@@ -1,0 +1,157 @@
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.warp {
+    height: 100%;
+    width: 100%;
+}
+
+.background {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    background-color: #ECECEC;
+}
+
+.profile {
+    position: relative;
+    top: 15%;
+    height: 40rem;
+    width: 50rem;
+    margin: auto;
+    background-color: white;
+    border: 0.05rem solid #A6AEC2;
+}
+
+.account {
+    height: 50%;
+    width: 100%;
+}
+
+.activity {
+    height: 50%;
+    width: auto;
+    border-top: 0.05rem solid #A6AEC2;
+}
+
+.title_info {
+    width: auto;
+    padding: 1rem;
+    font-size: 2rem;
+    height: 4rem;
+}
+
+.button_greenM {
+    width: auto;
+    height: 2rem;
+    margin: 1rem 2rem;
+    position: absolute;
+    right: 0;
+    font-size: 1.5rem;
+    text-align: center;
+    border-radius: 10px;
+    font-family: Inter;
+    font-size: 20px;
+    border: 0;
+    outline: 0;
+    background-color: #B1CE91;
+}
+
+    .button_greenM:hover {
+        background-color: #7DAD47;
+    }
+
+    .button_greenM:active {
+        background-color: #76A343;
+    }
+
+.my_name {
+    padding: 1rem;
+}
+
+.my_email {
+    padding: 1rem;
+    font-size: 1rem;
+}
+
+
+#my_qa, #my_liked, #my_registered {
+    padding: 1rem;
+}
+
+#my_name_change {
+    width: 20rem;
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+#my_liked select option, #my_liked select, #my_qa select option, #my_qa select, #my_registered select option, #my_registered select {
+    font-size: 1rem;
+    padding: 0.1rem;
+    width: 10rem;
+    overflow: hidden;
+}
+
+.v12_15 {
+    height: auto;
+    width: 100%;
+    position: relative;
+    bottom: 0px;
+    left: 0px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+}
+
+
+.v12_15 {
+    width: auto;
+    position: relative;
+    top: 0px;
+    right: 0px;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    margin-left: auto;
+    background-color: white;
+}
+
+.v5_30 {
+    width: auto;
+    color: rgba(0,0,0,1);
+    position: relative;
+    top: 0px;
+    left: 0px;
+    font-family: Inter;
+    font-size: 0.8rem;
+    opacity: 1;
+    text-align: center;
+    margin-left: auto;
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: row;
+}
+
+.v5_31 {
+    margin-right: auto;
+}
+
+.v5_32 {
+    padding: 0 0.2rem;
+}
+
+.v5_33 {
+    width: 2rem;
+    margin-left: auto;
+}
