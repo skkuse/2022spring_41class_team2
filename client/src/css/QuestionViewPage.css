@@ -1,0 +1,148 @@
+main{
+    position: absolute;
+    width: 1440px;
+    height: 934px;
+    left: 0px;
+    top: 90px;
+  }
+ 
+  .view-header{
+    position: absolute;
+    width: 100%;
+    height: 70px;
+    left: 0px;
+    top: 0px;
+    padding: 20px 0 0 50px; /*top right bottom left*/
+  
+    background: rgba(125, 173, 71, 0.3);
+  
+    font-family: 'Inter';
+    font-style: normal;
+    /* font-weight: 400;
+    font-size: 32px; */
+
+
+  }
+  
+
+  .return-button{
+    position: absolute;
+    width: 120px;
+    height: 35px;
+    left: 59px;
+    top: 80px;
+  
+    background: rgba(125, 173, 71, 0.6);
+    border-radius: 5px;
+    border-color: white;
+  }
+  
+  
+  .view-form-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 50px;
+  
+    position: absolute;
+    width: 1000px;
+    height: 627px;
+    left: 220px;
+    top: 153px;
+
+  }
+
+.view-question-header-container{
+    position: absolute;
+    width: 1000px;
+    height: 75px;
+    left: 0px;
+    top: 0px;
+
+    border: 1px solid #0F194A;
+    box-sizing: border-box;
+    padding: 10px;
+}
+.view-title{
+    margin-bottom: 20px;
+}
+.view-question-body{
+    position: absolute;
+    width: 1000px;
+    height: 500px;
+    left: 0px;
+    top: 75px;
+
+    border: 1px solid #0F194A;
+    box-sizing: border-box;
+}
+
+.view-comment{
+    position: absolute;
+    width: 1000px;
+    height: 155px;
+    left: 0px;
+    top: 575px;
+
+}
+
+.view-comment-header{
+    position: absolute;
+    width: 1000px;
+    height: 35px;
+    left: 0px;
+    top: 0px;
+
+    border: 1px solid #0F194A;
+    box-sizing: border-box;
+    padding: 10px;
+}
+  
+.view-comment-body{
+    position: absolute;
+    width: 1000px;
+    height: 120px;
+    left: 0px;
+    top: 35px;
+
+    border: 1px solid #0F194A;
+    box-sizing: border-box;
+}
+
+  
+  .view-assign-button{
+    position: absolute;
+    width: 1000px;
+    height: 120px;
+    left: 0px;
+    top: 35px;
+   
+  
+  }
+  
+  .view-cancel-button{
+  
+    position: absolute;
+    width: 45px;
+    height: 30px;
+    right: 71px;
+    bottom: 9px;
+
+  
+    background: rgba(125, 173, 71, 0.6);
+    border-radius: 5px;
+    border-color: white;
+  }
+  
+  .view-submit-button{
+    position: absolute;
+    width: 45px;
+    height: 30px;
+    right: 11px;
+    bottom: 9px;
+  
+    background: rgba(125, 173, 71, 0.6);
+    border-radius: 5px;
+    border-color: white;
+  }
+  

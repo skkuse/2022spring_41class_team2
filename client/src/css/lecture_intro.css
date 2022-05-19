@@ -1,0 +1,199 @@
+@charset "utf-8";
+
+
+.lec_header {
+    position: absolute;
+    width: 100%;
+    height: 60px;
+    left: 0px;
+    top: 0px;
+
+    background: rgba(125, 173, 71, 0.3);
+
+}
+
+.lec_he0 {
+    position: absolute;
+    width: 87px;
+    height: 19px;
+    left: 17px;
+    top: calc(50% - 19px/2 + 0.5px);
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #000000;
+}
+
+.lec_he1 {
+    position: absolute;
+    width: 87px;
+    height: 19px;
+    left: 134px;
+    top: calc(50% - 19px/2 + 0.5px);
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #000000;
+}
+
+.lec_he2 {
+    position: absolute;
+    width: 99px;
+    height: 19px;
+    left: 260px;
+    top: calc(50% - 19px/2 + 0.5px);
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #000000;
+}
+
+
+.lec_nav {
+    position: absolute;
+    width: 100%;
+    height: 130px;
+    left: 0px;
+    top: 60px;
+
+    background: rgba(125, 173, 71, 0.6);
+
+}
+
+
+
+
+.lec_bo1 {
+    position: absolute;
+    width: 96px;
+    height: 29px;
+    left: 15%;
+    top: 20px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 29px;
+    /* identical to box height */
+
+    text-align: center;
+
+    color: #000000;
+}
+
+
+.lec_bo2 {
+    position: absolute;
+    width: 170px;
+    height: 24px;
+    left: 15%;
+    top: 55px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 24px;
+    text-align: center;
+
+    color: #000000;
+
+}
+
+
+.lec_bo3 {
+    position: absolute;
+    width: 50px;
+    height: 19px;
+    left: 15%;
+    top: 87px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 19px;
+    text-align: center;
+
+    color: #000000;
+
+
+}
+
+
+.lec_bo4 {
+    position: absolute;
+    width: 108px;
+    height: 19px;
+    left: 20%;
+    top: 87px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 19px;
+    text-align: center;
+
+    color: #000000;
+
+}
+
+
+
+.lec_article {
+    position: absolute;
+    width: 15%;
+    height: 100%;
+    left: 0px;
+    top: 190px;
+
+
+}
+
+.button_study {
+    position: absolute;
+    width: 100px;
+    height: 40px;
+    left: 30%;
+    top: 50px;
+
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    background-color: white;
+}
+
+.button_QA {
+    position: absolute;
+    width: 100px;
+    height: 40px;
+    left: 30%;
+    top: 90px;
+
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    background-color: white;
+}
+
+.lec_section {
+    position: absolute;
+    width: 70%;
+    height: 100%;
+    left: 15%;
+    top: 190px;
+
+    background: rgba(205, 205, 206, 0.39);
+}
