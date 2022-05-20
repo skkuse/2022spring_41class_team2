@@ -82,11 +82,10 @@ def create_code_endpoints(app, lecture_service):
      
             return jsonify(data), 400
     
-    @app.route('/lectures/<lecture_seq>/search', methods = ['GET'])
-    def searchLecture(lecture_seq):
+    @app.route('/lectures/<lecture_seq>/search/<search_option>', methods = ['GET'])
+    def searchLecture(lecture_seq, search_option):
         try:
             request_data = request.json
-            search_option = request_data['search_option']
             searched_lecture = lecture_service.searchLecture(lecture_seq, search_option)
             response = {'error':"", 'status_code' : 200, 'data' :[searched_lecture]}
             return jsonify(response), 200
