@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import {call} from '../service/APIService';
 import { Link } from "react-router-dom";
 import '../css/UserInfo.css'
-//import my_lectures from "../components/image/json1.json";
+import my_lectures from "../image/json1.json";
 
 function UserInfoPage() {
   const [username, setUserName] = useState('');

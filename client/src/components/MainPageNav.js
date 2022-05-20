@@ -10,18 +10,18 @@ function NotLogined() {
 		<div id="nav">
 			<div className="v12_13 padding">
 				<div>
-					<Link to="./main">
+					<Link to="/main">
 						<button className="button" type="button">Lecture</button>
 					</Link>
 				</div>
 				<div>
-					<Link to="./qna">
+					<Link to="/qna">
 						<button className="button" type="button">QA</button>
 					</Link>
 				</div>
 
 				<div className="v12_12">
-					<Link to="./login">
+					<Link to="/login">
 						<button className="button_green" type="button">login</button>
 					</Link>
 				</div>
