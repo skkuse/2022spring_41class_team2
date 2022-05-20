@@ -115,7 +115,9 @@ class LectureService() :
     
     def searchLecture(self, lecture_seq, search_option) :
         try :
+            
             searched_output = self.lecture_model.searchLecutre(lecture_seq, search_option)
+            
             for result in searched_output :
                 result['lecture_content'] = result['lecture_content'].decode('utf-8')
             print(searched_output)

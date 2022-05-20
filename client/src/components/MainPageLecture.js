@@ -41,23 +41,24 @@ const MainPageLecture = (props) => {
 
 	const sortLecture = (e) => {
 		//e.preventDefault();
-		setLectureSort(e.target.value);		
+		setLectureSort(e.target.value);
 	}
 
 	const lectureSearchQSm = (e) => {
 		e.preventDefault();
-		console.log(lectureSearchQtext);
-		//let queryString = '/lectures?lecture_content=' + lectureSearchQtext;
-		let queryString = '/lectures?lecture_seq=3' //<- work well the only problem is query above
-		setLoading(true)
-		call(queryString, "GET")
-			.then(
-				response => {
-					setlectures(response['data'])
-					setLectureSort("")
-					setLectureSearchQtext("")
-				}
-		)
+		if (lectureSearchQtext !== "") {
+			let queryString = "/lectures/" + lecture_seq_num + "/search/" + lectureSearchQtext;
+			setLoading(true)
+			call(queryString, "GET")
+				.then(
+					response => {
+						setlectures(response["data"][0])
+						setLectureSort("")
+						setLectureSearchQtext("")
+
+					}
+				)
+		}
 		setLoading(false);
 	}
 
@@ -68,25 +69,25 @@ const MainPageLecture = (props) => {
 		return false;
 	}
 
-	
+
+
+	/*	useEffect(() => {
+			fetchData();
+		}, []);*/
 
 	useEffect(() => {
-		fetchData();
-	}, []);
-
-	useEffect(() => {
-		if (lectureSort != "") {
+		if (lectureSort !== "") {
 			var ar = lectures;
 			ar.sort(function (a, b) {
-				if (lectureSort == 'lecture_content_difficulty') return (b.lecture_content_difficulty - a.lecture_content_difficulty) != 0 ? (b.lecture_content_difficulty - a.lecture_content_difficulty) : (a.lecture_content_seq - b.lecture_content_seq)
-				else if (lectureSort == 'create_time') return (Date.parse(b.create_time) - Date.parse(a.create_time)) != 0 ? (Date.parse(b.create_time) - Date.parse(a.create_time)) : (a.lecture_content_seq - b.lecture_content_seq)
-				else if (lectureSort == 'like_count') return (b.like_count - a.like_count) != 0 ? (b.like_count - a.like_count) : (a.lecture_content_seq - b.lecture_content_seq)
+				if (lectureSort === 'lecture_content_difficulty') return (b.lecture_content_difficulty - a.lecture_content_difficulty) !== 0 ? (b.lecture_content_difficulty - a.lecture_content_difficulty) : (a.lecture_content_seq - b.lecture_content_seq)
+				else if (lectureSort === 'create_time') return (Date.parse(b.create_time) - Date.parse(a.create_time)) !== 0 ? (Date.parse(b.create_time) - Date.parse(a.create_time)) : (a.lecture_content_seq - b.lecture_content_seq)
+				else if (lectureSort === 'like_count') return (b.like_count - a.like_count) !== 0 ? (b.like_count - a.like_count) : (a.lecture_content_seq - b.lecture_content_seq)
 				else return (a.lecture_content_seq - b.lecture_content_seq)
 			});
 			setlectures(ar);
 			setLectureSort("")
-        }
-		
+		}
+
 	}, [lectureSort]);
 
 
@@ -99,30 +100,30 @@ const MainPageLecture = (props) => {
 
 
 
-    return (
-        
-        <div>
+	return (
+
+		<div>
 			<div id="search" className="mp_c_1">
 				<div style={{ padding: '0 2em' }}>
-					
-						<div className="v12_13">
+
+					<div className="v12_13">
 						<div className="v12_12 padding">
 							<form onSubmit={lectureSearchQSm}>
 								<div className="search_box">
 									<input className="mp_i_1 search_box" type="text" onChange={lectureSearchQ} value={lectureSearchQtext || ''} placeholder="Search Lecture." />
 								</div>
 							</form>
-								<div className="search_box">
-									<select className="search_box2" id="pet-select" value={ lectureSort } onChange={sortLecture }>
-										<option value="" >--order--</option>
-										<option value="create_time">date</option>
-										<option value="like_count">like</option>
-										<option value="lecture_content_difficulty">hard</option>
-									</select>
-								</div>
+							<div className="search_box">
+								<select className="search_box2" id="pet-select" value={lectureSort} onChange={sortLecture}>
+									<option value="" >--order--</option>
+									<option value="create_time">date</option>
+									<option value="like_count">like</option>
+									<option value="lecture_content_difficulty">hard</option>
+								</select>
 							</div>
 						</div>
-					
+					</div>
+
 				</div>
 			</div>
 			<div id="lectureContents">
@@ -136,7 +137,7 @@ const MainPageLecture = (props) => {
 				</div>
 				<div className="lecturePlate">
 					<div id="lectureTable">
-						{lectures.slice(offset, offset + limit).map((lectureE) => <LectureCard loading={loading} key={lectureE.lecture_content_seq} lecture={lectureE}></LectureCard>)}
+						{lectures.slice(offset, offset + limit).map((lectureE) => <LectureCard sessionV={props.sessionV} loading={loading} key={lectureE.lecture_content_seq} lecture={lectureE}></LectureCard>)}
 					</div>
 					<div id="lectureTablePage">
 						<MainPagination
@@ -148,9 +149,9 @@ const MainPageLecture = (props) => {
 					</div>
 				</div>
 			</div>
-        </div>
-        
-        );
+		</div>
+
+	);
 
 };
 

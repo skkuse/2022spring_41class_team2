@@ -5,10 +5,30 @@ import thumbImg from '../image/icons8-thumbs-up-32.png';
 import { Link } from "react-router-dom";
 
 
+
+function LinkwithLog(props) {
+	const isLoggedIn = props.sessionV;
+	if (isLoggedIn != null) {
+		return (
+			<Link
+				to={{
+					pathname: "/lectureIntro",
+					state: {
+						data: props.lecture,
+					}
+				}}
+			><div id="lecture_name"><span ><b className="lecture_title">{props.lecture.lecture_content_title}</b></span></div></Link>
+		);
+	}
+	else {
+		return (
+			<Link to="/login"><div id="lecture_name"><span ><b className="lecture_title">{props.lecture.lecture_content_title}</b></span></div></Link>
+		);
+	}
+
+}
+
 const LectureCard = (props) => {
-
-
-	const lecture_name = props.lecture.lecture_content_title;
 	const lecture_content_description = props.lecture.lecture_content_description;
 	const lecture_content_difficulty = props.lecture.lecture_content_difficulty;
 	const like_count = props.lecture.like_count;
@@ -17,14 +37,8 @@ const LectureCard = (props) => {
 
 		<div id="lecture">
 			<div id="lecture_card_top">
-				<Link
-					to={{
-						pathname: "/lectureIntro",
-						state: {
-							data: props.lecture,
-						}
-					}}
-				><div id="lecture_name"><span ><b className="lecture_title">{lecture_name}</b></span></div></Link>
+				<LinkwithLog sessionV={props.sessionV} lecture={props.lecture}></LinkwithLog>
+
 				<div id="lecture_content_description"><span>{lecture_content_description}</span></div>
 			</div>
 			<div id="lecture_card_bottom">
@@ -43,5 +57,7 @@ const LectureCard = (props) => {
 
 
 };
+
+
 
 export default LectureCard;
