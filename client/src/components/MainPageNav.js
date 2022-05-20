@@ -10,10 +10,14 @@ function NotLogined() {
 		<div id="nav">
 			<div className="v12_13 padding">
 				<div>
-					<button className="button" type="button">Lecture</button>
+					<Link to="./main">
+						<button className="button" type="button">Lecture</button>
+					</Link>
 				</div>
 				<div>
-					<button className="button" type="button">QA</button>
+					<Link to="./qna">
+						<button className="button" type="button">QA</button>
+					</Link>
 				</div>
 
 				<div className="v12_12">
@@ -31,21 +35,23 @@ function Logined() {
 		<div id="nav">
 			<div className="v12_13 padding">
 				<div>
-					<button className="button" type="button">Lecture</button>
+					<Link to="/main">
+						<button className="button" type="button">Lecture</button>
+					</Link>
 				</div>
 				<div>
-					<button className="button" type="button">QA</button>
+					<Link to="/qna">
+						<button className="button" type="button">QA</button>
+					</Link>
 				</div>
 
 				<div className="v12_12">
-					
-					<Link to="./userInfo">
+
+					<Link to="/userInfo">
 						<button className="button_green" type="button">MY</button>
-						
+
 					</Link>
-					<Link to="./userInfo">
-						<button className="button_green" type="button">logout</button>
-					</Link>
+					<button className="button_green" type="button">logout</button>
 				</div>
 			</div>
 		</div>
