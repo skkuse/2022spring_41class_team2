@@ -1,0 +1,37 @@
+#NavLP {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    margin: 16px;
+}
+
+.ButtonLP {
+    border: none;
+    border-radius: 8px;
+    padding: 8px;
+    margin: 0;
+    color: black;
+    font-size: 1rem;
+}
+
+.ButtonLP:hover {
+    background: #EFEFEF;
+    cursor: pointer;
+    transform: translateY(-2px);
+}
+
+.ButtonLP:disabled {
+    background: grey;
+    cursor: revert;
+    transform: revert;
+}
+
+.currPage {
+    background: #B1CE91;
+    font-weight: bold;
+    cursor: revert;
+    transform: revert;
+}
+
+

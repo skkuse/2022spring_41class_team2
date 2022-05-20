@@ -4,6 +4,9 @@ import { call } from '../service/APIService';
 import { Link } from "react-router-dom";
 
 function Lecture_intro() {
+    const location = useLocation();
+    console.log(location);
+    const data = location.state.data;
 
     /*const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -63,16 +66,16 @@ function Lecture_intro() {
                     <br></br>
                     <div class='lec_he0' >CrawlLearn</div>
                     <div class='lec_he1' >강의 대분류</div>
-                    <div class='lec_he2' >강의 소분류</div>
+                    <div class='lec_he2' >{data.lecture_seq}</div>
                 </div>
 
                 <div class='lec_nav'>
-                    <div class='lec_bo1'>강의 제목</div>
+                    <div class='lec_bo1'>{data.lecture_content_title}</div>
                     <br></br>
-                    <div class='lec_bo2'>강의 소제목, 짧은 설명</div>
+                    <div class='lec_bo2'>{data.lecture_content}</div>
                     <br></br>
-                    <div class='lec_bo3'>좋아요</div>
-                    <div class='lec_bo4'> ,,,, </div>
+                    <div class='lec_bo3'>{data.like_count}</div>
+                    <div class='lec_bo4'> {data.create_time}</div>
 
                 </div>
 

@@ -195,13 +195,11 @@
 }
 
 .lec_section {
-
     position: absolute;
     width: 70%;
     height: 100%;
     left: 15%;
     top: 190px;
-
 
     background: rgba(205, 205, 206, 0.39);
 }
