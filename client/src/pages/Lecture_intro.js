@@ -28,6 +28,25 @@ function Lecture_intro() {
         fetchData();
     }, []);*/
 
+    const [lecture_content, set_lecture_content] = useState("");
+
+    const attending_lecture = () => {
+        setDisable(false);
+        call("/lectures/lectureContents/1", "GET")
+            .then(
+                response => {
+                    console.log(response);
+                    console.log(lecture_content);
+                    if (response['status_code'] == 400) {
+                        
+                    }
+                    else {
+                        set_lecture_content(response['data']);
+                    }
+
+                }
+            )
+    }
 
 
     const [disable, setDisable] = useState(true);
@@ -62,7 +81,7 @@ function Lecture_intro() {
                     <div class='lec_article'>
 
 
-                        <button class='clickedStudy' onClick={() => setDisable(false)} >수강 하기</button>
+                        <button class='clickedStudy' onClick={attending_lecture} >수강 하기</button>
 
                         <Link to="/codeEdit">
                             <button class="button_QA" disabled={disable}>실습 하기</button>
@@ -71,7 +90,9 @@ function Lecture_intro() {
                     </div>
 
                     <div class='lec_section'>
-                        강의정보불러오기
+                    <div dangerouslySetInnerHTML={ {__html: lecture_content} }>
+                        </div>
+                
 
                     </div>
 
