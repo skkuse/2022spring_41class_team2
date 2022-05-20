@@ -72,6 +72,7 @@ main{
     height: 500px;
     left: 0px;
     top: 75px;
+    padding: 40px 40px;
 
     border: 1px solid #0F194A;
     box-sizing: border-box;
@@ -113,9 +114,9 @@ main{
   .view-assign-button{
     position: absolute;
     width: 1000px;
-    height: 120px;
+    height: 40px;
     left: 0px;
-    top: 35px;
+    top: 115px;
    
   
   }
@@ -144,5 +145,12 @@ main{
     background: rgba(125, 173, 71, 0.6);
     border-radius: 5px;
     border-color: white;
+  }
+
+  .view-comment-input{
+    width : 900px;
+    height : 70px;
+
+    border :none;
   }
   
