@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../css/QuestionListPage.css';
 import { Link } from "react-router-dom";
-import axios from 'axios';
 import Posts from './Post'
 import Pagination from './Pagination';
 import { call } from '../service/APIService';
@@ -40,13 +39,12 @@ function QuestionListPage() {
   /* page 별로 postsPerPage 만큼 보여주는 것*/
   const indexOfLast = currentPage * postsPerPage;
   const indexOfFirst = indexOfLast - postsPerPage;
+  
   function currentPosts(tmp) {
     let currentPosts = 0;
     currentPosts = tmp.slice(indexOfFirst, indexOfLast);
     return currentPosts;
   }
-
-  
 
   return (
     <div className="QuestionListPage">
@@ -70,15 +68,15 @@ function QuestionListPage() {
               </div>
             </nav>   
                 <div className = "question-body_content">
-                <Link to ="/">
+                <Link to ="/qaWrite">
                 <button className="write-button">작성하기</button>
                 </Link>
           
                     <div className = "question-list-container">
                         <ul className = "question-list">
-                          <Link to="/questionView">
+                          
                           <Posts posts={currentPosts(posts)} loading={loading}></Posts>
-                          </Link>
+                         
               
                         </ul>
                         <Pagination postsPerPage={postsPerPage} totalPosts={posts.length} paginate={setCurrentPage}></Pagination>

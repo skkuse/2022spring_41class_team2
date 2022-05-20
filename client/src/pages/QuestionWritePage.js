@@ -1,10 +1,39 @@
 import React from 'react';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import '../css/QuestionPage.css';
+import '../css/QuestionWritePage.css';
 import { Link } from "react-router-dom";
+import { useState } from 'react';
+import { call } from '../service/APIService';
 
-function QuestionPage() {
+
+function QuestionWritePage() {
+
+  const [qaContent, setQaContent] = useState({
+    title: '',
+    content: ''
+  });
+
+  const getValue = e => {
+    const { name, value } = e.target;
+    setQaContent({
+      ...qaContent,
+      [name]: value
+    })
+    console.log(qaContent);
+  };
+
+  const SendingQa = () =>{
+   
+    alert('질문 등록 완료.')
+      call("/lectures/1/lectureContent/-1/userSeq/2/qa", "POST", 
+      {"qa_title" : qaContent.title, "qa_content" : qaContent.content})
+      .then(
+          response => {
+            console.log("qa_title", qaContent.title); //제목만 뽑기 가능!
+          }
+      )
+  }
 
   return (
     <div className="QuestionPage">
@@ -14,7 +43,7 @@ function QuestionPage() {
         </header>
         <main>
             <div className="question-body">
-              <Link to="/questionList">
+              <Link to="/qaList">
                 <button className="return-button"> &lt;목록가기</button>
               </Link>
               <div className='form-wrapper'>
@@ -32,30 +61,47 @@ function QuestionPage() {
                 </div>
                 <div className="title">
                   <div>제목</div>
-                    <input className="title-input" type='text' placeholder='제목' />
+                  <input className="title-input"
+                    type='text'
+                      placeholder='제목'
+                      onChange={getValue}
+                      name='title'
+                  />
+ 
                   </div>
-                  <div>내용</div>
                   <CKEditor
                     editor={ClassicEditor}
-                    data="<p>Hello from CKEditor 5!</p>"
+                    config={{
+                      removePlugins: ["EasyImage","ImageUpload","MediaEmbed"]
+                    }}
+                  
+                    data=""
                     onReady={editor => {
                       // You can store the "editor" and use when it is needed.
                       console.log('Editor is ready to use!', editor);
                     }}
-                    onChange={(event, editor) => {
-                      const data = editor.getData();
-                      console.log({ event, editor, data });
-                    }}
+                    
                     onBlur={(event, editor) => {
                       console.log('Blur.', editor);
                     }}
                     onFocus={(event, editor) => {
                       console.log('Focus.', editor);
                     }}
+
+                    onChange={(event, editor) => {
+                      const data = editor.getData();
+                      //console.log({ event, editor, data });
+                      setQaContent({
+                        ...qaContent,
+                        content: data
+                      })
+                      console.log(qaContent);
+                    }}
                   />
+
                 <div className="assign-button">
                   <button className="cancel-button">취소</button>
-                  <button className="submit-button">등록</button>
+                  <button className="submit-button" onClick = {SendingQa}>등록</button>
                 </div>
               </div>
 
@@ -66,4 +112,5 @@ function QuestionPage() {
   );
 }
 
-export default QuestionPage;
+
+export default QuestionWritePage;
