@@ -1,8 +1,38 @@
-import React, { useState } from 'react';
-import '../css/lecture_intro.css'
+import React, { useEffect, useState } from 'react';
+import '../css/lecture_intro.css';
 import { call } from '../service/APIService';
+import { Link } from "react-router-dom";
 
 function Lecture_intro() {
+
+    /*const [posts, setPosts] = useState([]);
+    const [loading, setLoading] = useState(false);
+
+
+    useEffect(() => {
+        async function fetchData() {
+            setLoading(true);
+
+
+
+            call("/qna", "GET")
+                .then(
+                    response => {
+                        setPosts(response['data'][0])
+                    }
+                )
+
+            setLoading(false);
+
+        }
+        fetchData();
+    }, []);*/
+
+
+
+    const [disable, setDisable] = useState(true);
+
+
 
 
 
@@ -10,34 +40,42 @@ function Lecture_intro() {
         <div className='Lecture_intro'>
 
             <body>
-                <lec_header>
+                <div class='lec_header'>
                     <br></br>
-                    <lec_he0 >CrawlLearn</lec_he0>
-                    <lec_he1 >강의 대분류</lec_he1>
-                    <lec_he2 >강의 소분류</lec_he2>
-                </lec_header>
+                    <div class='lec_he0' >CrawlLearn</div>
+                    <div class='lec_he1' >강의 대분류</div>
+                    <div class='lec_he2' >강의 소분류</div>
+                </div>
 
-                <lec_nav>
-                    <lec_bo1>강의 제목</lec_bo1>
+                <div class='lec_nav'>
+                    <div class='lec_bo1'>강의 제목</div>
                     <br></br>
-                    <lec_bo2>강의 소제목, 짧은 설명</lec_bo2>
+                    <div class='lec_bo2'>강의 소제목, 짧은 설명</div>
                     <br></br>
-                    <lec_bo3>좋아요</lec_bo3>
-                    <lec_bo4>마지막 업데이트</lec_bo4>
+                    <div class='lec_bo3'>좋아요</div>
+                    <div class='lec_bo4'> ,,,, </div>
 
-                </lec_nav>
+                </div>
 
-                <lec_article>
+                <div class='lec_body'>
 
-                    <button class="button_study">강의 듣기</button>
-                    <button class="button_QA">Q&A 작성</button>
-
-                </lec_article>
-
-                <lec_section>
+                    <div class='lec_article'>
 
 
-                </lec_section>
+                        <button class='clickedStudy' onClick={() => setDisable(false)} >수강 하기</button>
+
+                        <Link to="/codeEdit">
+                            <button class="button_QA" disabled={disable}>실습 하기</button>
+                        </Link>
+
+                    </div>
+
+                    <div class='lec_section'>
+                        강의정보불러오기
+
+                    </div>
+
+                </div>
 
 
 

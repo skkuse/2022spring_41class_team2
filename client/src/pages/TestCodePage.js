@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import '../css/practice.css'
+import '../css/practice.css';
 import CodeEditor from '@uiw/react-textarea-code-editor';
 import { call } from '../service/APIService';
+import { Link } from "react-router-dom";
 
 function TestCodePage() {
 
-    
+
     const [code, setCode] = useState('');
     const [codeResult, setCodeResult] = useState('Null');
 
@@ -39,32 +40,29 @@ function TestCodePage() {
     return (
         <div className='TestCode'>
 
-            <code_body>
-                <code_header>
+            <div class='code_body'>
+                <div class='code_header'>
                     <br></br>
-                    <code_he0>CrawlLearn</code_he0>
-                    <code_he1>강의 대분류</code_he1>
-                    <code_he2>강의 소분류</code_he2>
-                    <button>컴파일 옵션</button>
-                </code_header>
+                    <div class='code_he0'>CrawlLearn</div>
+                    <div class='code_he1'>강의 대분류</div>
+                    <div class='code_he2'>강의 소분류</div>
+                </div>
 
-                <code_nav>
-                    <code_bo1>강의 이름</code_bo1>
-                    <button class="button_dark">dark</button>
-                    <button class="button_light">light</button>
+                <div class='code_nav'>
+                    <div class='code_bo1'>강의 이름</div>
                     <button class="button_exec" onClick="SendingCode">실행</button>
 
-                </code_nav>
+                </div>
 
-                <code_article>
+                <div class='code_article'>
                     여기 뭐하는 칸인지 아시는분?
 
 
 
-                </code_article>
+                </div>
 
-                <code_form>
-                    <code_bo2>파일.py</code_bo2>
+                <div class='code_form'>
+                    <div class='code_bo2'>파일.py</div>
 
                     <CodeEditor class="CodeEditor" value={code} language="python" placeholder="Please enter Python code." onChange={(evn) =>
                         setCode(evn.target.value)}
@@ -73,13 +71,13 @@ function TestCodePage() {
                             fontSize: 12,
                             backgroundColor: "#f5f5f5",
                             fontFamily: 'ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace',
-                            width: "1214px", height: "570px", left: "0px", top: "35px", border: "1px solid #0F194A",
+                            width: "100%", height: "570px", left: "0px", top: "35px", border: "1px solid #0F194A",
 
                         }}
                     />
-                </code_form>
+                </div>
 
-                <code_section>
+                <div class='code_section'>
                     <table>
                         <tr class="tr1">
                             <td class="td1">
@@ -94,18 +92,20 @@ function TestCodePage() {
                             </td>
                         </tr>
                     </table>
-                </code_section>
+                </div>
 
 
 
 
-            </code_body>
+            </div>
 
-            <code_footer>
-                <button class="qna">Q&A</button>
+            <div class='code_footer'>
+                <Link to="/questionPage">
+                    <button class="qna">Q&A</button>
+                </Link>
                 <button class="help">도움말</button>
 
-            </code_footer>
+            </div>
         </div>
     );
 }

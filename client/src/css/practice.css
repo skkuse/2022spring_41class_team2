@@ -5,7 +5,7 @@
     width: 100%;
 }
 
-code_header {
+.code_header {
     position: absolute;
     width: 100%;
     height: 60px;
@@ -17,7 +17,7 @@ code_header {
     box-sizing: border-box;
 }
 
-code_he0 {
+.code_he0 {
     position: absolute;
     width: 87px;
     height: 19px;
@@ -33,7 +33,7 @@ code_he0 {
     color: #000000;
 }
 
-code_he1 {
+.code_he1 {
     position: absolute;
     width: 87px;
     height: 19px;
@@ -49,7 +49,7 @@ code_he1 {
     color: #000000;
 }
 
-code_he2 {
+.code_he2 {
     position: absolute;
     width: 99px;
     height: 19px;
@@ -65,18 +65,9 @@ code_he2 {
     color: #000000;
 }
 
-code_header>button {
-    position: absolute;
-    width: 90px;
-    height: 35px;
-    left: 1380px;
-    top: 12px;
 
-    background: rgba(125, 173, 71, 0.6);
-    border-radius: 5px;
-}
 
-code_body {
+.code_body {
     position: absolute;
     width: 100%;
     height: 964px;
@@ -89,7 +80,7 @@ code_body {
     box-sizing: border-box;*/
 }
 
-code_nav {
+.code_nav {
     position: absolute;
     width: 100%;
     height: 60px;
@@ -101,7 +92,7 @@ code_nav {
 
 }
 
-code_bo1 {
+.code_bo1 {
     position: absolute;
     width: 70px;
     height: 19px;
@@ -118,27 +109,7 @@ code_bo1 {
     color: #000000;
 }
 
-.button_dark {
-    position: absolute;
-    width: 50px;
-    height: 35px;
-    left: 1320px;
-    top: 10px;
 
-    background: rgba(239, 241, 236, 0.6);
-    border-radius: 5px 0px 0px 5px;
-}
-
-.button_light {
-    position: absolute;
-    width: 50px;
-    height: 35px;
-    left: 1370px;
-    top: 10px;
-
-    background: rgba(239, 241, 236, 0.6);
-    border-radius: 0px 5px 5px 0px;
-}
 
 .button_exec {
     position: absolute;
@@ -152,7 +123,7 @@ code_bo1 {
     border-radius: 5px;
 }
 
-code_article {
+.code_article {
     position: absolute;
     width: 20%;
     height: 844px;
@@ -163,7 +134,7 @@ code_article {
     box-sizing: border-box;
 }
 
-code_form {
+.code_form {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -179,7 +150,7 @@ code_form {
     box-sizing: border-box;
 }
 
-code_bo2 {
+.code_bo2 {
     position: absolute;
     width: 70px;
     height: 19px;
@@ -208,7 +179,7 @@ code_bo2 {
 }*/
 
 
-code_section {
+.code_section {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -250,7 +221,7 @@ td {
     padding-left: 9px;
 }
 
-code_footer {
+.code_footer {
     position: absolute;
     width: 99.85%;
     height: 60px;
@@ -274,7 +245,7 @@ code_footer {
     position: absolute;
     width: 60px;
     height: 35px;
-    left: 1400px;
+    left: 1800px;
     top: 12px;
 
     background: rgba(125, 173, 71, 0.6);
