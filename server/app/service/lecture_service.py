@@ -29,6 +29,7 @@ class LectureService() :
         sys.stderr = sys.__stderr__
 
         result = codeOut.getvalue()
+        print(str(bytes(result, 'utf-8')))
         if codeErr.getvalue != None :
             result = codeOut.getvalue()
 

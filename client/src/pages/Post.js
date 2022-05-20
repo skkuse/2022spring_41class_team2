@@ -30,6 +30,7 @@ const Posts = ({ posts, loading }) => {
      return title;
   }
 
+
  
   return (
     <>
@@ -38,12 +39,14 @@ const Posts = ({ posts, loading }) => {
   }
   <PageItemUl className="post">
   { posts.map(post=>( 
+    
       // <li className ="post-question-item-li" key={post.id}>
       //   {post.qa_content}
       // </li>
       //{post.qa_title} 
      
-      <li className ="post-question-item-li" key={post.user_name} >
+      <li className ="post-question-item-li" key={post.qa_seq} >
+        
 
         <Link to={{
                   pathname: '/qaView',
@@ -67,8 +70,10 @@ const Posts = ({ posts, loading }) => {
           
 
        </div>
+       
        {/* {inner(post.qa_title)} */}
        </Link>
+       
     </li>
     
     ))}
