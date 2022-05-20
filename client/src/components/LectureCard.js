@@ -3,12 +3,13 @@ import '../css/lectureCard.css'
 import starImg from '../image/icons8-star-32.png';
 import thumbImg from '../image/icons8-thumbs-up-32.png';
 import { Link } from "react-router-dom";
+import { call } from '../service/APIService';
 
 
 
 function LinkwithLog(props) {
 	const isLoggedIn = props.sessionV;
-	if (isLoggedIn != null) {
+	if (isLoggedIn !== null) {
 		return (
 			<Link
 				to={{
@@ -26,6 +27,17 @@ function LinkwithLog(props) {
 		);
 	}
 
+}
+
+function clickLike(sessionV, lecture, lecturecontent) {
+	if (sessionV !== null) {
+		var queryString = "/lectures/" + lecture + "/lectureContent/" + lecturecontent + "/like";
+		//var queryString = "/lectures/1/lectureContent/1/like"
+		call(queryString, "PATCH")
+			.then(
+				console.log("success add like")
+			)
+	}
 }
 
 const LectureCard = (props) => {
@@ -49,7 +61,7 @@ const LectureCard = (props) => {
 				</div>
 				<div id="lecture_bar"></div>
 				<div id="like_count">
-					<img src={thumbImg} alt="like" /><div id="like_count_n">{like_count}</div>
+					<button id="Likebutton" onClick={() => clickLike(props.sessionV, props.lecture.lecture_seq, props.lecture.lecture_content_seq)}><img src={thumbImg} alt="like" /></button><div id="like_count_n">{like_count}</div>
 				</div>
 			</div>
 		</div>
