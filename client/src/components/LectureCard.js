@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 const LectureCard = (props) => {
 
 
-	const lecture_name = props.lecture.lecture_content;
+	const lecture_name = props.lecture.lecture_content_title;
 	const lecture_content_description = props.lecture.lecture_content_description;
 	const lecture_content_difficulty = props.lecture.lecture_content_difficulty;
 	const like_count = props.lecture.like_count;
