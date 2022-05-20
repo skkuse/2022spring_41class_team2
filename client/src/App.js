@@ -7,36 +7,12 @@ import LoginPage from './pages/LoginPage';
 import QuestionPage from './pages/QuestionPage';
 import QuestionViewPage from './pages/QuestionViewPage';
 import QuestionListPage from './pages/QuestionListPage';
-<<<<<<< HEAD
-import Lectureintro from './pages/Lecture_intro';
-
-=======
 import Lecture_intro from './pages/Lecture_intro';
->>>>>>> feature/mainPage
 
 
 function App() {
 
 
-<<<<<<< HEAD
-  return (
-    <BrowserRouter>
-      <Switch>
-        <Route exact path="/main" component={Main} />
-        <Route exact path="/signIn" component={SignInPage} />
-        <Route exact path="/login" component={LoginPage} />
-        <Route exact path="/userInfo" component={UserInfoPage} />
-        <Route exact path="/codeEdit" component={TestCodePage} />
-        <Route exact path="/questionPage" component={QuestionPage} />
-        <Route exact path="/questionView" component={QuestionViewPage} />
-        <Route exact path="/qna" component={QuestionListPage} />
-        <Route exact path="/lectureintro" component={Lectureintro} />
-        <Route exact path="/" component={Main} />
-      </Switch>
-    </BrowserRouter>
-
-  );
-=======
     return (
         <BrowserRouter>
             <Switch>
@@ -54,7 +30,6 @@ function App() {
         </BrowserRouter>
 
     );
->>>>>>> feature/mainPage
 }
 
 export default App;

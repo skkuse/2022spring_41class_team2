@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../css/lecture_intro.css';
 import { call } from '../service/APIService';
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 function Lecture_intro() {
     const location = useLocation();
@@ -35,7 +35,7 @@ function Lecture_intro() {
 
     const attending_lecture = () => {
         setDisable(false);
-        call("/lectures/lectureContents/1", "GET")
+        call("/lectures/lectureContents/" + data.lecture_content_seq, "GET")
             .then(
                 response => {
                     console.log(response);
