@@ -15,7 +15,7 @@ function NotLogined() {
 					</Link>
 				</div>
 				<div>
-					<Link to="/qna">
+					<Link to="/qaList">
 						<button className="button" type="button">QA</button>
 					</Link>
 				</div>
@@ -40,7 +40,7 @@ function Logined() {
 					</Link>
 				</div>
 				<div>
-					<Link to="/qna">
+					<Link to="/qaList">
 						<button className="button" type="button">QA</button>
 					</Link>
 				</div>

@@ -20,7 +20,7 @@ function App() {
                 <Route exact path="/login" component={LoginPage} />
                 <Route exact path="/userInfo" component={UserInfoPage} />
                 <Route exact path="/codeEdit" component={TestCodePage} />
-                <Route exact path="/qaWrite" component={QuestionPage} />
+                <Route exact path="/qaWrite" component={QuestionWritePage} />
                 <Route exact path="/qaView" component={QuestionViewPage} />
                 <Route exact path="/qaList" component={QuestionListPage} />
                 <Route exact path="/lectureIntro" component={Lecture_intro} />
