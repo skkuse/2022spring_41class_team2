@@ -35,11 +35,16 @@ function Lecture_intro() {
 
     const attending_lecture = () => {
         setDisable(false);
+        call("/lectures/lectureContents/" + data.lecture_content_seq, 'PUT')
+        .then(
+            response => {
+                console.log(response)
+            }
+        )
         call("/lectures/lectureContents/" + data.lecture_content_seq, "GET")
             .then(
                 response => {
-                    console.log(response);
-                    console.log(lecture_content);
+                    
                     if (response['status_code'] == 400) {
                         
                     }

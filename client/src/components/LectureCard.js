@@ -35,7 +35,10 @@ function clickLike(sessionV, lecture, lecturecontent) {
 		//var queryString = "/lectures/1/lectureContent/1/like"
 		call(queryString, "PATCH")
 			.then(
-				console.log("success add like")
+				response =>{
+					console.log(response)
+				}
+			
 			)
 	}
 }
