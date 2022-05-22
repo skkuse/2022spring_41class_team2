@@ -115,7 +115,9 @@ class LectureService() :
     
     def searchLecture(self, lecture_seq, search_option) :
         try :
+            
             searched_output = self.lecture_model.searchLecutre(lecture_seq, search_option)
+            
             for result in searched_output :
                 result['lecture_content'] = result['lecture_content'].decode('utf-8')
             print(searched_output)
@@ -126,14 +128,15 @@ class LectureService() :
     def likeLecture(self, lecture_content_seq, user_token):
         valid_token = id_token.verify_oauth2_token(user_token, requests.Request(), CLIENT_ID)
         email = valid_token['email']
+        
         if self.lecture_model.isAttending(lecture_content_seq, email) :
             if self.lecture_model.isLiked(lecture_content_seq, email) :
                 self.lecture_model.LikeLectureContent(lecture_content_seq, email)
                 return 200
             else :
-                return 400
+                return "isLiked"
         else :
-            return 400
+            return "Not Attending"
     
     def getLectureContent(self, lecture_content_seq):
         try:
@@ -142,4 +145,20 @@ class LectureService() :
             htmlmarkdown=markdown.markdown( f.read() )
             return htmlmarkdown
         except Exception as e :
+            return e.args
+    
+    def attendingLecture(self, lecture_content_seq, user_token):
+        try:
+            valid_token = id_token.verify_oauth2_token(user_token, requests.Request(), CLIENT_ID)
+            email = valid_token['email']
+            print(email)
+            isAttending = self.lecture_model.isAttending(lecture_content_seq, email)
+            print(isAttending)
+            if len(isAttending) == 0 :
+                self.lecture_model.attendingLecture(lecture_content_seq, email)
+                return 200
+            else :
+                return 400
+        except Exception as e :
+            print(e.args)
             return e.args

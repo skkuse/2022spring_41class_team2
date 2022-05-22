@@ -15,7 +15,7 @@ function NotLogined() {
 					</Link>
 				</div>
 				<div>
-					<Link to="/qaList">
+					<Link to="/login">
 						<button className="button" type="button">QA</button>
 					</Link>
 				</div>
