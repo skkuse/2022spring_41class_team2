@@ -4,9 +4,6 @@ import MainPageNav from '../components/MainPageNav'
 import MainPageLecture from "../components/MainPageLecture";
 
 
-
-
-
 function Main() {
 
 
@@ -14,7 +11,6 @@ function Main() {
 		var token = sessionStorage.getItem("ACCESS_TOKEN");
 		return token;
 	};
-
 
 
 	return (
