@@ -1,150 +1,169 @@
-main{
-    position: absolute;
-    width: 1440px;
-    height: 934px;
-    left: 0px;
-    top: 90px;
-  }
- 
-  .view-header{
-    position: absolute;
-    width: 100%;
-    height: 70px;
-    left: 0px;
-    top: 0px;
-    padding: 20px 0 0 50px; /*top right bottom left*/
-  
-    background: rgba(125, 173, 71, 0.3);
-  
-    font-family: 'Inter';
-    font-style: normal;
-    /* font-weight: 400;
-    font-size: 32px; */
 
-
-  }
-  
-
-  .return-button{
-    position: absolute;
-    width: 120px;
-    height: 35px;
-    left: 59px;
-    top: 80px;
-  
-    background: rgba(125, 173, 71, 0.6);
-    border-radius: 5px;
-    border-color: white;
-  }
-  
-  
-  .view-form-wrapper{
+  .view-container{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 50px;
-  
-    position: absolute;
-    width: 1000px;
+    padding: 10px;
+    width: 100%;
     height: 627px;
-    left: 220px;
-    top: 153px;
 
+    margin: 0px;
+
+    align-items: center;
+  }
+
+  /* .return-button{
+    display: flex;
+    align-items: center;
+    /* flex-grow:1; 
+
+    width: 120px;
+    height: 35px;
+
+    margin-top: 30px;
+    
+
+    background: rgba(125, 173, 71, 0.6);
+    border-radius: 5px;
+    border-color: white;
+  } */
+
+  .return-button{
+    position:relative; 
+    
+    width: 100px;
+    height: 35px;
+    padding: 10px;
+    top: 0px;
+	  left: 0px;
+    
+    margin: 30px 60px; /*위, 옆*/
+
+    font-size: 15px;
+    text-align: center;
+    border-radius: 5px;
+    font-family: Inter;
+    border: 0;
+    outline: 0;
+    background-color: #B1CE91;
+  }
+  
+  .return_button:hover {
+    background-color: #7DAD47;
+  }
+  
+  .return_button:active {
+    background-color: #76A343;
   }
 
 .view-question-header-container{
-    position: absolute;
-    width: 1000px;
-    height: 75px;
+  /*position:absolute*/
+    position:relative; 
+    
+    width: 1100px;
+    height: auto;
+    top:0px;
     left: 0px;
-    top: 0px;
 
-    border: 1px solid #0F194A;
+    border: 1px solid #444444; /*F194A*/
     box-sizing: border-box;
     padding: 10px;
+
+    font-family: 'Inter';
+    font-style: normal;
+
+  
 }
 .view-title{
     margin-bottom: 20px;
+    font-weight:bold;
+    font-size: 15pt;
 }
 .view-question-body{
-    position: absolute;
-    width: 1000px;
-    height: 500px;
+    /* position: absolute; */
+    width: 1100px;
+    /* height: 500px; */
+    height:auto + 20px;
     left: 0px;
-    top: 75px;
-    padding: 40px 40px;
-
-    border: 1px solid #0F194A;
+    /* top: 75px; */
+    padding: 40px 40px 60px 40px;
+    border: 1px solid #444444;
     box-sizing: border-box;
 }
 
-.view-comment{
-    position: absolute;
-    width: 1000px;
-    height: 155px;
+.view-comment-container{
+    /* position: absolute; */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 1100px;
+    height: auto;
     left: 0px;
-    top: 575px;
+    top: 0px;
+    /* top: 575px; */
 
 }
 
 .view-comment-header{
-    position: absolute;
-    width: 1000px;
+    /* position: absolute; */
+    width: 1100px;
     height: 35px;
     left: 0px;
     top: 0px;
 
-    border: 1px solid #0F194A;
+    border: 1px solid #444444;
     box-sizing: border-box;
     padding: 10px;
 }
   
 .view-comment-body{
-    position: absolute;
-    width: 1000px;
+    /* position: absolute; */
+    width: 1100px;
     height: 120px;
     left: 0px;
-    top: 35px;
+    top: 0px;
+  
 
-    border: 1px solid #0F194A;
+    border: 1px solid #444444;
     box-sizing: border-box;
 }
 
   
-  .view-assign-button{
-    position: absolute;
-    width: 1000px;
-    height: 40px;
-    left: 0px;
-    top: 115px;
-   
-  
+  .view-button-container{
+    /* position: absolute; */
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 1100px;
+    height: auto;
+    top:0px;
   }
   
   .view-cancel-button{
   
-    position: absolute;
+    /* position: absolute; */
     width: 45px;
     height: 30px;
-    right: 71px;
-    bottom: 9px;
-
   
     background: rgba(125, 173, 71, 0.6);
     border-radius: 5px;
     border-color: white;
+    margin : 10px 5px 10px 10px;
   }
   
   .view-submit-button{
-    position: absolute;
+    /* position: absolute; */
     width: 45px;
     height: 30px;
-    right: 11px;
-    bottom: 9px;
   
     background: rgba(125, 173, 71, 0.6);
     border-radius: 5px;
     border-color: white;
+    margin:10px 20px 10px 5px;
+    
+  
+
   }
 
   .view-comment-input{

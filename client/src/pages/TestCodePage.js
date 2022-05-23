@@ -100,7 +100,7 @@ function TestCodePage() {
             </div>
 
             <div class='code_footer'>
-                <Link to="/questionPage">
+                <Link to="/qaList">
                     <button class="qna">Q&A</button>
                 </Link>
                 <button class="help">도움말</button>
