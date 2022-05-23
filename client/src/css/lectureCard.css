@@ -59,6 +59,7 @@ a:link {
 
 #Likebutton {
     border: none;
+    background-color: white;
 }
 
     #Likebutton:hover {
