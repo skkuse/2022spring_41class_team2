@@ -1,8 +1,6 @@
-import { Link } from "react-router-dom"
 import '../css/mainPage.css'
-import React, { Component, useEffect, useState } from 'react';
+import React from 'react';
 import MainPageNav from '../components/MainPageNav'
-import { call } from '../service/APIService';
 import MainPageLecture from "../components/MainPageLecture";
 
 
@@ -13,7 +11,7 @@ function Main() {
 		var token = sessionStorage.getItem("ACCESS_TOKEN");
 		return token;
 	};
-	
+
 
 	return (
 		<div>
@@ -36,15 +34,15 @@ function Main() {
 						</div>
 					</header>
 
-					
+
 					<div className="mp_c_1">
 
 						<MainPageNav sessionV={getUserInfo()}></MainPageNav>
-						<MainPageLecture></MainPageLecture>
+						<MainPageLecture sessionV={getUserInfo()}></MainPageLecture>
 
 					</div>
 
-					
+
 				</div>
 
 				<footer className="mp_f_1">
