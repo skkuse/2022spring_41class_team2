@@ -1,18 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../css/practice.css';
 import CodeEditor from '@uiw/react-textarea-code-editor';
 import { call } from '../service/APIService';
-import { Link } from "react-router-dom";
+import { Link , useLocation} from "react-router-dom";
 
 function TestCodePage() {
 
-
+    const location = useLocation();
     const [code, setCode] = useState('');
     const [codeResult, setCodeResult] = useState('Null');
+    const [problem, setProblem] = useState('');
+
+    const lecture_content_seq = location.state.lecture_content_seq;
 
     const SendingCode = () => {
         console.log("호출된다")
-        call("/lectures/1/lectureContent/1/code", "POST", { 'code': code.toString() })
+        call("/lectures/1/lectureContent/" + lecture_content_seq+ "/code", "POST", { 'code': code.toString() })
             .then(
                 response => {
                     console.log(response)
@@ -35,6 +38,19 @@ function TestCodePage() {
             )
     }
 
+    const getExerciseProblem = () =>{
+        call('/lectures/lectureContents/'+ lecture_content_seq +'/exercise', 'GET')
+        .then(
+            response =>{
+                setProblem(response['data'])
+            }
+        )
+    }
+
+    useEffect(() => {
+		getExerciseProblem();
+	  },[]);
+
 
 
     return (
@@ -55,7 +71,7 @@ function TestCodePage() {
                 </div>
 
                 <div class='code_article'>
-                    여기 뭐하는 칸인지 아시는분?
+                <div dangerouslySetInnerHTML={ {__html: problem} }></div>
 
 
 

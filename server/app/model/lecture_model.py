@@ -1,4 +1,5 @@
 import re
+from this import d
 
 
 class LECTURE_MODEL:
@@ -72,3 +73,8 @@ class LECTURE_MODEL:
         self.db_connection.executeAll(SQL, [lecture_content_seq])
         self.db_connection.commit()
         return 
+    
+    def getExerciseFileName(self, lecture_content_seq):
+        SQL = "select lecture_content from lecture_content where lecture_content_seq = (select lecture_problem_seq from lecture_exercise where lecture_content_seq = %s)"
+        result = self.db_connection.executeAll(SQL, [lecture_content_seq])
+        return result

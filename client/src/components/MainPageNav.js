@@ -22,7 +22,7 @@ function NotLogined() {
 
 				<div className="v12_12">
 					<Link to="/login">
-						<button className="button_green" type="button">login</button>
+						<button className="button_green" type="button" >login</button>
 					</Link>
 				</div>
 			</div>
@@ -51,11 +51,18 @@ function Logined() {
 						<button className="button_green" type="button">MY</button>
 
 					</Link>
-					<button className="button_green" type="button">logout</button>
+					<Link to ="/main">
+						<button className="button_green" type="button" onClick={logout}>logout</button>
+					</Link>
+					
 				</div>
 			</div>
 		</div>
 	);
+}
+
+const logout = () =>{
+	sessionStorage.clear()
 }
 
 const MainPageNav = (props) => {
@@ -77,5 +84,6 @@ const MainPageNav = (props) => {
 	}
 
 };
+
 
 export default MainPageNav;

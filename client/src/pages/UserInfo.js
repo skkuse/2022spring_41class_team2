@@ -32,17 +32,23 @@ function UserInfoPage() {
 	  call("/user/info", "GET")
 	  .then(
 		  response => {
+			  if(response['data']['attending_lecture']){
 				setuserAttendingLecture(response['data']['attending_lecture'])
+			  }
+			  if(response['data']['like_lecture_info']){
 				setuserLikeLecture(response['data']['like_lecture_info'])
-				setuserQA(response['data']['qa_info'])
+			  }
+			  if(response['data']['qa_info']){
+				  setuserQA(response['data']['qa_info'])
+			  }
+				
 		  }
 	  ).catch(
-		  error => {
-			  window.location.href = '/login'
+		  error=>{
+			  console.log(error)
 		  }
 	  )
 	}
-
 	const chageUserName = () =>{
 		call("/user/name", 'PATCH', {'name' : userChangeName.toString()})
 		.then(

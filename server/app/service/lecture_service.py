@@ -74,9 +74,12 @@ class LectureService() :
     
     def getLecture(self, lecture_seq):
         try:
-            results = self.lecture_model.getLecture(lecture_seq)
-            for result in results :
+            temps = self.lecture_model.getLecture(lecture_seq)
+            results = []
+            for result in temps :
                 result['lecture_content'] = result['lecture_content'].decode('utf-8')
+                if result['lecture_content_title']:
+                    results.append(result)
             return results
         except Exception:
             return 400
@@ -167,5 +170,14 @@ class LectureService() :
         try :
             result = self.lecture_model.getLectureLike(lecture_content_seq)
             return result
+        except Exception as e :
+            return e.args
+    
+    def getExerciseContent(self, lecture_content_seq):
+        try:
+            lecture_file_name = self.lecture_model.getExerciseFileName(lecture_content_seq)[0]['lecture_content'].decode('utf-8')
+            f = open(self.dirname + '/'+ lecture_file_name, 'r')
+            htmlmarkdown=markdown.markdown( f.read() , extensions=['fenced_code', 'codehilite'])
+            return htmlmarkdown
         except Exception as e :
             return e.args

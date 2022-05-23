@@ -91,17 +91,19 @@ function Lecture_intro() {
 
                         <button class='clickedStudy' onClick={attending_lecture} >수강 하기</button>
 
-                        <Link to="/codeEdit">
+                        <Link to={{
+                            pathname: "/codeEdit",
+                            state: {
+                                lecture_content_seq: data.lecture_content_seq,
+                            }
+                        }}>
                             <button class="button_QA" disabled={disable}>실습 하기</button>
                         </Link>
 
                     </div>
 
                     <div class='lec_section'>
-                    <div dangerouslySetInnerHTML={ {__html: lecture_content} }>
-                        </div>
-                
-
+                        <div dangerouslySetInnerHTML={ {__html: lecture_content} }></div>
                     </div>
 
                 </div>
