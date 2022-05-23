@@ -61,9 +61,18 @@ class UserService:
             attending_lecture_info = self.user_model.getAttendingLecture(data['email'])
             like_lecture_info = self.user_model.getlikeLecture(data['email'])
             qa_info = self.user_model.getmyQA(data['email'])
-            info_dict['attending_lecture'] = attending_lecture_info
-            info_dict['like_lecture_info'] = like_lecture_info
-            info_dict['qa_info'] = qa_info
+            if attending_lecture_info :
+                info_dict['attending_lecture'] = list(attending_lecture_info[0].values())
+            else :
+                info_dict['attedning_lecture'] = []
+            if like_lecture_info :
+                info_dict['like_lecture_info'] = list(like_lecture_info[0].values())
+            else :
+                info_dict['like_lecture_info'] = []
+            if qa_info:
+                info_dict['qa_info'] = list(qa_info[0].values())
+            else :
+                info_dict['qa_info'] = []
             return info_dict
         except Exception as e :
             return e.args

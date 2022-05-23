@@ -82,11 +82,9 @@ def create_code_endpoints(app, lecture_service):
      
             return jsonify(data), 400
     
-    @app.route('/lectures/<lecture_seq>/search', methods = ['GET'])
-    def searchLecture(lecture_seq):
+    @app.route('/lectures/<lecture_seq>/search/<search_option>', methods = ['GET'])
+    def searchLecture(lecture_seq, search_option):
         try:
-            request_data = request.json
-            search_option = request_data['search_option']
             searched_lecture = lecture_service.searchLecture(lecture_seq, search_option)
             response = {'error':"", 'status_code' : 200, 'data' :[searched_lecture]}
             return jsonify(response), 200
@@ -112,6 +110,29 @@ def create_code_endpoints(app, lecture_service):
         try :
             data = lecture_service.getLectureContent(lecture_content_seq)
             response = {'error':"", 'status_code' : 200, 'data' :[data]}
+            return jsonify(response), 200
+
+        except Exception as e :
+            data = {'error': "", 'status_code': 400, "data": [e.args]}
+            return jsonify(data), 400
+        
+    @app.route('/lectures/lectureContent/<lecture_content_seq>/attending', methods = ['GET'])
+    def isAttendingLecture(lecture_content_seq):
+        try :
+            token = request.headers.get("Authorization").split(' ')[1]
+            isAttending = lecture_service.isAttending(lecture_content_seq, token)
+            response = {'error' : "", 'status_code' : 200, 'data' : [isAttending]}
+            return jsonify(response), 200
+        except Exception as e :
+            data = {'error': "", 'status_code': 400, "data": [e.args]}
+            return jsonify(data), 400
+    
+    @app.route('/lectures/lectureContents/<lecture_content_seq>', methods = ['PUT'])
+    def attendingLecture(lecture_content_seq):
+        try :
+            token = request.headers.get("Authorization").split(' ')[1]
+            result = lecture_service.attendingLecture(lecture_content_seq, token)
+            response = {'error':"", 'status_code' : 200, 'data' :[result]}
             return jsonify(response), 200
 
         except Exception as e :
