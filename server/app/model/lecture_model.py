@@ -65,4 +65,10 @@ class LECTURE_MODEL:
         SQL = "insert into attending(lecture_content_seq, user_seq, attending_done, user_like) select %s, user_seq, 0,0 from user where user_email = %s"
         self.db_connection.executeAll(SQL, [lecture_content_seq, email])
         self.db_connection.commit()
+        return
+    
+    def increaseLike(self, lecture_content_seq):
+        SQL = "update lecture_content set like_count = like_count + 1 where lecture_content_seq = %s"
+        self.db_connection.executeAll(SQL, [lecture_content_seq])
+        self.db_connection.commit()
         return 
