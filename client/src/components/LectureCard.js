@@ -36,7 +36,8 @@ function clickLike(sessionV, lecture, lecturecontent) {
 		call(queryString, "PATCH")
 			.then(
 				response =>{
-					console.log(response)
+					console.log(response["data"])
+					window.location.reload()
 				}
 			
 			)
