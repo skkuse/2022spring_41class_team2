@@ -6,9 +6,6 @@ import { call } from '../service/APIService';
 import MainPageLecture from "../components/MainPageLecture";
 
 
-
-
-
 function Main() {
 
 
@@ -17,7 +14,6 @@ function Main() {
 		return token;
 	};
 	
-
 
 	return (
 		<div>

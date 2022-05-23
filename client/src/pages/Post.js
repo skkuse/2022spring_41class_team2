@@ -24,6 +24,7 @@ padding: 1px;
 const Posts = ({ posts, loading }) => {
 
   const [title, setTitle] = useState("ghi");
+  const [seq, setSeq] = useState("");
 
    function inner(a){
      setTitle(a)
@@ -43,20 +44,23 @@ const Posts = ({ posts, loading }) => {
       // </li>
       //{post.qa_title} 
      
-      <li className ="post-question-item-li" key={post.user_name} >
+      <li className ="post-question-item-li" key={post.qa_seq} >
 
         <Link to={{
                   pathname: '/qaView',
                   state: {
+                    seq: post.qa_seq,
                     title: post.qa_title,
                     user_name: post.user_name,
                     date: post.create_time,
                     content: post.qa_content
+                    
                   }
         }}>
        
          <div className="question__title">
             <h3 className="title__text"> {post.qa_title} </h3>
+            
        </div>
        <div className="question__footer">
             <span className="writer">{post.user_name}</span>
@@ -70,6 +74,7 @@ const Posts = ({ posts, loading }) => {
        {/* {inner(post.qa_title)} */}
        </Link>
     </li>
+    
     
     ))}
   </PageItemUl>
