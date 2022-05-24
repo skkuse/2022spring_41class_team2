@@ -62,14 +62,22 @@ class UserService:
             like_lecture_info = self.user_model.getlikeLecture(data['email'])
             qa_info = self.user_model.getmyQA(data['email'])
             if attending_lecture_info :
-                info_dict['attending_lecture'] = list(attending_lecture_info[0].values())
+                information = []
+                for lecture_info in attending_lecture_info :
+                    information.append(lecture_info['lecture_content_title'])
+                info_dict['attending_lecture'] = information
             else :
                 info_dict['attedning_lecture'] = []
             if like_lecture_info :
-                info_dict['like_lecture_info'] = list(like_lecture_info[0].values())
+                information = []
+                for lecture_info in like_lecture_info :
+                    information.append(lecture_info['lecture_content_title'])
+                info_dict['like_lecture_info'] = information
+                
             else :
                 info_dict['like_lecture_info'] = []
             if qa_info:
+                print(qa_info)
                 info_dict['qa_info'] = list(qa_info[0].values())
             else :
                 info_dict['qa_info'] = []
