@@ -1,40 +1,52 @@
 import React from "react";
 import styled from "styled-components";
+import { useState } from 'react';
 
 const PageUl = styled.ul`
-  position: absolute;
-  width: 400px;
-  height: 19px;
-  left: 500px;
-  bottom: 30px;
 
-  float: left;
-  list-style: none;
-  text-align: center;
-  border-radius: 3px;
+//   display: flex;
+//   flex-direction: row;
+//   width: auto;
+//   height: 19px;
 
-  padding: 1px;
-//   border-top: 3px solid #186ead;
-//   border-bottom: 3px solid #186ead;
+//   align-items: center;
+
+//   list-style: none;
+//   text-align: center;
+//   border-radius: 3px;
+
+//   padding: 1px;
+// //   border-top: 3px solid #186ead;
+// //   border-bottom: 3px solid #186ead;
+
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 4px;
+margin: 16px;
   
 `;
 
 const PageLi = styled.li`
-  display: inline-block;
+  display: block;
   font-size: 17px;
   font-weight: 600;
   padding: 5px;
   border-radius: 5px;
-  width: 25px;
+  width: 10px;
+  margin: 5px;
+  
   &:hover {
     cursor: pointer;
-    color: white;
-    background-color: #263a6c;
+    color: black;
+    background-color: #ebebeb;
   }
   &:focus::after {
     color: white;
-    background-color: #263a6c;
+    background-color: #B1CE91;
   }
+
+
 `;
 
 const PageSpan = styled.span`
@@ -42,22 +54,30 @@ const PageSpan = styled.span`
   &:focus::after {
     border-radius: 100%;
     color: white;
-    background-color: #263a6c;
+    background-color: #B1CE91;
   }
 `;
-
 const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
   const pageNumbers = [];
   for (let i = 1; i <= Math.ceil(totalPosts / (postsPerPage)); i++) {
     pageNumbers.push(i);
   }
+
+const [curPage, setCurPage] = useState(0);
+
+const currentPage = (curPage) => {
+
+  paginate(curPage);
+
+}
+
   return (
     <div>
       <nav>
         <PageUl className="pagination">
           {pageNumbers.map((number) => (
             <PageLi key={number} className="page-item">
-              <PageSpan onClick={() => paginate(number)} className="page-link">
+              <PageSpan onClick={() => currentPage(number)} className="page-link" >
                 {number}
               </PageSpan>
             </PageLi>

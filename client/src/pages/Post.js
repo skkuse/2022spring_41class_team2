@@ -6,11 +6,12 @@ import { Link } from "react-router-dom";
 
 
 const PageItemUl = styled.ul`
-position: absolute;
+display: flex;
+flex-direction: column;
 width: 1059px;
 height: 657px;
-left: 150px;
-top: 150px;
+
+align-items: center;
 
 list-style: none;
 text-align: center;
@@ -31,6 +32,7 @@ const Posts = ({ posts, loading }) => {
      return title;
   }
 
+
  
   return (
     <>
@@ -39,6 +41,7 @@ const Posts = ({ posts, loading }) => {
   }
   <PageItemUl className="post">
   { posts.map(post=>( 
+    
       // <li className ="post-question-item-li" key={post.id}>
       //   {post.qa_content}
       // </li>
@@ -71,8 +74,10 @@ const Posts = ({ posts, loading }) => {
           
 
        </div>
+       
        {/* {inner(post.qa_title)} */}
        </Link>
+       
     </li>
     
     

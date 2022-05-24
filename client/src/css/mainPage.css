@@ -157,7 +157,6 @@ select {
 	border-radius: 10px;
 	text-align: center;
 	font-family: Inter;
-    font-size: 20px;
 	border: 0;
 	outline: 0;
 	background-color:transparent;
@@ -176,12 +175,11 @@ select {
 	height: 40px;
 	padding: 0 10px;
 	margin: 0 20px;
-	font-size: 20px;
+	font-size: 18px;
 	text-align: center;
 	border-radius: 10px;
 	text-align: center;
 	font-family: Inter;
-	font-size: 20px;
 	border: 0;
 	outline: 0;
 	background-color: #B1CE91;
