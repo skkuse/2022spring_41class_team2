@@ -1,0 +1,37 @@
+[
+  {
+    "lecture_name": "lecture1",
+    "lecture_content_seq": 1,
+    "lecture_content_description": "lecture1 description",
+    "lecture_content_difficulty": 3,
+    "like_count": 5
+  },
+  {
+    "lecture_name": "lecture2",
+    "lecture_content_seq": 2,
+    "lecture_content_description": "lecture2 description",
+    "lecture_content_difficulty": 3,
+    "like_count": 5
+  },
+  {
+    "lecture_name": "lecture3",
+    "lecture_content_seq": 3,
+    "lecture_content_description": "lecture3 description",
+    "lecture_content_difficulty": 3,
+    "like_count": 5
+  },
+  {
+    "lecture_name": "lecture4",
+    "lecture_content_seq": 4,
+    "lecture_content_description": "lecture4 description",
+    "lecture_content_difficulty": 3,
+    "like_count": 5
+  },
+  {
+    "lecture_name": "lecture5",
+    "lecture_content_seq": 5,
+    "lecture_content_description": "lecture5 description",
+    "lecture_content_difficulty": 3,
+    "like_count": 5
+  }
+]

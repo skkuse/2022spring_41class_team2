@@ -1,39 +1,34 @@
 # 2022spring_41class_team2
 
+성균관대 학생등을 대상으로 하는 파이썬 교육 웹사이트 제작 프로젝트 입니다.
+
 # 프로그램 세팅 방법
 
 ## 버전
 - Node : 17.5
 - Python : 3.7
 
+## Install Dependencies
 
-## 프론트엔드 세팅 방법
+### 프로그램 실행 관련
+```shell
+npm install concurrently
+```
+### 프론트 엔드 환경
 ```shell
 cd client
 npm install .
 ```
-
-## 벡엔드 세팅 방법
-### 가상환경 가져오기
+### 벡엔드 환경 설정
 ```shell
-conda env create --file serverEnv.yml
-```
-
-### 가상환경을 만들어서 할 때
-```shell
+conda create env -n {env_name} python=3.7
 cd server
-pip install .
+pip install -r requirement.txt
 ```
+<br>
 
-## 실행 세팅 방법
+# 프로그램 실행 방법
 ```shell
-npm install concurrently
-```
-
-## 프로그램 실행 방법
-```shell
+conda activate {env_name}
 npm run dev
 ```
-
-우리 팀 화이팅
-

@@ -1,0 +1,71 @@
+#lecture_bar {
+    content: "";
+    background: rgba(0, 0, 0, 0.35);
+    height: 1px;
+    font-size: 0px;
+    line-height: 0px;
+    margin: 0px 16px;
+    padding-top: auto;
+}
+
+#lecture_card_bottom {
+    margin-top: auto;
+}
+
+#lecture_card_top {
+    margin-bottom: auto;
+    padding: 1rem;
+}
+
+#like_count {
+    width: 2rem;
+    padding: 0.5rem 2rem;
+    margin-left: auto;
+    display: flex;
+    flex-direction: row;
+}
+
+#like_count_n {
+    margin: auto 0;
+    height: 100%;
+    font-size: 1rem;
+}
+
+#lecture_content_difficulty {
+    padding: 0.5rem 1rem;
+    margin-left: auto;
+}
+
+#lecture_content_description {
+    padding: 0.5rem;
+    font-size: 1rem;
+}
+
+#lecture_name {
+    padding: 0.5rem;
+    font-size: 1.5rem;
+}
+
+
+.lecture_title {
+    color: #000000;
+    text-decoration: none;
+}
+
+a:link {
+    color: black;
+    text-decoration: none;
+}
+
+#Likebutton {
+    border: none;
+    background-color: white;
+}
+
+    #Likebutton:hover {
+        background-color: #EAEAEA;
+    }
+
+    #Likebutton:active {
+        background-color: #E5E5E5;
+    }

@@ -1,0 +1,205 @@
+@charset "utf-8";
+
+
+.lec_header {
+    position: relative;
+    width: 100%;
+    height: 60px;
+    left: 0px;
+    top: 0px;
+
+    background: rgba(125, 173, 71, 0.3);
+
+}
+
+.lec_he0 {
+    position: relative;
+    width: 87px;
+    height: 19px;
+    left: 17px;
+    top: 0px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #000000;
+}
+
+.lec_he1 {
+    position: relative;
+    width: 87px;
+    height: 19px;
+    left: 134px;
+    bottom: 20px;
+
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #000000;
+}
+
+.lec_he2 {
+    position: relative;
+    width: 99px;
+    height: 19px;
+    left: 260px;
+    bottom: 40px;
+
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #000000;
+}
+
+
+.lec_nav {
+    position: relative;
+    width: 100%;
+    height: 130px;
+    left: 0px;
+
+
+    background: rgba(125, 173, 71, 0.6);
+
+}
+
+
+
+
+.lec_bo1 {
+    position: relative;
+    width: 96px;
+    height: 29px;
+    left: 15%;
+    top: 20px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 29px;
+    /* identical to box height */
+
+    text-align: center;
+
+    color: #000000;
+}
+
+
+.lec_bo2 {
+    position: relative;
+    width: 170px;
+    height: 24px;
+    left: 15%;
+    top: 7px;
+
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 24px;
+    text-align: center;
+
+    color: #000000;
+
+}
+
+
+.lec_bo3 {
+    position: relative;
+    width: 50px;
+    height: 19px;
+    left: 15%;
+    bottom: 10px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 19px;
+    text-align: center;
+
+    color: #000000;
+
+
+}
+
+
+.lec_bo4 {
+    position: relative;
+    width: 108px;
+    height: 19px;
+    left: 20%;
+    bottom: 30px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 19px;
+    text-align: center;
+
+    color: #000000;
+
+}
+
+
+
+
+
+
+.lec_article {
+    position: relative;
+    width: 15%;
+    height: 970px;
+    left: 0px;
+
+
+
+}
+
+.clickedStudy {
+    position: relative;
+    width: 100px;
+    height: 40px;
+    left: 30%;
+    top: 50px;
+
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    background-color: white;
+}
+
+.button_QA {
+    position: relative;
+    width: 100px;
+    height: 40px;
+    right: 14%;
+    top: 90px;
+
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    background-color: white;
+}
+
+.lec_section {
+    position: absolute;
+    width: 70%;
+    height: 100%;
+    left: 15%;
+    top: 190px;
+
+    background: rgba(205, 205, 206, 0.39);
+}
