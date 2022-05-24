@@ -15,14 +15,14 @@ function NotLogined() {
 					</Link>
 				</div>
 				<div>
-					<Link to="/login">
+					<Link to="/qaList">
 						<button className="button" type="button">QA</button>
 					</Link>
 				</div>
 
 				<div className="v12_12">
 					<Link to="/login">
-						<button className="button_green" type="button" >login</button>
+						<button className="button_green" type="button">login</button>
 					</Link>
 				</div>
 			</div>
@@ -51,21 +51,18 @@ function Logined() {
 						<button className="button_green" type="button">MY</button>
 
 					</Link>
-					<Link to ="/main">
-						<button className="button_green" type="button" onClick={logout}>logout</button>
-					</Link>
-					
+
+                    <Link to="/qaWrite">
+                        <button className="button_green" type="button">작성하기</button>
+                    </Link>
+			
 				</div>
 			</div>
 		</div>
 	);
 }
 
-const logout = () =>{
-	sessionStorage.clear()
-}
-
-const MainPageNav = (props) => {
+const QaPageNav = (props) => {
 
 	const isLoggedIn = props.sessionV;
 	if (isLoggedIn != null) {
@@ -85,5 +82,4 @@ const MainPageNav = (props) => {
 
 };
 
-
-export default MainPageNav;
+export default QaPageNav;

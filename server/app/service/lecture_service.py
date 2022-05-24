@@ -29,6 +29,7 @@ class LectureService() :
         sys.stderr = sys.__stderr__
 
         result = codeOut.getvalue()
+        print(str(bytes(result, 'utf-8')))
         if codeErr.getvalue != None :
             result = codeOut.getvalue()
 
@@ -73,9 +74,12 @@ class LectureService() :
     
     def getLecture(self, lecture_seq):
         try:
-            results = self.lecture_model.getLecture(lecture_seq)
-            for result in results :
+            temps = self.lecture_model.getLecture(lecture_seq)
+            results = []
+            for result in temps :
                 result['lecture_content'] = result['lecture_content'].decode('utf-8')
+                if result['lecture_content_title']:
+                    results.append(result)
             return results
         except Exception:
             return 400
@@ -114,7 +118,9 @@ class LectureService() :
     
     def searchLecture(self, lecture_seq, search_option) :
         try :
+            
             searched_output = self.lecture_model.searchLecutre(lecture_seq, search_option)
+            
             for result in searched_output :
                 result['lecture_content'] = result['lecture_content'].decode('utf-8')
             print(searched_output)
@@ -126,19 +132,50 @@ class LectureService() :
         valid_token = id_token.verify_oauth2_token(user_token, requests.Request(), CLIENT_ID)
         email = valid_token['email']
         if self.lecture_model.isAttending(lecture_content_seq, email) :
-            if self.lecture_model.isLiked(lecture_content_seq, email) :
+            if self.lecture_model.isLiked(lecture_content_seq, email)[0]['user_like'] == 0:
                 self.lecture_model.LikeLectureContent(lecture_content_seq, email)
+                self.lecture_model.increaseLike(lecture_content_seq)
                 return 200
             else :
-                return 400
+                return "isLiked"
         else :
-            return 400
+            return "Not Attending"
     
     def getLectureContent(self, lecture_content_seq):
         try:
             lecture_file_name = self.lecture_model.getLectureFileName(lecture_content_seq)[0]['lecture_content'].decode('utf-8')
             f = open(self.dirname + '/'+ lecture_file_name, 'r')
-            htmlmarkdown=markdown.markdown( f.read() )
-            return htmlmarkdown
+            content =  f.read()
+            return content
+        except Exception as e :
+            return e.args
+    
+    def attendingLecture(self, lecture_content_seq, user_token):
+        try:
+            valid_token = id_token.verify_oauth2_token(user_token, requests.Request(), CLIENT_ID)
+            email = valid_token['email']
+            isAttending = self.lecture_model.isAttending(lecture_content_seq, email)
+            if len(isAttending) == 0 :
+                self.lecture_model.attendingLecture(lecture_content_seq, email)
+                return 200
+            else :
+                return 400
+        except Exception as e :
+            print(e.args)
+            return e.args
+    
+    def getLectureLike(self, lecture_content_seq):
+        try :
+            result = self.lecture_model.getLectureLike(lecture_content_seq)
+            return result
+        except Exception as e :
+            return e.args
+    
+    def getExerciseContent(self, lecture_content_seq):
+        try:
+            lecture_file_name = self.lecture_model.getExerciseFileName(lecture_content_seq)[0]['lecture_content'].decode('utf-8')
+            f = open(self.dirname + '/'+ lecture_file_name, 'r')
+            content = f.read()
+            return content
         except Exception as e :
             return e.args

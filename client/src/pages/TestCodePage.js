@@ -1,18 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../css/practice.css';
 import CodeEditor from '@uiw/react-textarea-code-editor';
 import { call } from '../service/APIService';
-import { Link } from "react-router-dom";
+import { Link , useLocation} from "react-router-dom";
+import ReactMarkdown from 'react-markdown'
+import rehypeRaw from 'rehype-highlight'
 
 function TestCodePage() {
 
+<<<<<<< HEAD
 
     const [code, setCode] = useState('for i');
+=======
+    const location = useLocation();
+    const [code, setCode] = useState('');
+>>>>>>> ab8de03b588d6f8b38a2b9a744ccf4517295a983
     const [codeResult, setCodeResult] = useState('Null');
+    const [problem, setProblem] = useState('');
+
+    const lecture_content_seq = location.state.lecture_content_seq;
 
     const SendingCode = () => {
         console.log("호출된다")
-        call("/lectures/1/lectureContent/1/code", "POST", { 'code': code.toString() })
+        call("/lectures/1/lectureContent/" + lecture_content_seq+ "/code", "POST", { 'code': code.toString() })
             .then(
                 response => {
                     console.log(response)
@@ -35,6 +45,19 @@ function TestCodePage() {
             )
     }
 
+    const getExerciseProblem = () =>{
+        call('/lectures/lectureContents/'+ lecture_content_seq +'/exercise', 'GET')
+        .then(
+            response =>{
+                setProblem(response['data'])
+            }
+        )
+    }
+
+    useEffect(() => {
+		getExerciseProblem();
+	  },[]);
+
 
 
     return (
@@ -54,8 +77,13 @@ function TestCodePage() {
 
                 </div>
 
+<<<<<<< HEAD
                 <div className='code_article'>
                     여기 뭐하는 칸인지 아시는분?
+=======
+                <div class='code_article'>
+                <ReactMarkdown rehypePlugins={[rehypeRaw]}children={problem.toString()}></ReactMarkdown>
+>>>>>>> ab8de03b588d6f8b38a2b9a744ccf4517295a983
 
 
 
@@ -100,9 +128,15 @@ function TestCodePage() {
 
             </div>
 
+<<<<<<< HEAD
             <div className='code_footer'>
                 <Link to="/questionPage">
                     <button className="qna">Q&A</button>
+=======
+            <div class='code_footer'>
+                <Link to="/qaList">
+                    <button class="qna">Q&A</button>
+>>>>>>> ab8de03b588d6f8b38a2b9a744ccf4517295a983
                 </Link>
 
             </div>

@@ -2,25 +2,29 @@ import React, { useEffect, useState } from 'react';
 import '../css/lecture_intro.css';
 import { call } from '../service/APIService';
 import { Link, useLocation } from "react-router-dom";
+import ReactMarkdown from 'react-markdown'
+import rehypeRaw from 'rehype-raw'
 
 function Lecture_intro() {
     const location = useLocation();
     console.log(location);
     const data = location.state.data;
 
-
-
     const [lecture_content, set_lecture_content] = useState("");
-    const [disable, setDisable] = useState(true);
 
     const attending_lecture = () => {
         setDisable(false);
+        call("/lectures/lectureContents/" + data.lecture_content_seq, 'PUT')
+            .then(
+                response => {
+                    console.log(response)
+                }
+            )
         call("/lectures/lectureContents/" + data.lecture_content_seq, "GET")
             .then(
                 response => {
-                    console.log(response);
-                    console.log(lecture_content);
-                    if (response['status_code'] === 400) {
+
+                    if (response['status_code'] == 400) {
 
                     }
                     else {
@@ -32,44 +36,20 @@ function Lecture_intro() {
     }
 
 
+    const [disable, setDisable] = useState(true);
 
-
-
-    /* const [lecture_seq, set_lecture_seq] = useState("whyrano");
- 
-     const mapping_lecture_seq = () => {
- 
-         call("/lectures/lectureContents/" + data.lecture_seq, "GET", data.lecture_seq)
-             .then(
-                 response => {
-                     console.log(response);
-                     console.log(data.lecture_seq);
- 
-                     let sequence = data.lecture_seq;
- 
-                     if (sequence === 1) {
-                         set_lecture_seq("Basic Python");
-                     }
-                     else if (sequence === 2) {
-                         set_lecture_seq("Web Page Structure");
-                     }
-                     else {
-                         set_lecture_seq("Web Crawling");
-                     }
-                 }
-             )
-     }*/
 
     var sequence = data.lecture_seq;
+
 
     return (
         <div className='Lecture_intro'>
 
             <body>
-                <div className='lec_header'>
+                <div class='lec_header'>
                     <br></br>
-                    <div className='lec_he0' >CrawlLearn</div>
-                    <div className='lec_he1' >강의 대분류</div>
+                    <div class='lec_he0' >CrawlLearn</div>
+                    <div class='lec_he1' >강의 대분류</div>
                     <div className='lec_he2' >{
                         {
                             1: <p>Basic Python</p>,
@@ -79,34 +59,36 @@ function Lecture_intro() {
                     }</div>
                 </div>
 
-                <div className='lec_nav'>
-                    <div className='lec_bo1'>{data.lecture_content_title}</div>
+                <div class='lec_nav'>
+                    <div class='lec_bo1'>{data.lecture_content_title}</div>
                     <br></br>
-                    <div className='lec_bo2'>{data.lecture_content}</div>
+                    <div class='lec_bo2'>{data.lecture_content}</div>
                     <br></br>
-                    <div className='lec_bo3'>{data.like_count}</div>
-                    <div className='lec_bo4'> {data.create_time}</div>
+                    <div class='lec_bo3'>{data.like_count}</div>
+                    <div class='lec_bo4'> {data.create_time}</div>
 
                 </div>
 
-                <div className='lec_body'>
+                <div class='lec_body'>
 
-                    <div className='lec_article'>
+                    <div class='lec_article'>
 
 
-                        <button className='clickedStudy' onClick={attending_lecture} >수강 하기</button>
+                        <button class='clickedStudy' onClick={attending_lecture} >수강 하기</button>
 
-                        <Link to="/codeEdit">
-                            <button className="button_QA" disabled={disable}>실습 하기</button>
+                        <Link to={{
+                            pathname: "/codeEdit",
+                            state: {
+                                lecture_content_seq: data.lecture_content_seq,
+                            }
+                        }}>
+                            <button class="button_QA" disabled={disable}>실습 하기</button>
                         </Link>
 
                     </div>
 
-                    <div className='lec_section'>
-                        <div dangerouslySetInnerHTML={{ __html: lecture_content }}>
-                        </div>
-
-
+                    <div class='lec_section'>
+                        <ReactMarkdown rehypePlugins={[rehypeRaw]} children={lecture_content.toString()}></ReactMarkdown>
                     </div>
 
                 </div>

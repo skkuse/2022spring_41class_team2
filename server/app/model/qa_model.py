@@ -23,7 +23,7 @@ class QA_MODEL:
         return result
 
     def getFreeQnA(self):
-        SQL = "select user_name, qa_title, qa_content, create_time from qa join user on user.user_seq = qa.user_seq"
+        SQL = "select user_name, qa_seq, qa_title, qa_content, create_time from qa join user on user.user_seq = qa.user_seq"
         result = self.db_connection.executeAll(SQL)
         return result
 

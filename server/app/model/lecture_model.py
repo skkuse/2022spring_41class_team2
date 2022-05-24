@@ -1,4 +1,5 @@
 import re
+from this import d
 
 
 class LECTURE_MODEL:
@@ -41,22 +42,39 @@ class LECTURE_MODEL:
         return result
     
     def isAttending(self, lecture_content_seq, email):
-        SQL = "select attending_seq from attending where lecture_seq = %s and user_seq = (select user_seq from user where user_email = %s)"
+        SQL = "select attending_seq from attending where lecture_content_seq = %s and user_seq = (select user_seq from user where user_email = %s)"
         result = self.db_connection.executeAll(SQL, [lecture_content_seq, email])
         return result
     
     def isLiked(self, lecture_content_seq, email):
-        SQL = "select like from attending where lecture_seq = %s and user_seq = (select user_seq from user where user_email = %s)"
+        SQL = "select user_like from attending where lecture_content_seq = %s and user_seq = (select user_seq from user where user_email = %s)"
         result = self.db_connection.executeAll(SQL, [lecture_content_seq, email])
         return result
 
     def LikeLectureContent(self, lecture_content_seq, email) :
-        SQL = "update attending set like = 1 where lecture_content_seq = %s and user_seq = (select user_seq from user where user_email = %s);"
-        result = self.db_connection.executeAll(SQL, [lecture_content_seq, email])
+        SQL = "update attending set user_like = 1 where lecture_content_seq = %s and user_seq = (select user_seq from user where user_email = %s)"
+        result = self.db_connection.executeAll(SQL , [lecture_content_seq, email])
         self.db_connection.commit()
         return result
     
     def getLectureFileName(self, lecture_content_seq) :
         SQL = "select lecture_content from lecture_content where lecture_content_seq = %s"
+        result = self.db_connection.executeAll(SQL, [lecture_content_seq])
+        return result
+    
+    def attendingLecture(self, lecture_content_seq, email):
+        SQL = "insert into attending(lecture_content_seq, user_seq, attending_done, user_like) select %s, user_seq, 0,0 from user where user_email = %s"
+        self.db_connection.executeAll(SQL, [lecture_content_seq, email])
+        self.db_connection.commit()
+        return
+    
+    def increaseLike(self, lecture_content_seq):
+        SQL = "update lecture_content set like_count = like_count + 1 where lecture_content_seq = %s"
+        self.db_connection.executeAll(SQL, [lecture_content_seq])
+        self.db_connection.commit()
+        return 
+    
+    def getExerciseFileName(self, lecture_content_seq):
+        SQL = "select lecture_content from lecture_content where lecture_content_seq = (select lecture_problem_seq from lecture_exercise where lecture_content_seq = %s)"
         result = self.db_connection.executeAll(SQL, [lecture_content_seq])
         return result

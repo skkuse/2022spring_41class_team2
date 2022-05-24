@@ -56,3 +56,16 @@ a:link {
     color: black;
     text-decoration: none;
 }
+
+#Likebutton {
+    border: none;
+    background-color: white;
+}
+
+    #Likebutton:hover {
+        background-color: #EAEAEA;
+    }
+
+    #Likebutton:active {
+        background-color: #E5E5E5;
+    }
