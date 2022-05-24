@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useLocation } from 'react';
 import '../css/QuestionListPage.css';
 import { Link } from "react-router-dom";
 import Posts from './Post'
@@ -6,12 +6,17 @@ import Pagination from './Pagination';
 import { call } from '../service/APIService';
 import QaPageNav from '../components/QaPageNav';
 
-function QuestionListPage() {
+function QuestionListPage({location}) {
+
+  const data = location.state;
 
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(5);
+
+  const [isLecture, setIsLecture] = useState(false);
+  
 
   const getUserInfo = () => {
 		var token = sessionStorage.getItem("ACCESS_TOKEN");
@@ -28,13 +33,31 @@ function QuestionListPage() {
       // setPosts(response.data);
       // setLoading(false);
 
+      setIsLecture(data.isLecture);
 
-      call("/qna", "GET")
-      .then(
-        response => {
-            setPosts(response['data'][0])
-        }
-      )
+      //console.log(isLecture);
+
+      if( data.lecture_content_seq ){
+        call("/lectures/lectureContents/"+ data.lecture_content_seq + "/qa", "GET")
+        .then(
+          response => {
+              setPosts(response['data'][0])
+              console.log("강의별 질문");
+              
+          }
+        )
+      }
+      else{
+
+          call("/qna", "GET")
+          .then(
+            response => {
+                setPosts(response['data'][0])
+                console.log("자유질문");
+            }
+          )
+        
+      }
 
       setLoading(false);
     

@@ -56,6 +56,9 @@ const SendingCm = () =>{
     //     }
     // )
 
+    // lectures/lectureContents/{contents_seq}/qa
+    //lecture_content_seq 별로 질문 가져오기 
+
 
 }
 

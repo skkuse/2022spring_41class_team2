@@ -31,6 +31,8 @@ function NotLogined() {
 }
 
 function Logined() {
+	const [isLecture, setIsLecture] = useState(false);
+
 	return (
 		<div id="nav">
 			<div className="v12_13 padding">
@@ -40,7 +42,14 @@ function Logined() {
 					</Link>
 				</div>
 				<div>
-					<Link to="/qaList">
+					
+					<Link to ={{
+					pathname: "/qaList",
+					state: {
+						isLecture: isLecture,
+					}
+				
+					}}>
 						<button className="button" type="button">QA</button>
 					</Link>
 				</div>

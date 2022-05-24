@@ -8,16 +8,12 @@ import rehypeRaw from 'rehype-highlight'
 
 function TestCodePage() {
 
-<<<<<<< HEAD
-
-    const [code, setCode] = useState('for i');
-=======
     const location = useLocation();
     const [code, setCode] = useState('');
->>>>>>> ab8de03b588d6f8b38a2b9a744ccf4517295a983
     const [codeResult, setCodeResult] = useState('Null');
     const [problem, setProblem] = useState('');
 
+    const [isLecture, setIsLEcture] = useState(true);
     const lecture_content_seq = location.state.lecture_content_seq;
 
     const SendingCode = () => {
@@ -77,13 +73,9 @@ function TestCodePage() {
 
                 </div>
 
-<<<<<<< HEAD
-                <div className='code_article'>
-                    여기 뭐하는 칸인지 아시는분?
-=======
                 <div class='code_article'>
                 <ReactMarkdown rehypePlugins={[rehypeRaw]}children={problem.toString()}></ReactMarkdown>
->>>>>>> ab8de03b588d6f8b38a2b9a744ccf4517295a983
+
 
 
 
@@ -128,15 +120,18 @@ function TestCodePage() {
 
             </div>
 
-<<<<<<< HEAD
-            <div className='code_footer'>
-                <Link to="/questionPage">
-                    <button className="qna">Q&A</button>
-=======
             <div class='code_footer'>
-                <Link to="/qaList">
+                <Link to ={{
+                pathname: "/qaList",
+                state: {
+                    isLecture: isLecture,
+                    lecture_content_seq: lecture_content_seq,
+
+                }
+             
+                }}>
                     <button class="qna">Q&A</button>
->>>>>>> ab8de03b588d6f8b38a2b9a744ccf4517295a983
+                    
                 </Link>
 
             </div>
