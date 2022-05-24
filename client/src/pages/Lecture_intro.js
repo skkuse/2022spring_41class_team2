@@ -8,30 +8,10 @@ function Lecture_intro() {
     console.log(location);
     const data = location.state.data;
 
-    /*const [posts, setPosts] = useState([]);
-    const [loading, setLoading] = useState(false);
 
-
-    useEffect(() => {
-        async function fetchData() {
-            setLoading(true);
-
-
-
-            call("/qna", "GET")
-                .then(
-                    response => {
-                        setPosts(response['data'][0])
-                    }
-                )
-
-            setLoading(false);
-
-        }
-        fetchData();
-    }, []);*/
 
     const [lecture_content, set_lecture_content] = useState("");
+    const [disable, setDisable] = useState(true);
 
     const attending_lecture = () => {
         setDisable(false);
@@ -40,8 +20,8 @@ function Lecture_intro() {
                 response => {
                     console.log(response);
                     console.log(lecture_content);
-                    if (response['status_code'] == 400) {
-                        
+                    if (response['status_code'] === 400) {
+
                     }
                     else {
                         set_lecture_content(response['data']);
@@ -52,50 +32,80 @@ function Lecture_intro() {
     }
 
 
-    const [disable, setDisable] = useState(true);
 
 
 
+    /* const [lecture_seq, set_lecture_seq] = useState("whyrano");
+ 
+     const mapping_lecture_seq = () => {
+ 
+         call("/lectures/lectureContents/" + data.lecture_seq, "GET", data.lecture_seq)
+             .then(
+                 response => {
+                     console.log(response);
+                     console.log(data.lecture_seq);
+ 
+                     let sequence = data.lecture_seq;
+ 
+                     if (sequence === 1) {
+                         set_lecture_seq("Basic Python");
+                     }
+                     else if (sequence === 2) {
+                         set_lecture_seq("Web Page Structure");
+                     }
+                     else {
+                         set_lecture_seq("Web Crawling");
+                     }
+                 }
+             )
+     }*/
 
+    var sequence = data.lecture_seq;
 
     return (
         <div className='Lecture_intro'>
 
             <body>
-                <div class='lec_header'>
+                <div className='lec_header'>
                     <br></br>
-                    <div class='lec_he0' >CrawlLearn</div>
-                    <div class='lec_he1' >강의 대분류</div>
-                    <div class='lec_he2' >{data.lecture_seq}</div>
+                    <div className='lec_he0' >CrawlLearn</div>
+                    <div className='lec_he1' >강의 대분류</div>
+                    <div className='lec_he2' >{
+                        {
+                            1: <p>Basic Python</p>,
+                            2: <p>Web Page Structure</p>,
+                            3: <p>Web Crawling</p>
+                        }[sequence]
+                    }</div>
                 </div>
 
-                <div class='lec_nav'>
-                    <div class='lec_bo1'>{data.lecture_content_title}</div>
+                <div className='lec_nav'>
+                    <div className='lec_bo1'>{data.lecture_content_title}</div>
                     <br></br>
-                    <div class='lec_bo2'>{data.lecture_content}</div>
+                    <div className='lec_bo2'>{data.lecture_content}</div>
                     <br></br>
-                    <div class='lec_bo3'>{data.like_count}</div>
-                    <div class='lec_bo4'> {data.create_time}</div>
+                    <div className='lec_bo3'>{data.like_count}</div>
+                    <div className='lec_bo4'> {data.create_time}</div>
 
                 </div>
 
-                <div class='lec_body'>
+                <div className='lec_body'>
 
-                    <div class='lec_article'>
+                    <div className='lec_article'>
 
 
-                        <button class='clickedStudy' onClick={attending_lecture} >수강 하기</button>
+                        <button className='clickedStudy' onClick={attending_lecture} >수강 하기</button>
 
                         <Link to="/codeEdit">
-                            <button class="button_QA" disabled={disable}>실습 하기</button>
+                            <button className="button_QA" disabled={disable}>실습 하기</button>
                         </Link>
 
                     </div>
 
-                    <div class='lec_section'>
-                    <div dangerouslySetInnerHTML={ {__html: lecture_content} }>
+                    <div className='lec_section'>
+                        <div dangerouslySetInnerHTML={{ __html: lecture_content }}>
                         </div>
-                
+
 
                     </div>
 
