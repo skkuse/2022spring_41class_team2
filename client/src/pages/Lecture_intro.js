@@ -15,17 +15,17 @@ function Lecture_intro() {
     const attending_lecture = () => {
         setDisable(false);
         call("/lectures/lectureContents/" + data.lecture_content_seq, 'PUT')
-        .then(
-            response => {
-                console.log(response)
-            }
-        )
+            .then(
+                response => {
+                    console.log(response)
+                }
+            )
         call("/lectures/lectureContents/" + data.lecture_content_seq, "GET")
             .then(
                 response => {
-                    
+
                     if (response['status_code'] == 400) {
-                        
+
                     }
                     else {
                         set_lecture_content(response['data']);
@@ -39,7 +39,7 @@ function Lecture_intro() {
     const [disable, setDisable] = useState(true);
 
 
-
+    var sequence = data.lecture_seq;
 
 
     return (
@@ -50,7 +50,13 @@ function Lecture_intro() {
                     <br></br>
                     <div class='lec_he0' >CrawlLearn</div>
                     <div class='lec_he1' >강의 대분류</div>
-                    <div class='lec_he2' >{data.lecture_seq}</div>
+                    <div className='lec_he2' >{
+                        {
+                            1: <p>Basic Python</p>,
+                            2: <p>Web Page Structure</p>,
+                            3: <p>Web Crawling</p>
+                        }[sequence]
+                    }</div>
                 </div>
 
                 <div class='lec_nav'>
@@ -82,7 +88,7 @@ function Lecture_intro() {
                     </div>
 
                     <div class='lec_section'>
-                        <ReactMarkdown rehypePlugins={[rehypeRaw]}children={lecture_content.toString()}></ReactMarkdown>
+                        <ReactMarkdown rehypePlugins={[rehypeRaw]} children={lecture_content.toString()}></ReactMarkdown>
                     </div>
 
                 </div>

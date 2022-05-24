@@ -8,8 +8,13 @@ import rehypeRaw from 'rehype-highlight'
 
 function TestCodePage() {
 
+<<<<<<< HEAD
+
+    const [code, setCode] = useState('for i');
+=======
     const location = useLocation();
     const [code, setCode] = useState('');
+>>>>>>> ab8de03b588d6f8b38a2b9a744ccf4517295a983
     const [codeResult, setCodeResult] = useState('Null');
     const [problem, setProblem] = useState('');
 
@@ -58,52 +63,58 @@ function TestCodePage() {
     return (
         <div className='TestCode'>
 
-            <div class='code_body'>
-                <div class='code_header'>
+            <div className='code_body'>
+                <div className='code_header'>
                     <br></br>
-                    <div class='code_he0'>CrawlLearn</div>
-                    <div class='code_he1'>강의 대분류</div>
-                    <div class='code_he2'>강의 소분류</div>
+                    <div className='code_he0'>CrawlLearn</div>
+                    <div className='code_he1'>강의 대분류</div>
+                    <div className='code_he2'>강의 소분류</div>
                 </div>
 
-                <div class='code_nav'>
-                    <div class='code_bo1'>강의 이름</div>
-                    <button class="button_exec" onClick="SendingCode">실행</button>
+                <div className='code_nav'>
+                    <div className='code_bo1'>강의 이름</div>
+                    <button className="button_exec" onClick="SendingCode">실행</button>
 
                 </div>
 
+<<<<<<< HEAD
+                <div className='code_article'>
+                    여기 뭐하는 칸인지 아시는분?
+=======
                 <div class='code_article'>
                 <ReactMarkdown rehypePlugins={[rehypeRaw]}children={problem.toString()}></ReactMarkdown>
+>>>>>>> ab8de03b588d6f8b38a2b9a744ccf4517295a983
 
 
 
                 </div>
 
-                <div class='code_form'>
-                    <div class='code_bo2'>파일.py</div>
+                <div className='code_form'>
+                    <div className='code_bo2'>파일.py</div>
 
-                    <CodeEditor class="CodeEditor" value={code} language="python" placeholder="Please enter Python code." onChange={(evn) =>
-                        setCode(evn.target.value)}
+                    <CodeEditor className="CodeEditor" value={code} language="python" placeholder="Please enter Python code."
+                        onChange={(evn) => setCode(evn.target.value)}
                         padding={15}
                         style={{
                             fontSize: 12,
                             backgroundColor: "#f5f5f5",
-                            fontFamily: 'ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace',
-                            width: "100%", height: "570px", left: "0px", top: "35px", border: "1px solid #0F194A",
+                            fontFamily: 'ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace'
 
-                        }}
-                    />
+                        }} />
+
+
+
                 </div>
 
-                <div class='code_section'>
+                <div className='code_section'>
                     <table>
-                        <tr class="tr1">
-                            <td class="td1">
+                        <tr className="tr1">
+                            <td className="td1">
                                 결과
                             </td>
                         </tr>
-                        <tr class="tr2">
-                            <td class="td2">
+                        <tr className="tr2">
+                            <td className="td2">
 
                                 {codeResult}
 
@@ -117,11 +128,16 @@ function TestCodePage() {
 
             </div>
 
+<<<<<<< HEAD
+            <div className='code_footer'>
+                <Link to="/questionPage">
+                    <button className="qna">Q&A</button>
+=======
             <div class='code_footer'>
                 <Link to="/qaList">
                     <button class="qna">Q&A</button>
+>>>>>>> ab8de03b588d6f8b38a2b9a744ccf4517295a983
                 </Link>
-                <button class="help">도움말</button>
 
             </div>
         </div>
