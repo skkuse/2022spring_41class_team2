@@ -37,16 +37,16 @@ def create_qa_endpoints(app, qa_service):
      
             return jsonify(data), 400
 
-    @app.route('/lectures/<lecture_seq>/lectureContent/<lecture_content_seq>/userSeqs/<user_seq>/qa/<qa_seq>', methods = ['GET'])
-    @cross_origin()
-    def getQA(lecture_seq, lecture_content_seq, user_seq, qa_seq):
-        try:
-            qa_content = qa_service.getQA(qa_seq)
-            response = {'error': "", 'status_code': 200, "data": [qa_content]}
-            return jsonify(response), 200
-        except Exception as e:
-            data = {'error': "", 'status_code': 400, "data": [e.args]}
-            return jsonify(data), 400
+    # @app.route('/lectures/<lecture_seq>/lectureContent/<lecture_content_seq>/userSeqs/<user_seq>/qa/<qa_seq>', methods = ['GET'])
+    # @cross_origin()
+    # def getQA(lecture_seq, lecture_content_seq, user_seq, qa_seq):
+    #     try:
+    #         qa_content = qa_service.getQA(qa_seq)
+    #         response = {'error': "", 'status_code': 200, "data": [qa_content]}
+    #         return jsonify(response), 200
+    #     except Exception as e:
+    #         data = {'error': "", 'status_code': 400, "data": [e.args]}
+    #         return jsonify(data), 400
     
     @app.route('/qna', methods = ['GET'])
     def getFreeQnA():
@@ -59,10 +59,11 @@ def create_qa_endpoints(app, qa_service):
             data = {'error': "", 'status_code': 400, "data": [e.args]}
             return jsonify(data), 400
     
-    @app.route('/lectures/<lecture_seq>/lectureContents/<lecture_content_seq>', methods = ['GET'])
-    def getLectureQnA(lecture_seq, lecture_content_seq):
+    @app.route('/lectures/lectureContents/<lecture_content_seq>/qa', methods = ['GET'])
+    def getLectureQnA(lecture_content_seq):
         try :
-            qa_content = qa_service.getLectureQnA_service(lecture_seq, lecture_content_seq)
+            print("?")
+            qa_content = qa_service.getLectureQnA_service(lecture_content_seq)
             response = {'error' : "", 'status_code' : 200, 'data' : [qa_content]}
             return jsonify(response), 200
 

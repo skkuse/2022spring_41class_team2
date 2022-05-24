@@ -32,9 +32,10 @@ class QAService() :
         except Exception as e:
             return e.args
     
-    def getLectureQnA_service(self, lecture_seq, lecuture_content_seq):
+    def getLectureQnA_service(self, lecuture_content_seq):
         try :
-            qa_contents = self.qa_model.getLectureQnA_model(lecture_seq, lecuture_content_seq)
+            print("?")
+            qa_contents = self.qa_model.getLectureQnA_model(lecuture_content_seq)
             print(qa_contents)
             return qa_contents
         except Exception as e:
