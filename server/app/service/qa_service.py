@@ -29,7 +29,6 @@ class QAService() :
         try :
             qa_contents = []
             all_contents = self.qa_model.getFreeQnA()
-            print(all_contents)
             for content in all_contents :
                 if content['lecture_content_seq'] :
                     continue
