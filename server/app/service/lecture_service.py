@@ -145,8 +145,8 @@ class LectureService() :
         try:
             lecture_file_name = self.lecture_model.getLectureFileName(lecture_content_seq)[0]['lecture_content'].decode('utf-8')
             f = open(self.dirname + '/'+ lecture_file_name, 'r')
-            htmlmarkdown=markdown.markdown( f.read() )
-            return htmlmarkdown
+            content =  f.read()
+            return content
         except Exception as e :
             return e.args
     
@@ -154,9 +154,7 @@ class LectureService() :
         try:
             valid_token = id_token.verify_oauth2_token(user_token, requests.Request(), CLIENT_ID)
             email = valid_token['email']
-            print(email)
             isAttending = self.lecture_model.isAttending(lecture_content_seq, email)
-            print(isAttending)
             if len(isAttending) == 0 :
                 self.lecture_model.attendingLecture(lecture_content_seq, email)
                 return 200
@@ -177,7 +175,7 @@ class LectureService() :
         try:
             lecture_file_name = self.lecture_model.getExerciseFileName(lecture_content_seq)[0]['lecture_content'].decode('utf-8')
             f = open(self.dirname + '/'+ lecture_file_name, 'r')
-            htmlmarkdown=markdown.markdown( f.read() , extensions=['fenced_code', 'codehilite'])
-            return htmlmarkdown
+            content = f.read()
+            return content
         except Exception as e :
             return e.args

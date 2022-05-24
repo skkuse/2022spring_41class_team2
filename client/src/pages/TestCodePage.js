@@ -3,6 +3,8 @@ import '../css/practice.css';
 import CodeEditor from '@uiw/react-textarea-code-editor';
 import { call } from '../service/APIService';
 import { Link , useLocation} from "react-router-dom";
+import ReactMarkdown from 'react-markdown'
+import rehypeRaw from 'rehype-highlight'
 
 function TestCodePage() {
 
@@ -71,7 +73,7 @@ function TestCodePage() {
                 </div>
 
                 <div class='code_article'>
-                <div dangerouslySetInnerHTML={ {__html: problem} }></div>
+                <ReactMarkdown rehypePlugins={[rehypeRaw]}children={problem.toString()}></ReactMarkdown>
 
 
 

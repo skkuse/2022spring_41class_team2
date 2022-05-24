@@ -2,34 +2,13 @@ import React, { useEffect, useState } from 'react';
 import '../css/lecture_intro.css';
 import { call } from '../service/APIService';
 import { Link, useLocation } from "react-router-dom";
+import ReactMarkdown from 'react-markdown'
+import rehypeRaw from 'rehype-raw'
 
 function Lecture_intro() {
     const location = useLocation();
     console.log(location);
     const data = location.state.data;
-
-    /*const [posts, setPosts] = useState([]);
-    const [loading, setLoading] = useState(false);
-
-
-    useEffect(() => {
-        async function fetchData() {
-            setLoading(true);
-
-
-
-            call("/qna", "GET")
-                .then(
-                    response => {
-                        setPosts(response['data'][0])
-                    }
-                )
-
-            setLoading(false);
-
-        }
-        fetchData();
-    }, []);*/
 
     const [lecture_content, set_lecture_content] = useState("");
 
@@ -103,7 +82,7 @@ function Lecture_intro() {
                     </div>
 
                     <div class='lec_section'>
-                        <div dangerouslySetInnerHTML={ {__html: lecture_content} }></div>
+                        <ReactMarkdown rehypePlugins={[rehypeRaw]}children={lecture_content.toString()}></ReactMarkdown>
                     </div>
 
                 </div>
