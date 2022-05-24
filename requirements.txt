@@ -15,9 +15,11 @@ idna==3.3
 importlib-metadata==4.11.3
 itsdangerous==1.1.0
 Jinja2==2.11.3
+Markdown==3.3.7
 MarkupSafe==2.0.1
 numpy==1.21.5
 oauthlib==3.2.0
+psycopg2-binary==2.9.3
 pyasn1==0.4.8
 pyasn1-modules==0.2.8
 pycparser==2.21
