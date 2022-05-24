@@ -47,10 +47,10 @@
 
 .lec_he2 {
     position: relative;
-    width: 99px;
+    width: 200px;
     height: 19px;
     left: 260px;
-    bottom: 40px;
+    bottom: 55px;
 
 
     font-family: 'Inter';
@@ -79,9 +79,9 @@
 
 .lec_bo1 {
     position: relative;
-    width: 96px;
+    width: 400px;
     height: 29px;
-    left: 15%;
+    left: 170px;
     top: 20px;
 
     font-family: 'Inter';
@@ -99,9 +99,9 @@
 
 .lec_bo2 {
     position: relative;
-    width: 170px;
+    width: 200px;
     height: 24px;
-    left: 15%;
+    left: 170px;
     top: 7px;
 
 
@@ -121,7 +121,7 @@
     position: relative;
     width: 50px;
     height: 19px;
-    left: 15%;
+    left: 210px;
     bottom: 10px;
 
     font-family: 'Inter';
@@ -139,9 +139,9 @@
 
 .lec_bo4 {
     position: relative;
-    width: 108px;
+    width: 200px;
     height: 19px;
-    left: 20%;
+    left: 300px;
     bottom: 30px;
 
     font-family: 'Inter';
@@ -171,11 +171,11 @@
 }
 
 .clickedStudy {
-    position: relative;
+    position: absolute;
     width: 100px;
     height: 40px;
-    left: 30%;
-    top: 50px;
+    left: 60px;
+    top: 60px;
 
     border: 1px solid #000000;
     box-sizing: border-box;
@@ -183,11 +183,11 @@
 }
 
 .button_QA {
-    position: relative;
+    position: absolute;
     width: 100px;
     height: 40px;
-    right: 14%;
-    top: 90px;
+    left: 60px;
+    top: 100px;
 
     border: 1px solid #000000;
     box-sizing: border-box;
@@ -197,7 +197,7 @@
 .lec_section {
     position: absolute;
     width: 70%;
-    height: 100%;
+    height: 1000px;
     left: 15%;
     top: 190px;
 
