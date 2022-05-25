@@ -12,9 +12,9 @@ function TestCodePage() {
 
     const location = useLocation();
     const [code, setCode] = useState('');
-    const [codeResult, setCodeResult] = useState('Null');
     const [problem, setProblem] = useState('');
-
+    const [result, setResult] = useState('Null');
+    const [codeResult, setCodeResult] = useState('Null');
     const [isLecture, setIsLEcture] = useState(true);
     const lecture_content_seq = location.state.lecture_content_seq;
 
@@ -24,18 +24,18 @@ function TestCodePage() {
             .then(
                 response => {
                     console.log(response)
-                    if (response['status_code'] == 400) {
-
+                    if (response['status_code'] == 400) {   
                         setCodeResult(response['data'][0][0])
+                        setResult("틀렸습니다")
                     }
                     else {
-                        const codeResult = response['data'][0];
-                        if (codeResult) {
-                            console.log(codeResult)
-                            setCodeResult("맞았습니다");
+                        console.log(response['data'][0][1])
+                        setCodeResult(response['data'][0][1]);
+                        if (response['data'][0][0]) {
+                            setResult("맞았습니다");
                         }
                         else {
-                            setCodeResult("틀렸습니다");
+                            setResult("틀렸습니다");
                         }
                     }
 
@@ -56,7 +56,7 @@ function TestCodePage() {
 		getExerciseProblem();
 	  },[]);
 
-
+    console.log(code)
 
     return (
         <div className='TestCode'>
@@ -71,7 +71,7 @@ function TestCodePage() {
 
                 <div className='code_nav'>
                     <div className='code_bo1'>강의 이름</div>
-                    <button className="button_exec" onClick="SendingCode">실행</button>
+                    <button className="button_exec" onClick={SendingCode}>실행</button>
 
                 </div>
 
@@ -85,10 +85,11 @@ function TestCodePage() {
                     mode="python"
                     name="codeInput"
                     onLoad={code}
+                    onChange={setCode}
                     fontSize={18}
                     tabSize={2}
                     highlightActiveLine
-                    value=""
+                    value={code}
                     setOptions={{
                         enableBasicAutocompletion: true,
                         enableLiveAutocompletion: true,
@@ -102,7 +103,7 @@ function TestCodePage() {
                     <table>
                         <tr className="tr1">
                             <td className="td1">
-                                결과
+                                실행 결과
                             </td>
                         </tr>
                         <tr className="tr2">
@@ -113,6 +114,19 @@ function TestCodePage() {
                             </td>
                         </tr>
                     </table>
+                    <table>
+                        <tr className="tr1">
+                            <td className="td1">
+                                채점결과
+                            </td>
+                        </tr>
+                        <tr className="tr2">
+                            <td className="td2">
+                                {result}
+                            </td>
+                        </tr>
+                    </table>
+                    
                 </div>
 
 

@@ -50,7 +50,6 @@ class LectureService() :
         file_path = os.path.join(self.dirname, data['lecture_content'])
         if os.path.isfile(file_path):
             lecture_content_metadata = secure_filename(data['lecture_content'])
-            print(data.keys())
             if 'lecture_content_answer' in data.keys() :
                 self.lecture_model.saveLecture(
                     lecture_seq, 
@@ -88,9 +87,9 @@ class LectureService() :
         try:
             answer = self.lecture_model.getLectureAnswer(lecture_content_seq)
             if answer['lecture_answer'] == str(bytes(code_result, 'utf-8')):
-                return True
+                return [True, code_result]
             else :
-                return False
+                return [False, code_result]
         except Exception as e:
             print(e.args)
             return 400
@@ -123,7 +122,6 @@ class LectureService() :
             
             for result in searched_output :
                 result['lecture_content'] = result['lecture_content'].decode('utf-8')
-            print(searched_output)
             return searched_output
         except Exception as e :
             return False

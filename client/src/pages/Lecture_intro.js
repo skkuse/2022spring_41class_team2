@@ -121,10 +121,10 @@ function Lecture_intro() {
             <div className='lec_nav'>
                 <div className='lec_bo1'><p>{data.lecture_content_title}</p></div>
 
-                <div className='lec_bo2'><p>{data.lecture_content}</p></div>
+                <div className='lec_bo2'><p>{data.lecture_content_description}</p></div>
                 <div className='lec_bo33'>
-                    <div><p className='lec_bo3'>{data.like_count}</p></div>
-                    <div><p className='lec_bo4'>{data.create_time}</p></div>
+                    <div><p className='lec_bo3'>좋아요 갯수 :{data.like_count}</p></div>
+                    <div><p className='lec_bo4'>강의 제작 날짜 : {data.create_time}</p></div>
                 </div>
 
 
