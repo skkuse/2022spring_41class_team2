@@ -32,9 +32,9 @@ class UserService:
     def get_info(self, token):
         try:
             valid_token = id_token.verify_oauth2_token(token, requests.Request(), CLIENT_ID)
-            name = valid_token['name']
             email = valid_token['email']
-            return {'name' : name, 'email' : email}
+            user_info = self.user_model.findUser(email)
+            return {'name' : user_info['user_name'], 'email' : email}
         except ValueError :
             return ValueError
     

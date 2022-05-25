@@ -17,7 +17,6 @@ class LectureService() :
         self.lecture_model = lecture_model
         self.user_model = user_model
     def executeCode(self, code):
-
         codeOut = io.StringIO()
         codeErr = io.StringIO() 
         sys.stdout = codeOut
@@ -29,7 +28,6 @@ class LectureService() :
         sys.stderr = sys.__stderr__
 
         result = codeOut.getvalue()
-        print(str(bytes(result, 'utf-8')))
         if codeErr.getvalue != None :
             result = codeOut.getvalue()
 
