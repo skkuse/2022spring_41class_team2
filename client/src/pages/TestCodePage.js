@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import '../css/practice.css';
-import CodeEditor from '@uiw/react-textarea-code-editor';
 import { call } from '../service/APIService';
 import { Link , useLocation} from "react-router-dom";
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-highlight'
+import AceEditor from "react-ace";
+import "ace-builds/src-noconflict/mode-python";
+import "ace-builds/src-noconflict/ext-language_tools";
 
 function TestCodePage() {
 
@@ -73,30 +75,28 @@ function TestCodePage() {
 
                 </div>
 
-                <div class='code_article'>
-                <ReactMarkdown rehypePlugins={[rehypeRaw]}children={problem.toString()}></ReactMarkdown>
-
-
-
-
+                <div className='code_article'>
+                    <ReactMarkdown rehypePlugins={[rehypeRaw]}children={problem.toString()}></ReactMarkdown>
                 </div>
 
-                <div className='code_form'>
-                    <div className='code_bo2'>파일.py</div>
-
-                    <CodeEditor className="CodeEditor" value={code} language="python" placeholder="Please enter Python code."
-                        onChange={(evn) => setCode(evn.target.value)}
-                        padding={15}
-                        style={{
-                            fontSize: 12,
-                            backgroundColor: "#f5f5f5",
-                            fontFamily: 'ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace'
-
-                        }} />
-
-
-
-                </div>
+                <AceEditor
+                    className='code_form'
+                    placeholder={`code here! python`}
+                    mode="python"
+                    name="codeInput"
+                    onLoad={code}
+                    fontSize={18}
+                    tabSize={2}
+                    highlightActiveLine
+                    value=""
+                    setOptions={{
+                        enableBasicAutocompletion: true,
+                        enableLiveAutocompletion: true,
+                        enableSnippets: true,
+                        showLineNumbers: true,
+                        tabSize: 2
+                      }}
+                    ></AceEditor>
 
                 <div className='code_section'>
                     <table>
@@ -120,7 +120,7 @@ function TestCodePage() {
 
             </div>
 
-            <div class='code_footer'>
+            <div className='code_footer'>
                 <Link to ={{
                 pathname: "/qaList",
                 state: {
