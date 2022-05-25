@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../css/practice.css';
 import { call } from '../service/APIService';
-import { Link , useLocation} from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-highlight'
 import AceEditor from "react-ace";
@@ -20,11 +20,11 @@ function TestCodePage() {
 
     const SendingCode = () => {
         console.log("호출된다")
-        call("/lectures/1/lectureContent/" + lecture_content_seq+ "/code", "POST", { 'code': code.toString() })
+        call("/lectures/1/lectureContent/" + lecture_content_seq + "/code", "POST", { 'code': code.toString() })
             .then(
                 response => {
                     console.log(response)
-                    if (response['status_code'] == 400) {   
+                    if (response['status_code'] == 400) {
                         setCodeResult(response['data'][0][0])
                         setResult("틀렸습니다")
                     }
@@ -43,18 +43,18 @@ function TestCodePage() {
             )
     }
 
-    const getExerciseProblem = () =>{
-        call('/lectures/lectureContents/'+ lecture_content_seq +'/exercise', 'GET')
-        .then(
-            response =>{
-                setProblem(response['data'])
-            }
-        )
+    const getExerciseProblem = () => {
+        call('/lectures/lectureContents/' + lecture_content_seq + '/exercise', 'GET')
+            .then(
+                response => {
+                    setProblem(response['data'])
+                }
+            )
     }
 
     useEffect(() => {
-		getExerciseProblem();
-	  },[]);
+        getExerciseProblem();
+    }, []);
 
     console.log(code)
 
@@ -76,28 +76,34 @@ function TestCodePage() {
                 </div>
 
                 <div className='code_article'>
-                    <ReactMarkdown rehypePlugins={[rehypeRaw]}children={problem.toString()}></ReactMarkdown>
+                    <ReactMarkdown rehypePlugins={[rehypeRaw]} children={problem.toString()}></ReactMarkdown>
                 </div>
 
-                <AceEditor
-                    className='code_form'
-                    placeholder={`code here! python`}
-                    mode="python"
-                    name="codeInput"
-                    onLoad={code}
-                    onChange={setCode}
-                    fontSize={18}
-                    tabSize={2}
-                    highlightActiveLine
-                    value={code}
-                    setOptions={{
-                        enableBasicAutocompletion: true,
-                        enableLiveAutocompletion: true,
-                        enableSnippets: true,
-                        showLineNumbers: true,
-                        tabSize: 2
-                      }}
+
+                <div className='codeEditor'>
+                    <AceEditor
+                        className='code_form'
+                        height='100%'
+                        width='100%'
+                        placeholder={`code here! python`}
+                        mode="python"
+                        name="codeInput"
+                        onLoad={code}
+                        onChange={setCode}
+                        fontSize={18}
+                        tabSize={2}
+                        highlightActiveLine
+                        value={code}
+                        setOptions={{
+                            enableBasicAutocompletion: true,
+                            enableLiveAutocompletion: true,
+                            enableSnippets: true,
+                            showLineNumbers: true,
+                            tabSize: 2
+                        }}
+
                     ></AceEditor>
+                </div>
 
                 <div className='code_section'>
                     <table>
@@ -126,7 +132,7 @@ function TestCodePage() {
                             </td>
                         </tr>
                     </table>
-                    
+
                 </div>
 
 
@@ -135,17 +141,17 @@ function TestCodePage() {
             </div>
 
             <div className='code_footer'>
-                <Link to ={{
-                pathname: "/qaList",
-                state: {
-                    isLecture: isLecture,
-                    lecture_content_seq: lecture_content_seq,
+                <Link to={{
+                    pathname: "/qaList",
+                    state: {
+                        isLecture: isLecture,
+                        lecture_content_seq: lecture_content_seq,
 
-                }
-             
+                    }
+
                 }}>
                     <button class="qna">Q&A</button>
-                    
+
                 </Link>
 
             </div>
