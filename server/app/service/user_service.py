@@ -14,12 +14,13 @@ class UserService:
     def login(self, data):
         try:
             token = data['tokenObj']['id_token']
-          
             id_token.verify_oauth2_token(token, requests.Request(), CLIENT_ID)
-
-            name = data['Ru']['vY']
-            email = data['Ru']['Hv']
-            print(name, email, token)
+            if 'Ru' in data :
+                name = data['Ru']['vY']
+                email = data['Ru']['Hv']
+            else :
+                name = data['Xu']['sf']
+                email = data['Xu']['Ov']
             if self.user_model.findUser(email):
                 return {'name' : name, 'email' : email, 'token' : token}
             else :

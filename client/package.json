@@ -12,6 +12,7 @@
     "axios": "^0.27.2",
     "moment": "^2.29.3",
     "react": "^17.0.2",
+    "react-ace": "^10.1.0",
     "react-dom": "^17.0.2",
     "react-google-login": "^5.2.2",
     "react-markdown": "^8.0.3",
