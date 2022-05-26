@@ -37,23 +37,21 @@ function Lecture_intro() {
             )
     }
 
-    
 
 
-
-    /*async function fetchData() {
-        let queryString = '/lectures/'+data.lecture_seq+'/lectureContent/' + data.lecture_content_seq + '/userSeq/' + +'/1';
+    function getUserInfo3() {
+        let queryString = '/user/lectureContents/' + data.lecture_content_seq + '/done';
         call(queryString, "GET")
             .then(
                 response => {
-                    setlectures(response['data'])
-                    setLectureSort("")
+                    if (response['data']['attending_done'] === 1) { setattending(2) }
+                    console.log(response['data'])
+                    console.log(queryString)
                 }
             )
-        setLoading(false);
-    }*/
+    }
 
-    const getUserInfo2 = () => {
+    function getUserInfo2() {
         var token = sessionStorage.getItem("ACCESS_TOKEN");
         if (token == null) {
             window.location.href = '/login';
@@ -63,9 +61,9 @@ function Lecture_intro() {
                 response => {
                     if (response['data']['attending_lecture']) {
                         if (response['data']['attending_lecture'].includes(data.lecture_content_title)) { setattending(1) }
-                        console.log(response['data']['attending_lecture'])
-                        console.log(data.lecture_content_title)
+                        getUserInfo3()
                     }
+
                 }
             ).catch(
                 error => {
@@ -123,10 +121,10 @@ function Lecture_intro() {
             <div className='lec_nav'>
                 <div className='lec_bo1'><p>{data.lecture_content_title}</p></div>
 
-                <div className='lec_bo2'><p>{data.lecture_content_description}</p></div>
+                <div className='lec_bo2'><p>{data.lecture_content}</p></div>
                 <div className='lec_bo33'>
-                    <div><p className='lec_bo3'>좋아요 갯수 :{data.like_count}</p></div>
-                    <div><p className='lec_bo4'>강의 제작 날짜 : {data.create_time}</p></div>
+                    <div><p className='lec_bo3'>{data.like_count}</p></div>
+                    <div><p className='lec_bo4'>{data.create_time}</p></div>
                 </div>
 
 
@@ -150,7 +148,7 @@ function Lecture_intro() {
                     }}>
                         실습 하기
                     </Link></button>
-                    <div className="userState">{attending === 0 ? "수강 전" : "수강 중"}</div>
+                    <div className="userState">{attending === 0 ? "수강 전" : (attending === 1 ? "수강 중" : "수강 완료")}</div>
                 </div>
 
                 <div className='lec_section'>
