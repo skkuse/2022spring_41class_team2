@@ -38,25 +38,40 @@ function QuestionWritePage() {
   return (
     <div className="QuestionPage">
       <body>
-        <header className="question-header">
-          <h1>Q&A</h1>
-        </header>
+          <div id="upper" className="v12_13 v12_13_1">
+                <div className="v12_12">
+                  <div className="v5_26">
+                    <span></span>
+                  </div>
+                </div>
+          </div>
+
+          <header className="mp_h_1">
+              <div className="mp_c_1">
+                <span className="v5_33">Q&A</span>
+                <br></br>
+                <br></br>
+              </div>
+          </header>
+
+        
+        <Link to="/qaList">
+                <button className="return-button"> &lt;목록가기</button>
+        </Link>
         <main>
             <div className="question-body">
-              <Link to="/qaList">
-                <button className="return-button"> &lt;목록가기</button>
-              </Link>
+      
               <div className='form-wrapper'>
                 <div className="question-route">
                   <div>질문 경로</div>
                   <input className="route-input" type='text' placeholder='특별한 경로 없음' />
-                  <select id="select-course-name">  
+                  {/* <select id="select-course-name">  
                     <option value="course-name">강의명</option>
                     <option value="c1">course1</option>
                     <option value="c2">course2</option>
                     <option value="c3">course3</option>
                     <option value="c4">course4</option>
-                  </select>
+                  </select> */}
               
                 </div>
                 <div className="title">

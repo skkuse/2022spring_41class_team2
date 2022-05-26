@@ -27,14 +27,21 @@ class QAService() :
     
     def getFreeQnA(self):
         try :
-            qa_contents = self.qa_model.getFreeQnA()
+            qa_contents = []
+            all_contents = self.qa_model.getFreeQnA()
+            for content in all_contents :
+                if content['lecture_content_seq'] :
+                    continue
+                else :
+                    qa_contents.append(content)
             return qa_contents
         except Exception as e:
             return e.args
     
-    def getLectureQnA_service(self, lecture_seq, lecuture_content_seq):
+    def getLectureQnA_service(self, lecuture_content_seq):
         try :
-            qa_contents = self.qa_model.getLectureQnA_model(lecture_seq, lecuture_content_seq)
+            print("?")
+            qa_contents = self.qa_model.getLectureQnA_model(lecuture_content_seq)
             print(qa_contents)
             return qa_contents
         except Exception as e:

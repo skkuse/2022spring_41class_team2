@@ -6,7 +6,6 @@ import { useState } from 'react';
 function Comment(){
 
 const [cmContent, setCmContent] = useState({
-    title: '',
     content: ''
   });
 
@@ -19,11 +18,14 @@ const getValue = e => {
     console.log(cmContent);
   };
 
+  const [viewContent, setViewContnent] = useState([]);
+
 
       
 const SendingCm = () =>{
    
     alert('댓글 작성 완료')
+   
       
   }
 
@@ -44,7 +46,7 @@ const SendingCm = () =>{
                 />
 
                 <div className="view-button-container"> 
-                    <button className="view-cancel-button">취소</button>
+                    <button className="view-cancel-button" onClick = "this.value">취소</button>
                     <button className="view-submit-button" onClick = {SendingCm}>등록</button>
                 </div>
 

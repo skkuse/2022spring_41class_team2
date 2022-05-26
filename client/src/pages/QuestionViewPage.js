@@ -2,23 +2,79 @@ import React from 'react';
 import '../css/QuestionViewPage.css';
 import { Link } from "react-router-dom";
 import { useState } from 'react';
-import Comment from '../pages/Comment';
+import { useEffect } from 'react';
+import Moment from 'react-moment';
 
+import { call } from '../service/APIService';
 
 
 function QuestionViewPage({location}) {
-
-  //질문 경로 값이 있는 경우 출력, 없으면 출력 x
   
+  // console.log(location.state); //제목이 드디어!
 
-  console.log(location.state); //제목이 드디어!
+const [cmContent, setCmContent] = useState({
+    comment: ''
+});
+
+const getValue = e => {
+    const { name, value } = e.target;
 
 
+    setCmContent({
+      ...cmContent,
+      [name]: value
+    }) 
+
+    
+  }; 
+ 
+  const [viewContent, setViewContent] = useState([]);
+
+  const [cmName, setName] = useState("");
+  const [email, setEmail] = useState("");
+
+      
+const SendingCm = () =>{
+    
+   
+    setViewContent(viewContent.concat({...cmContent}));
+
+    call("/user", "GET")
+      .then(
+        response => {
+            setName(response['data']['name']);
+             setEmail(response['data']['email']);
+            console.log(response);
+        }
+      )
+    
+    // call("/qa/"+ location.state.seq +"/comment", "POST",
+    // { "comment_content" : cmContent , "user_email" : email})
+    //   .then(
+    //     response => {
+    //       console.log(cmContent); 
+    //     }
+    // )
+
+    // lectures/lectureContents/{contents_seq}/qa
+    //lecture_content_seq 별로 질문 가져오기 
 
 
+}
 
-//  /lectures/1/lectureContent/-1/userSeq/2/qa/1/comment
-  
+  const displayCreatedAt = (createdAt) => {
+    let startTime = new Date(createdAt);
+    let nowTime = Date.now();
+    if (parseInt(startTime - nowTime) > -60000) {
+      return <Moment format="방금 전">{startTime}</Moment>;
+    }
+    if (parseInt(startTime - nowTime) < -86400000) {
+      return <Moment format="MMM D일">{startTime}</Moment>;
+    }
+    if (parseInt(startTime - nowTime) > -86400000) {
+      return <Moment fromNow>{startTime}</Moment>;
+    }
+  };
 
 
     return (
@@ -41,7 +97,7 @@ function QuestionViewPage({location}) {
           </header>
 
         <body>
-              <div className="question-body">
+              <div className="viewPage">
 
                       <Link to="/qaList">
                         {/* <div className="button-nav"> */}
@@ -62,13 +118,60 @@ function QuestionViewPage({location}) {
                     <div className="view-question-body">
                     {location.state.content} {/*작성내용*/}
                     </div>
-                    <Comment></Comment>
+                    <div className="comment-container">
+                      <div className="comment-header">
+                          <span className="v_c_item">Comment</span> {/*작성자랑 날짜 강의에서부터 넣어와야함 */}
+                      </div>
+                      <div className="comment-body">
 
-                   
+                          <textarea className="view-comment-input"
+                          type='text'
+                          placeholder='댓글 작성'
+                          onChange={getValue}
+                          name='comment'
+                          
+                          />
+
+                          <div className="view-button-container"> 
+                              <button className="view-cancel-button" >취소</button>
+                              <button className="view-submit-button" onClick = {SendingCm}>등록</button>
+                          </div>
+
+                      </div>
+
+                    </div> 
+
+                    <div className='view-comment-container'>
+
+                      {viewContent.map(element =>
+                        <div style={{ border: '1px solid #333' }}>
+
+                          <div className="view-comment-header">
+                              <span style = {{color: "#333"}}>{cmName}</span>
+                               <span style = {{color: "#333"}}>{displayCreatedAt(Date())}</span>
+                          </div>
+                          
+                          <div className="view-comment-body">
+                            {element.comment.split("\n").map((line) => { 
+                              return (
+                                <span>
+                                  {line}
+                                  <br />
+                                </span>
+                              );
+                            })}
+                          </div>
+
+                          
+
+
+                        </div>
+                      )}
+                    </div>
+
                 </div>{/*view-form-wrapper*/}
 
               </div>{/*view-container*/}
-              
 
         </body>
 

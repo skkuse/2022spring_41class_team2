@@ -68,6 +68,15 @@ def create_login_endpoints(app, user_service):
             return jsonify(make_response(None, 200, info)), 200
         except Exception as e :
             return jsonify(make_response(None, 400, e.args)), 400
+
+    @app.route("/user/lectureContents/<lecture_content_seq>/done", methods = ['GET'])
+    def getUserDoneLecture(lecture_content_seq):
+        try:
+            token = request.headers.get("Authorization").split(' ')[1]
+            data = user_service.isUserDoneLecture(token, lecture_content_seq)
+            return jsonify(make_response(None, 200, data)), 200
+        except Exception as e :
+            return jsonify(make_response(None, 400, e.args)), 400
             
     def make_response(error, code, data) :
         return {'error' : error, 'status_code' : code , 'data' : data}

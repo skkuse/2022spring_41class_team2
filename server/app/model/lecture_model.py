@@ -1,7 +1,3 @@
-import re
-from this import d
-
-
 class LECTURE_MODEL:
     def __init__(self, db_conection):
         self.db_connection = db_conection
@@ -21,7 +17,7 @@ class LECTURE_MODEL:
        return 200
     
     def getLectureAnswer(self, lecture_content_seq):
-        SQL = "select lecture_answer from lecture_content where lecture_content_seq = %s"
+        SQL = "select lecture_answer from lecture_content where lecture_content_seq = (select lecture_problem_seq from lecture_exercise where lecture_content_seq = %s)"
         result = self.db_connection.executeOne(SQL, lecture_content_seq)
         return result
 

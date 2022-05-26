@@ -9,7 +9,6 @@ def create_code_endpoints(app, lecture_service):
     @app.route('/executeCode', methods=['POST']) 
     @cross_origin()
     def executeRequestCode():
-        print(request)
         data = request.json
         try :
             result, _ = lecture_service.executeCode(data['code'])

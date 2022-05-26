@@ -1,38 +1,42 @@
 import React, { useState, useEffect } from 'react';
 import '../css/practice.css';
-import CodeEditor from '@uiw/react-textarea-code-editor';
 import { call } from '../service/APIService';
-import { Link , useLocation} from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-highlight'
+import AceEditor from "react-ace";
+import "ace-builds/src-noconflict/mode-python";
+import "ace-builds/src-noconflict/ext-language_tools";
 
 function TestCodePage() {
 
     const location = useLocation();
     const [code, setCode] = useState('');
-    const [codeResult, setCodeResult] = useState('Null');
     const [problem, setProblem] = useState('');
-
+    const [result, setResult] = useState('Null');
+    const [codeResult, setCodeResult] = useState('Null');
+    const [isLecture, setIsLEcture] = useState(true);
     const lecture_content_seq = location.state.lecture_content_seq;
 
     const SendingCode = () => {
-        console.log("호출된다")
-        call("/lectures/1/lectureContent/" + lecture_content_seq+ "/code", "POST", { 'code': code.toString() })
+        setResult("채점 중 입니다....")
+        setCodeResult("실행 중 입니다...")
+        call("/lectures/1/lectureContent/" + lecture_content_seq + "/code", "POST", { 'code': code.toString() })
             .then(
                 response => {
                     console.log(response)
                     if (response['status_code'] == 400) {
-
                         setCodeResult(response['data'][0][0])
+                        setResult("틀렸습니다")
                     }
                     else {
-                        const codeResult = response['data'][0];
-                        if (codeResult) {
-                            console.log(codeResult)
-                            setCodeResult("맞았습니다");
+                        console.log(response['data'][0][1])
+                        setCodeResult(response['data'][0][1]);
+                        if (response['data'][0][0]) {
+                            setResult("맞았습니다");
                         }
                         else {
-                            setCodeResult("틀렸습니다");
+                            setResult("틀렸습니다");
                         }
                     }
 
@@ -40,76 +44,96 @@ function TestCodePage() {
             )
     }
 
-    const getExerciseProblem = () =>{
-        call('/lectures/lectureContents/'+ lecture_content_seq +'/exercise', 'GET')
-        .then(
-            response =>{
-                setProblem(response['data'])
-            }
-        )
+    const getExerciseProblem = () => {
+        call('/lectures/lectureContents/' + lecture_content_seq + '/exercise', 'GET')
+            .then(
+                response => {
+                    setProblem(response['data'])
+                }
+            )
     }
 
     useEffect(() => {
-		getExerciseProblem();
-	  },[]);
+        getExerciseProblem();
+    }, []);
 
-
+    console.log(code)
 
     return (
         <div className='TestCode'>
 
-            <div class='code_body'>
-                <div class='code_header'>
+            <div className='code_body'>
+                <div className='code_header'>
                     <br></br>
-                    <div class='code_he0'>CrawlLearn</div>
-                    <div class='code_he1'>강의 대분류</div>
-                    <div class='code_he2'>강의 소분류</div>
+                    <div className='code_he0'>CrawlLearn</div>
+                    <div className='code_he1'>강의 대분류</div>
+                    <div className='code_he2'>강의 소분류</div>
                 </div>
 
-                <div class='code_nav'>
-                    <div class='code_bo1'>강의 이름</div>
-                    <button class="button_exec" onClick="SendingCode">실행</button>
-
-                </div>
-
-                <div class='code_article'>
-                <ReactMarkdown rehypePlugins={[rehypeRaw]}children={problem.toString()}></ReactMarkdown>
-
-
+                <div className='code_nav'>
+                    <div className='code_bo1'>강의 이름</div>
+                    <button className="button_exec" onClick={SendingCode}>실행</button>
 
                 </div>
 
-                <div class='code_form'>
-                    <div class='code_bo2'>파일.py</div>
+                <div className='code_article'>
+                    <ReactMarkdown rehypePlugins={[rehypeRaw]} children={problem.toString()}></ReactMarkdown>
+                </div>
 
-                    <CodeEditor class="CodeEditor" value={code} language="python" placeholder="Please enter Python code." onChange={(evn) =>
-                        setCode(evn.target.value)}
-                        padding={15}
-                        style={{
-                            fontSize: 12,
-                            backgroundColor: "#f5f5f5",
-                            fontFamily: 'ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace',
-                            width: "100%", height: "570px", left: "0px", top: "35px", border: "1px solid #0F194A",
 
+                <div className='codeEditor'>
+                    <AceEditor
+                        className='code_form'
+                        height='100%'
+                        width='100%'
+
+                        mode="python"
+                        name="codeInput"
+                        onLoad={code}
+                        onChange={setCode}
+                        fontSize={18}
+                        tabSize={2}
+                        highlightActiveLine
+                        value={code}
+                        setOptions={{
+                            enableBasicAutocompletion: true,
+                            enableLiveAutocompletion: true,
+                            enableSnippets: true,
+                            showLineNumbers: true,
+                            tabSize: 2
                         }}
-                    />
+
+                    ></AceEditor>
                 </div>
 
-                <div class='code_section'>
+                <div className='code_section'>
                     <table>
-                        <tr class="tr1">
-                            <td class="td1">
-                                결과
+                        <tr className="tr1">
+                            <td className="td1">
+                                실행 결과
                             </td>
                         </tr>
-                        <tr class="tr2">
-                            <td class="td2">
+                        <tr className="tr2">
+                            <td className="td2">
 
                                 {codeResult}
 
                             </td>
                         </tr>
                     </table>
+                    <table>
+                        <tr className="tr1">
+                            <td className="td1">
+                                채점결과
+                            </td>
+                        </tr>
+                        <tr className="tr2">
+                            <td className="td2">
+                                {result}
+                            </td>
+                        </tr>
+                    </table>
+
                 </div>
 
 
@@ -117,11 +141,19 @@ function TestCodePage() {
 
             </div>
 
-            <div class='code_footer'>
-                <Link to="/qaList">
+            <div className='code_footer'>
+                <Link to={{
+                    pathname: "/qaList",
+                    state: {
+                        isLecture: isLecture,
+                        lecture_content_seq: lecture_content_seq,
+
+                    }
+
+                }}>
                     <button class="qna">Q&A</button>
+
                 </Link>
-                <button class="help">도움말</button>
 
             </div>
         </div>
