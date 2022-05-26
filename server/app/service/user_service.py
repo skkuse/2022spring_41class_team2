@@ -95,6 +95,11 @@ class UserService:
         except Exception as e :
             return e.args
         
-
-        
-            
+    def isUserDoneLecture(self, token, lecture_content_seq):
+        try :
+            valid_token = id_token.verify_oauth2_token(token, requests.Request(), CLIENT_ID)
+            email = valid_token['email']
+            result = self.user_model.isUserDoneLecture(email, lecture_content_seq)
+            return result['attending_done']
+        except Exception as e :
+            return e.args   

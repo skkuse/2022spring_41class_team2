@@ -19,7 +19,8 @@ function TestCodePage() {
     const lecture_content_seq = location.state.lecture_content_seq;
 
     const SendingCode = () => {
-        console.log("호출된다")
+        setResult("채점 중 입니다....")
+        setCodeResult("실행 중 입니다...")
         call("/lectures/1/lectureContent/" + lecture_content_seq + "/code", "POST", { 'code': code.toString() })
             .then(
                 response => {
@@ -85,7 +86,7 @@ function TestCodePage() {
                         className='code_form'
                         height='100%'
                         width='100%'
-                        placeholder={`code here! python`}
+
                         mode="python"
                         name="codeInput"
                         onLoad={code}
