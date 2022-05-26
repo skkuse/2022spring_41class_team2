@@ -104,6 +104,7 @@ class UserService:
             valid_token = id_token.verify_oauth2_token(token, requests.Request(), CLIENT_ID)
             email = valid_token['email']
             result = self.user_model.isUserDoneLecture(email, lecture_content_seq)
+            print(result)
             return result
         except Exception as e :
             return e.args

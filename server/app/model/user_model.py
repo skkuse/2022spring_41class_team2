@@ -40,5 +40,6 @@ class USER_MODEL:
 
     def isUserDoneLecture(self, email, lecture_content_seq):
         SQL = "select attending_done from attending where lecture_content_seq = %s and user_seq = (select user_seq from user where user_email = %s);"
-        result = self.db_connection.executeAll(SQL, [email, lecture_content_seq])
+        result = self.db_connection.executeAll(SQL, [lecture_content_seq, email])
+        print(result)
         return result

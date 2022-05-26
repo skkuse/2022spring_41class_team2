@@ -74,6 +74,7 @@ def create_login_endpoints(app, user_service):
         try:
             token = request.headers.get("Authorization").split(' ')[1]
             data = user_service.isUserDoneLecture(token, lecture_content_seq)
+            print(data)
             return jsonify(make_response(None, 200, data)), 200
         except Exception as e :
             return jsonify(make_response(None, 400, e.args)), 400
