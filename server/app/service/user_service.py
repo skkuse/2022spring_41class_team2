@@ -44,8 +44,12 @@ class UserService:
             token = data['tokenObj']['id_token']
           
             id_token.verify_oauth2_token(token, requests.Request(), CLIENT_ID)
-            name = data['Ru']['vY']
-            email = data['Ru']['Hv']
+            if 'Ru' in data :
+                name = data['Ru']['vY']
+                email = data['Ru']['Hv']
+            else :
+                name = data['Xu']['sf']
+                email = data['Xu']['Ov']
   
             if not self.user_model.findUser(email) :
                 self.user_model.saveUser(name, email)
@@ -100,6 +104,6 @@ class UserService:
             valid_token = id_token.verify_oauth2_token(token, requests.Request(), CLIENT_ID)
             email = valid_token['email']
             result = self.user_model.isUserDoneLecture(email, lecture_content_seq)
-            return result['attending_done']
+            return result
         except Exception as e :
-            return e.args   
+            return e.args
