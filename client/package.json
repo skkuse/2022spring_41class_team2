@@ -1,6 +1,7 @@
 {
   "name": "client",
   "version": "0.1.0",
+  "homepage": "http://ec2-3-34-43-169.ap-northeast-2.compute.amazonaws.com",
   "private": true,
   "dependencies": {
     "@ckeditor/ckeditor5-build-classic": "^34.0.0",
