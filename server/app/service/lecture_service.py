@@ -78,8 +78,8 @@ class LectureService() :
                 if result['lecture_content_title']:
                     results.append(result)
             return results
-        except Exception:
-            return 400
+        except Exception as e:
+            return e.args
 
     def checkResult(self, code_result, lecture_content_seq):
         try:
