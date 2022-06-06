@@ -2,7 +2,7 @@ import React from 'react';
 import styled from "styled-components";
 import * as QuestionViewPage from './QuestionViewPage'
 import { useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 
 const PageItemUl = styled.ul`
@@ -27,6 +27,9 @@ const Posts = ({ posts, loading }) => {
   const [title, setTitle] = useState("ghi");
   const [seq, setSeq] = useState("");
   const [isLecture, setIsLecture] = useState(false);
+
+  const location = useLocation();
+  console.log(location.state);
 
    function inner(a){
      setTitle(a)
@@ -57,8 +60,8 @@ const Posts = ({ posts, loading }) => {
                     title: post.qa_title,
                     user_name: post.user_name,
                     date: post.create_time,
-                    content: post.qa_content
-                    //isLecture:
+                    content: post.qa_content,
+                    isLecture: location.state.isLecture
                     
                   }
         }}>

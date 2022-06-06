@@ -14,6 +14,11 @@ function QuestionWritePage() {
     content: ''
   });
 
+  const location = useLocation();
+
+  console.log(location.state);
+
+
   const getValue = e => {
     const { name, value } = e.target;
     setQaContent({
@@ -57,8 +62,16 @@ function QuestionWritePage() {
               </div>
           </header>
 
-        
-          <Link to="/qaList">
+        {/*뒤로가기를 넣으면 새로운 질문 업데이트가 안되므로 /qaList로 해야함 */}
+          <Link to={{
+                    pathname: "/qaList",
+                    state: {
+                        isLecture: location.state.isLecture,
+                        lecture_content_seq: location.state.lecture_content_seq,
+
+                    }
+
+                }}>
                 <button className="return-button"> &lt;목록가기</button>
         </Link>
         <main>

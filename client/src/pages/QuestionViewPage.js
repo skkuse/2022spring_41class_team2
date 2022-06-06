@@ -7,6 +7,7 @@ import Moment from 'react-moment';
 
 import { call } from '../service/APIService';
 import Comment from './Comment';
+import { useHistory } from 'react-router-dom';
 
 
 function QuestionViewPage() {
@@ -23,6 +24,8 @@ function QuestionViewPage() {
   const [email, setEmail] = useState("");
 
 
+/*뒤로가기 */ 
+let history = useHistory();
 
 const handleChange = (e) => {
   const {name, value} = e.target;
@@ -109,11 +112,16 @@ useEffect( () => { //no params, 익명 함수
         <body>
               <div className="viewPage">
 
-                      <Link to="/qaList">
-                        {/* <div className="button-nav"> */}
+                      {/* <Link to="/qaList">
+                  
                             <button className="return-button" type="button"> &lt;목록가기</button>
-                        {/* </div> */}
-                        </Link>
+                
+                        </Link> */}
+
+                        <button className="return-button" type="button" 
+                        onClick={ () => {
+                          history.goBack();
+                          } } > &lt;목록가기</button>
                 
                   <div className='view-container'>
 

@@ -10,8 +10,6 @@ function QuestionListPage({location}) {
 
   const data = location.state;
 
-  console.log(location.state); //제목이 드디어!
-
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
