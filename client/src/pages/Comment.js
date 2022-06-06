@@ -1,66 +1,65 @@
 import React from 'react';
-import '../css/QuestionViewPage.css';
-import { Link } from "react-router-dom";
+import styled from "styled-components";
+import * as QuestionViewPage from './QuestionViewPage'
 import { useState } from 'react';
+import { Link } from "react-router-dom";
+import Moment from 'react-moment';
 
-function Comment(){
+import { call } from '../service/APIService';
 
-const [cmContent, setCmContent] = useState({
-    content: ''
-  });
 
-const getValue = e => {
-    const { name, value } = e.target;
-    setCmContent({
-      ...cmContent,
-      [name]: value
-    })
-    console.log(cmContent);
+const SingleComment = ({viewContent}) => {
+
+    const [cmName, setName] = useState("");
+    const [email, setEmail] = useState("");
+
+    call("/user", "GET")
+    .then(
+      response => {
+        setName(response['data']['name']);
+        setEmail(response['data']['email']);
+      }
+    )
+  
+  const displayCreatedAt = (createdAt) => {
+    let startTime = new Date(createdAt);
+    let nowTime = Date.now();
+    if (parseInt(startTime - nowTime) > -60000) {
+      return <Moment format="방금 전">{startTime}</Moment>;
+    }
+    if (parseInt(startTime - nowTime) < -86400000) {
+      return <Moment format="MMM D일">{startTime}</Moment>;
+    }
+    if (parseInt(startTime - nowTime) > -86400000) {
+      return <Moment fromNow>{startTime}</Moment>;
+    }
   };
 
-  const [viewContent, setViewContnent] = useState([]);
-
-
-      
-const SendingCm = () =>{
-   
-    alert('댓글 작성 완료')
-   
-      
-  }
-
-    return(
-
-        <div className="view-comment-container">
-            <div className="view-comment-header">
-                <span className="v_c_item">작성자</span> {/*작성자랑 날짜 강의에서부터 넣어와야함 */}
-                <span className="v_c_item">작성 날짜</span>
-            </div>
-            <div className="view-comment-body">
-
-                <input className="view-comment-input"
-                type='text'
-                placeholder='내용이다'
-                onChange={getValue}
-                name='comment'
-                />
-
-                <div className="view-button-container"> 
-                    <button className="view-cancel-button" onClick = "this.value">취소</button>
-                    <button className="view-submit-button" onClick = {SendingCm}>등록</button>
-                </div>
-
-            </div>
+  
  
-        </div> 
+  return (
+    <>
+  {viewContent.map(element =>
+                        <div style={{ border: '1px solid #333' }}>
 
-    );
-}
-
-
-export default Comment;
-
-
-
-
- 
+                          <div className="view-comment-header">
+                              <span style = {{color: "#333"}}>{cmName}&nbsp;</span>
+                               <span style = {{color: "#333"}}>{displayCreatedAt(Date())}</span>
+                          </div>
+                          
+                          <div className="view-comment-body">
+                            {element.comment.split("\n").map((line) => { 
+                              return (
+                                <span>
+                                  {line}
+                                  <br />
+                                </span>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      )}
+  </>
+  );
+};
+export default SingleComment;

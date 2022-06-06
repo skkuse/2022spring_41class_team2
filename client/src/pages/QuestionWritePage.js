@@ -2,7 +2,7 @@ import React from 'react';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import '../css/QuestionWritePage.css';
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useState } from 'react';
 import { call } from '../service/APIService';
 
@@ -13,6 +13,11 @@ function QuestionWritePage() {
     title: '',
     content: ''
   });
+
+  const location = useLocation();
+
+  console.log(location.state);
+
 
   const getValue = e => {
     const { name, value } = e.target;
@@ -26,6 +31,9 @@ function QuestionWritePage() {
   const SendingQa = () =>{
    
     alert('질문 등록 완료.')
+    ///lectures/{lecture_seq}/lectureContent/{lecture_content_seq}/userSeqs/{user_seq}/qa
+
+    //자유질문 
       call("/lectures/1/lectureContent/-1/userSeq/2/qa", "POST", 
       {"qa_title" : qaContent.title, "qa_content" : qaContent.content})
       .then(
@@ -54,8 +62,16 @@ function QuestionWritePage() {
               </div>
           </header>
 
-        
-        <Link to="/qaList">
+        {/*뒤로가기를 넣으면 새로운 질문 업데이트가 안되므로 /qaList로 해야함 */}
+          <Link to={{
+                    pathname: "/qaList",
+                    state: {
+                        isLecture: location.state.isLecture,
+                        lecture_content_seq: location.state.lecture_content_seq,
+
+                    }
+
+                }}>
                 <button className="return-button"> &lt;목록가기</button>
         </Link>
         <main>

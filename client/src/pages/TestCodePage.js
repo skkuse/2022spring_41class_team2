@@ -11,6 +11,7 @@ import "ace-builds/src-noconflict/ext-language_tools";
 function TestCodePage() {
 
     const location = useLocation();
+   
     const [code, setCode] = useState('');
     const [problem, setProblem] = useState('');
     const [result, setResult] = useState('Null');

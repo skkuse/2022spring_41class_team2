@@ -1,7 +1,7 @@
 import React, { Component, useEffect, useState } from 'react';
 import '../css/mainPage.css'
 import { call } from '../service/APIService';
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 
 
@@ -31,6 +31,9 @@ function NotLogined() {
 }
 
 function Logined() {
+	const [isLecture, setIsLecture] = useState(false);
+	const location = useLocation();
+
 	return (
 		<div id="nav">
 			<div className="v12_13 padding">
@@ -40,7 +43,13 @@ function Logined() {
 					</Link>
 				</div>
 				<div>
-					<Link to="/qaList">
+					<Link to ={{
+					pathname: "/qaList",
+					state: {
+						isLecture: isLecture,
+					}
+				
+					}}>
 						<button className="button" type="button">QA</button>
 					</Link>
 				</div>
@@ -52,7 +61,14 @@ function Logined() {
 
 					</Link>
 
-                    <Link to="/qaWrite">
+                    <Link to ={{
+					pathname: "/qaWrite",
+					state: {
+						isLecture: location.state.isLecture,
+                        lecture_content_seq: location.state.lecture_content_seq,
+					}
+				
+					}}>
                         <button className="button_green" type="button">작성하기</button>
                     </Link>
 			
