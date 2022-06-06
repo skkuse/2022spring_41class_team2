@@ -15,18 +15,29 @@ function QuestionViewPage({location}) {
 const [cmContent, setCmContent] = useState({
     comment: ''
 });
+const [text, setText] = useState('')
 
-const getValue = e => {
-    const { name, value } = e.target;
+const handleChange = (e) => {
+  const {name, value} = e.target;
+  setText(value);
+
+  setCmContent({
+    ...cmContent,
+    [name]: value
+  }) 
+}
+
+// const getValue = e => {
+//     const { name, value } = e.target;
 
 
-    setCmContent({
-      ...cmContent,
-      [name]: value
-    }) 
+//     setCmContent({
+//       ...cmContent,
+//       [name]: value
+//     }) 
 
     
-  }; 
+//   }; 
  
   const [viewContent, setViewContent] = useState([]);
 
@@ -47,6 +58,10 @@ const SendingCm = () =>{
             console.log(response);
         }
       )
+
+      // setCmContent('');
+    setText('')
+
     
     // call("/qa/"+ location.state.seq +"/comment", "POST",
     // { "comment_content" : cmContent , "user_email" : email})
@@ -127,8 +142,9 @@ const SendingCm = () =>{
                           <textarea className="view-comment-input"
                           type='text'
                           placeholder='댓글 작성'
-                          onChange={getValue}
+                          onChange={handleChange}
                           name='comment'
+                          value={text}
                           
                           />
 
