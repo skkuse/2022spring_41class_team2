@@ -10,6 +10,8 @@ function QuestionListPage({location}) {
 
   const data = location.state;
 
+  console.log(location.state); //제목이 드디어!
+
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
@@ -25,7 +27,7 @@ function QuestionListPage({location}) {
 
 
   useEffect( () => { //no params, 익명 함수 
-    async function fetchData() {
+    function fetchData() {
       setLoading(true);
 
       //const response = await axios.get('https://jsonplaceholder.typicode.com/posts');
@@ -104,7 +106,6 @@ function QuestionListPage({location}) {
                 
                     <div className = "question-list-container">
                         <ul className = "question-list">
-                          
                           <Posts posts={currentPosts(posts)} loading={loading}></Posts>
                          
               

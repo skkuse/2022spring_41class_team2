@@ -2,7 +2,7 @@ import React from 'react';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import '../css/QuestionWritePage.css';
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useState } from 'react';
 import { call } from '../service/APIService';
 
@@ -26,6 +26,9 @@ function QuestionWritePage() {
   const SendingQa = () =>{
    
     alert('질문 등록 완료.')
+    ///lectures/{lecture_seq}/lectureContent/{lecture_content_seq}/userSeqs/{user_seq}/qa
+
+    //자유질문 
       call("/lectures/1/lectureContent/-1/userSeq/2/qa", "POST", 
       {"qa_title" : qaContent.title, "qa_content" : qaContent.content})
       .then(
@@ -55,7 +58,7 @@ function QuestionWritePage() {
           </header>
 
         
-        <Link to="/qaList">
+          <Link to="/qaList">
                 <button className="return-button"> &lt;목록가기</button>
         </Link>
         <main>

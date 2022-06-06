@@ -1,42 +1,42 @@
 import React from 'react';
 import '../css/QuestionViewPage.css';
-import { Link } from "react-router-dom";
+import { Link,useLocation } from "react-router-dom";
 import { useState } from 'react';
 import { useEffect } from 'react';
 import Moment from 'react-moment';
 
 import { call } from '../service/APIService';
+import Comment from './Comment';
 
 
-function QuestionViewPage({location}) {
-  
-  // console.log(location.state); //제목이 드디어!
+function QuestionViewPage() {
 
-const [cmContent, setCmContent] = useState({
+  const location = useLocation();
+
+  const [cmContent, setCmContent] = useState({
     comment: ''
-});
-
-const getValue = e => {
-    const { name, value } = e.target;
-
-
-    setCmContent({
-      ...cmContent,
-      [name]: value
-    }) 
-
-    
-  }; 
- 
+  });
   const [viewContent, setViewContent] = useState([]);
+  const [text, setText] = useState('');
 
   const [cmName, setName] = useState("");
   const [email, setEmail] = useState("");
 
+
+
+const handleChange = (e) => {
+  const {name, value} = e.target;
+  setText(value);
+
+  setCmContent({
+    ...cmContent,
+    [name]: value
+  }) 
+}
+
       
-const SendingCm = () =>{
+const SendingCm = () =>{ //댓글 등록 
     
-   
     setViewContent(viewContent.concat({...cmContent}));
 
     call("/user", "GET")
@@ -47,34 +47,44 @@ const SendingCm = () =>{
             console.log(response);
         }
       )
-    
-    // call("/qa/"+ location.state.seq +"/comment", "POST",
-    // { "comment_content" : cmContent , "user_email" : email})
-    //   .then(
-    //     response => {
-    //       console.log(cmContent); 
-    //     }
-    // )
 
+    setText('')//작성 내용 초기화
+
+    //comment Post
+    call("/qa/"+ location.state.seq +"/comment", "POST", 
+    { "comment_content" : cmContent , "user_email" : email})
+      .then(
+        response => {
+          console.log(cmContent); 
+        }
+    )
     // lectures/lectureContents/{contents_seq}/qa
     //lecture_content_seq 별로 질문 가져오기 
 
+}
+
+const CancleCm = () => {
+
+  setText('')//작성 내용 초기화
 
 }
 
-  const displayCreatedAt = (createdAt) => {
-    let startTime = new Date(createdAt);
-    let nowTime = Date.now();
-    if (parseInt(startTime - nowTime) > -60000) {
-      return <Moment format="방금 전">{startTime}</Moment>;
-    }
-    if (parseInt(startTime - nowTime) < -86400000) {
-      return <Moment format="MMM D일">{startTime}</Moment>;
-    }
-    if (parseInt(startTime - nowTime) > -86400000) {
-      return <Moment fromNow>{startTime}</Moment>;
-    }
-  };
+
+useEffect( () => { //no params, 익명 함수 
+  function fetchData() {
+
+        call("/qa/"+ location.state.seq +"/comments", "GET")
+        .then(
+          response => {
+              setViewContent(response['data'][0])
+              console.log("댓글 받아오기");
+          }
+        )
+  
+  }
+  fetchData();
+},[]);
+
 
 
     return (
@@ -127,13 +137,14 @@ const SendingCm = () =>{
                           <textarea className="view-comment-input"
                           type='text'
                           placeholder='댓글 작성'
-                          onChange={getValue}
+                          onChange={handleChange}
                           name='comment'
+                          value={text}
                           
                           />
 
                           <div className="view-button-container"> 
-                              <button className="view-cancel-button" >취소</button>
+                              <button className="view-cancel-button" onClick = {CancleCm}>취소</button>
                               <button className="view-submit-button" onClick = {SendingCm}>등록</button>
                           </div>
 
@@ -143,30 +154,7 @@ const SendingCm = () =>{
 
                     <div className='view-comment-container'>
 
-                      {viewContent.map(element =>
-                        <div style={{ border: '1px solid #333' }}>
-
-                          <div className="view-comment-header">
-                              <span style = {{color: "#333"}}>{cmName}</span>
-                               <span style = {{color: "#333"}}>{displayCreatedAt(Date())}</span>
-                          </div>
-                          
-                          <div className="view-comment-body">
-                            {element.comment.split("\n").map((line) => { 
-                              return (
-                                <span>
-                                  {line}
-                                  <br />
-                                </span>
-                              );
-                            })}
-                          </div>
-
-                          
-
-
-                        </div>
-                      )}
+                    <Comment viewContent={viewContent}></Comment>
                     </div>
 
                 </div>{/*view-form-wrapper*/}
@@ -180,10 +168,3 @@ const SendingCm = () =>{
     );
 }
 export default QuestionViewPage;
-
-
-
- {/* <div className="view-comment-container">
-                <input className="view-comment" type='text' placeholder='특별한 경로 없음' />
-
-                </div> */}

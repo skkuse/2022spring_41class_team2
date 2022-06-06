@@ -26,6 +26,7 @@ const Posts = ({ posts, loading }) => {
 
   const [title, setTitle] = useState("ghi");
   const [seq, setSeq] = useState("");
+  const [isLecture, setIsLecture] = useState(false);
 
    function inner(a){
      setTitle(a)
@@ -57,6 +58,7 @@ const Posts = ({ posts, loading }) => {
                     user_name: post.user_name,
                     date: post.create_time,
                     content: post.qa_content
+                    //isLecture:
                     
                   }
         }}>
