@@ -52,7 +52,7 @@ const handleChange = (e) => {
 
     if(data.isLecture){
         //강의별 질문 등록 
-        call("/lectureContent/"+data.lecture_content_title+"/qa", "POST", 
+        call("/lectureContent/"+data.lecture_content_seq+"/qa", "POST", 
         {"qa_title" : qaContent.title, "qa_content" : qaContent.content})
         .then(
             response => {
@@ -70,7 +70,9 @@ const handleChange = (e) => {
       {"qa_title" : qaContent.title, "qa_content" : qaContent.content})
       .then(
           response => {
-            console.log(response)
+            if(response['status_code'] == 200){
+              
+            }
             console.log("qa_title", qaContent.title); //제목만 뽑기 가능!
             console.log("자유질문 등록");
           }

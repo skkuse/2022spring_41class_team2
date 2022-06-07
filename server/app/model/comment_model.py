@@ -12,6 +12,8 @@ class COMMENT_MODEL:
         return result
     
     def getComment(self, qa_seq):
+        print(qa_seq)
         SQL = "select * from comment where qa_seq = %s;"
         result = self.db_connection.executeAll(SQL, [qa_seq])
+        print(result)
         return result

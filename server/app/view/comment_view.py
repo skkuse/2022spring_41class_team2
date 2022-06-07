@@ -13,9 +13,10 @@ def create_comment_endpoints(app, comment_service):
     def saveComment(qa_seq):
         try:
             request_data = request.json
-            comment_content = request_data['comment_content']['comment']
-            user_email = request_data['user_email']
-            comment_service.saveComment(user_email, qa_seq, comment_content)
+            token = request.headers.get("Authorization").split(' ')[1]
+            comment_content = request_data['comment_content']
+            
+            comment_service.saveComment(token, qa_seq, comment_content)
             response = {'error': "", 'status_code': 200, "data": []}
             return jsonify(response), 200
         except Exception as e:
@@ -29,6 +30,8 @@ def create_comment_endpoints(app, comment_service):
     def getComment(qa_seq):
         try:
             comment_content = comment_service.getComment(qa_seq)
+            
+            
             if comment_content == 400 :
                 data = {'error': "", 'status_code': 400, "data": [e.args]}
                 return jsonify(data), 400

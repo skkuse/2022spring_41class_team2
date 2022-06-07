@@ -17,10 +17,9 @@ function TestCodePage() {
     const [result, setResult] = useState('Null');
     const [codeResult, setCodeResult] = useState('Null');
     const [isLecture, setIsLEcture] = useState(true);
+    const data = location.state.data;
     const lecture_content_seq = location.state.data.lecture_content_seq;
     const lecture_content_title = location.state.data.lecture_content_title;
-    const data = location.state.data;
-
     const SendingCode = () => {
         setResult("채점 중 입니다....")
         setCodeResult("실행 중 입니다...")
@@ -71,7 +70,7 @@ function TestCodePage() {
                 </div>
 
                 <div className='code_nav'>
-                    <div className='code_bo1'>{data.lecture_content_title}</div>
+                    <div className='code_bo1'>{lecture_content_title}</div>
                     <button className="button_exec" onClick={SendingCode}>실행</button>
 
                 </div>

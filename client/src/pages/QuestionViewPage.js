@@ -41,20 +41,11 @@ const handleChange = (e) => {
 const SendingCm = () =>{ //댓글 등록 
     
     //local 댓글 쓰기
-    //setViewContent(viewContent.concat({...cmContent})); 
-
-    call("/user", "GET")
-      .then(
-        response => {
-            setName(response['data']['name']);
-            setEmail(response['data']['email']);
-            console.log(response);
-        }
-      )
+    //setViewContent(viewContent.concat({...cmContent}));
 
     //comment Post
     call("/qa/"+ location.state.seq +"/comment", "POST", 
-    { "comment_content" : cmContent , "user_email" : email})
+    { "comment_content" : cmContent['comment']})
       .then(
         response => {
           console.log("댓글 작성", cmContent, email); 

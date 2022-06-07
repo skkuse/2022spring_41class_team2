@@ -16,7 +16,6 @@ function Lecture_intro() {
     const [haveExercise, setHaveExercise] = useState(true)
     const [disable, setDisable] = useState(false);
     const [attending, setattending] = useState(0);
-
     const attending_lecture = () => {
         setDisable(false);
         call("/lectures/lectureContents/" + data.lecture_content_seq, 'PUT')
@@ -139,8 +138,7 @@ function Lecture_intro() {
                     <button className="button_QA" disabled={disable} ><Link to={{
                         pathname: "/codeEdit",
                         state: {
-                            lecture_content_title: data.lecture_content_title,
-                            lecture_content_seq: data.lecture_content_seq,
+                            data:data
                         }
                     }}>
                         실습 하기
