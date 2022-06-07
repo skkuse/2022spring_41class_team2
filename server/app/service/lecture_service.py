@@ -144,6 +144,7 @@ class LectureService() :
             content =  f.read()
             return content
         except Exception as e :
+            print("=="*10)
             return e.args
     
     def attendingLecture(self, lecture_content_seq, user_token):
@@ -169,7 +170,10 @@ class LectureService() :
     
     def getExerciseContent(self, lecture_content_seq):
         try:
-            lecture_file_name = self.lecture_model.getExerciseFileName(lecture_content_seq)[0]['lecture_content'].decode('utf-8')
+            exercise_file_info = self.lecture_model.getExerciseFileName(lecture_content_seq)
+            if not exercise_file_info :
+                return None
+            lecture_file_name = exercise_file_info[0]['lecture_content'].decode('utf-8')
             f = open(self.dirname + '/'+ lecture_file_name, 'r')
             content = f.read()
             return content

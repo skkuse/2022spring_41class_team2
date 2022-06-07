@@ -39,9 +39,9 @@ def create_code_endpoints(app, lecture_service):
         else :
             return 400
     
-    @app.route('/lectures/<lecture_seq>/lectureContent/<lecture_content_seq>/code', methods = ['POST'])
+    @app.route('/lectureContent/<lecture_content_seq>/code', methods = ['POST'])
     @cross_origin()
-    def executeLectureCode(lecture_seq, lecture_content_seq):
+    def executeLectureCode(lecture_content_seq):
         data = request.json
         try :
             result, _ = lecture_service.executeCode(data['code'])
