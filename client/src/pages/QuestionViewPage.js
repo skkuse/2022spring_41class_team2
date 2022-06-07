@@ -15,7 +15,7 @@ function QuestionViewPage() {
   const location = useLocation();
 
   const [cmContent, setCmContent] = useState({
-    comment: ''
+    comment_content: ''
   });
   const [viewContent, setViewContent] = useState([]);
   const [text, setText] = useState('');
@@ -41,11 +41,11 @@ const handleChange = (e) => {
 const SendingCm = () =>{ //댓글 등록 
     
     //local 댓글 쓰기
-    //setViewContent(viewContent.concat({...cmContent}));
+    setViewContent(viewContent.concat({...cmContent}));
 
     //comment Post
     call("/qa/"+ location.state.seq +"/comment", "POST", 
-    { "comment_content" : cmContent['comment']})
+    { "comment_content" : cmContent['comment_content']})
       .then(
         response => {
           console.log("댓글 작성", cmContent, email); 
@@ -69,16 +69,19 @@ useEffect( () => { //no params, 익명 함수
         call("/qa/"+ location.state.seq +"/comments", "GET")
         .then(
           response => {
-              setViewContent(response['data'][0])
-              console.log(response);
-          }
+              setViewContent(response['data'][0]);
+            }
         )
   
   }
+
   fetchData();
+
 },[]);
 
+// useEffect(() => { setMovies(result) }, [])
 
+console.log(viewContent);
 
     return (
         <div className = "p">
@@ -130,7 +133,7 @@ useEffect( () => { //no params, 익명 함수
                           type='text'
                           placeholder='댓글 작성'
                           onChange={handleChange}
-                          name='comment'
+                          name='comment_content'
                           value={text}
                           
                           />
@@ -144,15 +147,15 @@ useEffect( () => { //no params, 익명 함수
 
                     </div> 
 
-                    <div className='view-comment-container'>
+                    {/* <div className='view-comment-container'> */}
 
-                    <ul className = "comment-list">
-                          <Comment viewContent={viewContent}></Comment>
+                    <ul>
+                          <Comment comments={viewContent}></Comment>
                          
               
-                        </ul>
+                         </ul>
 
-                    </div>
+                    {/* </div> */}
 
                 </div>{/*view-form-wrapper*/}
 
