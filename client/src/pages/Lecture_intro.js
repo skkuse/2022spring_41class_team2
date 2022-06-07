@@ -4,6 +4,7 @@ import { call } from '../service/APIService';
 import { Link, useLocation } from "react-router-dom";
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
+import LectureIntroNav from '../components/LectureIntroNav'
 
 function Lecture_intro() {
     const location = useLocation();
@@ -12,7 +13,8 @@ function Lecture_intro() {
     //console.log(data.lecture_content_title);
 
     const [lecture_content, set_lecture_content] = useState("");
-    const [completed, setcompleted] = useState("");
+    const [haveExercise, setHaveExercise] = useState(true)
+    const [disable, setDisable] = useState(false);
     const [attending, setattending] = useState(0);
 
     const attending_lecture = () => {
@@ -39,23 +41,7 @@ function Lecture_intro() {
             )
     }
 
-    
-
-
-
-    /*async function fetchData() {
-        let queryString = '/lectures/'+data.lecture_seq+'/lectureContent/' + data.lecture_content_seq + '/userSeq/' + +'/1';
-        call(queryString, "GET")
-            .then(
-                response => {
-                    setlectures(response['data'])
-                    setLectureSort("")
-                }
-            )
-        setLoading(false);
-    }*/
-
-    const getUserInfo2 = () => {
+    const user_attending_info = () => {
         var token = sessionStorage.getItem("ACCESS_TOKEN");
         if (token == null) {
             window.location.href = '/login';
@@ -77,7 +63,7 @@ function Lecture_intro() {
     }
 
     useEffect(() => {
-        getUserInfo2();
+        user_attending_info();
     }, []);
 
     useEffect(() => {
@@ -91,19 +77,23 @@ function Lecture_intro() {
 
                         }
                         else {
-
                             set_lecture_content(response['data']);
                         }
 
                     }
                 )
+            call('/lectures/lectureContents/' + data.lecture_content_seq + '/exercise', 'GET')
+                .then(
+                    response => {
+                        if(response['data'][0] == null){
+                            setDisable(true);
+                        }
+                        
+                    }
+                )
         }
 
     }, [attending]);
-
-
-    const [disable, setDisable] = useState(true);
-
 
     var sequence = data.lecture_seq;
 
@@ -112,12 +102,14 @@ function Lecture_intro() {
         <div className='Lecture_intro'>
             <div className='lec_header'>
                 <br></br>
-                <div className='lec_he0' ><p>CrawlLearn</p></div>
+                <div className='lec_he0' >
+                    <LectureIntroNav></LectureIntroNav>
+                </div>
                 <div className='lec_he2' >{
                     {
-                        1: <p>Basic Python</p>,
-                        2: <p>Web Page Structure</p>,
-                        3: <p>Web Crawling</p>
+                        1: <p>강의 종류 : Basic Python</p>,
+                        2: <p>강의 종류 : Web Page Structure</p>,
+                        3: <p>강의 종류 : Web Crawling</p>
                     }[sequence]
                 }</div>
             </div>
@@ -138,10 +130,10 @@ function Lecture_intro() {
 
                 <div className='lec_article'>
 
-
+                    
                     <button className='clickedStudy' onClick={() => {
                         attending_lecture()
-                        getUserInfo2()
+                        user_attending_info()
                     }}>수강 하기</button>
 
                     <button className="button_QA" disabled={disable} ><Link to={{

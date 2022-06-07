@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Main from './pages/Main'
 import SignInPage from './pages/SignInPage'
 import UserInfoPage from './pages/UserInfo';
-import TestCodePage from './pages/TestCodePage';
+import CodePage from './pages/CodePage';
 import LoginPage from './pages/LoginPage';
 import QuestionWritePage from './pages/QuestionWritePage';
 import QuestionViewPage from './pages/QuestionViewPage';
@@ -19,7 +19,7 @@ function App() {
                 <Route exact path="/signIn" component={SignInPage} />
                 <Route exact path="/login" component={LoginPage} />
                 <Route exact path="/userInfo" component={UserInfoPage} />
-                <Route exact path="/codeEdit" component={TestCodePage} />
+                <Route exact path="/codeEdit" component={CodePage} />
                 <Route exact path="/qaWrite" component={QuestionWritePage} />
                 <Route exact path="/qaView" component={QuestionViewPage} />
                 <Route exact path="/qaList" component={QuestionListPage} />

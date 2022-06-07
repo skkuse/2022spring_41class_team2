@@ -29,14 +29,7 @@ function QuestionListPage({location}) {
     function fetchData() {
       setLoading(true);
 
-      //const response = await axios.get('https://jsonplaceholder.typicode.com/posts');
-
-      // setPosts(response.data);
-      // setLoading(false);
-
       setIsLecture(data.isLecture);
-
-      //console.log(isLecture);
 
       if( data.lecture_content_seq ){
         call("/lectures/lectureContents/"+ data.lecture_content_seq + "/qa", "GET")

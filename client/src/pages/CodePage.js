@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import '../css/practice.css';
+import '../css/code_page.css';
 import { call } from '../service/APIService';
 import { Link, useLocation } from "react-router-dom";
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-highlight'
 import AceEditor from "react-ace";
+import CodePageNav from '../components/CodePageNav';
 import "ace-builds/src-noconflict/mode-python";
 import "ace-builds/src-noconflict/ext-language_tools";
 
@@ -20,11 +21,12 @@ function TestCodePage() {
     const [isLecture, setIsLEcture] = useState(true);
     const lecture_content_seq = location.state.lecture_content_seq;
     const lecture_content_title = location.state.lecture_content_title;
+    const data = location.state.data;
 
     const SendingCode = () => {
         setResult("채점 중 입니다....")
         setCodeResult("실행 중 입니다...")
-        call("/lectures/1/lectureContent/" + lecture_content_seq + "/code", "POST", { 'code': code.toString() })
+        call("/lectureContent/" + lecture_content_seq + "/code", "POST", { 'code': code.toString() })
             .then(
                 response => {
                     console.log(response)
@@ -67,14 +69,11 @@ function TestCodePage() {
 
             <div className='code_body'>
                 <div className='code_header'>
-                    <br></br>
-                    <div className='code_he0'>CrawlLearn</div>
-                    <div className='code_he1'>강의 대분류</div>
-                    <div className='code_he2'>강의 소분류</div>
+                    <CodePageNav ></CodePageNav>
                 </div>
 
                 <div className='code_nav'>
-                    <div className='code_bo1'>강의 이름</div>
+                    <div className='code_bo1'>{data.lecture_content_title}</div>
                     <button className="button_exec" onClick={SendingCode}>실행</button>
 
                 </div>

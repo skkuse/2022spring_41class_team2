@@ -1,17 +1,24 @@
 from datetime import datetime
+from google.oauth2 import id_token
+from google.auth.transport import requests
+
+
+CLIENT_ID = os.environ.get("GOOGLE_CLIENT_ID", '923198322735-8m8aomqof0no00kcp1u145hr9ung1gbq.apps.googleusercontent.com')
 
 class QAService() :
     def __init__(self, qa_model):
         self.qa_model = qa_model
 
-    def saveQA(self, lecture_content_seq, user_seq,qa_title, qa_content):
+    def saveQA(self, lecture_content_seq, token,qa_title, qa_content):
         try:
             create_time = datetime.now()
+            valid_token = id_token.verify_oauth2_token(token, requests.Request(), CLIENT_ID)
+            email = valid_token['email']
             if lecture_content_seq != None :
-                self.qa_model.saveQA(lecture_content_seq, user_seq, qa_title, qa_content, create_time)
+                self.qa_model.saveQA(lecture_content_seq, email, qa_title, qa_content, create_time)
                 return True
             else :
-                self.qa_model.saveQAWithOutLecture(user_seq, qa_title, qa_content, create_time)
+                self.qa_model.saveQAWithOutLecture(email, qa_title, qa_content, create_time)
                 return True
         except Exception as e:
             print(e.args)

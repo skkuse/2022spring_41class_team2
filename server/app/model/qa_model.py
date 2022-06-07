@@ -5,15 +5,15 @@ class QA_MODEL:
     def __init__(self, db_conection):
         self.db_connection = db_conection
 
-    def saveQA(self, lecture_content_seq, user_seq, qa_title, qa_content, create_time):
-        SQL = "insert into qa(lecture_content_seq, user_seq, qa_title, qa_content, create_time) values(%s, %s, %s, %s, %s)"
-        result = self.db_connection.executeAll(SQL, [lecture_content_seq, user_seq, qa_title, qa_content, create_time])
+    def saveQA(self, lecture_content_seq, email, qa_title, qa_content, create_time):
+        SQL = "insert into qa(lecture_content_seq, user_seq, qa_title, qa_content, create_time) values(%s, (select user_seq from user where user_email = %s), %s, %s, %s)"
+        result = self.db_connection.executeAll(SQL, [lecture_content_seq, email, qa_title, qa_content, create_time])
         self.db_connection.commit()
         return result
     
-    def saveQAWithOutLecture(self,user_seq, qa_title, qa_content, create_time):
-        SQL = "insert into qa(user_seq, qa_title, qa_content, create_time) values( %s, %s, %s, %s)"
-        result = self.db_connection.executeAll(SQL, [user_seq, qa_title, qa_content, create_time])
+    def saveQAWithOutLecture(self,email, qa_title, qa_content, create_time):
+        SQL = "insert into qa(user_seq, qa_title, qa_content, create_time) values( (select user_seq from user where user_email = %s), %s, %s, %s)"
+        result = self.db_connection.executeAll(SQL, [email, qa_title, qa_content, create_time])
         self.db_connection.commit()
         return result
 

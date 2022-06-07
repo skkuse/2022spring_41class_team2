@@ -39,10 +39,9 @@ h2 {
 .lec_article {
     position: relative;
     min-width: 12rem;
-    position: relative;
     height: 100%;
     left: 0px;
-    display: flex;
+
     flex-direction: column;
     padding: 2rem;
 }
@@ -69,7 +68,7 @@ h2 {
     width: 8rem;
     height: 3rem;
     margin: 0rem auto 0rem;
-    text-align: center;
+  
 }
 
 .lec_section {

@@ -2,6 +2,6 @@ let backendhost;
 
 const hostname = window && window.location && window.location.hostname;
 
-backendhost = "http://ec2-3-34-43-169.ap-northeast-2.compute.amazonaws.com:8080";
+backendhost = "http://localhost:8080";
 
 export const API_BASE_URL = `${backendhost}`

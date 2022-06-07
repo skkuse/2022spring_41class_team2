@@ -19,14 +19,6 @@ function Main() {
 			<div id="app">
 				<div className="wrap">
 
-					<div id="upper" className="v12_13 v12_13_1">
-						<div className="v12_12">
-							<div className="v5_26">
-								<span>ABOUT US</span>
-							</div>
-						</div>
-					</div>
-
 					<header className="mp_h_1">
 						<div className="mp_c_1">
 							<span className="v5_33">CrawlLearn</span><br />
@@ -54,26 +46,12 @@ function Main() {
 							<div className="v5_26_2">
 								<span>주소: 경기도 수원시 장안구 서부로 2066</span>
 							</div>
-							<div className="v5_26_2">
-								<span>Email: xxxx@gmail.com</span>
-							</div>
 						</div>
 					</div>
 					<div className="v12_13 v12_13_1">
 						<div>
 							<div className="v5_26">
-								<span>All Rights Reserved</span>
-							</div>
-						</div>
-						<div className="v12_12">
-							<div className="v5_26">
-								<span>이용약관</span>
-							</div>
-							<div className="v5_26">
-								<span>개인정보</span>
-							</div>
-							<div className="v5_26">
-								<span>도움말</span>
+								<span>COPYRIGHT ⓒ 2022 SUNGKYUNKWAN UNIVERSITY ALL RIGHTS RESERVED. Contact us</span>
 							</div>
 						</div>
 					</div>

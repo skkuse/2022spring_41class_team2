@@ -1,0 +1,22 @@
+.button {
+	width: auto;
+	height: 50px;
+	padding: 0 10px;
+	margin: 0 35px;
+    font-size: 20px;
+    text-align: center;
+	border-radius: 10px;
+	text-align: center;
+	font-family: Inter;
+	border: 0;
+	outline: 0;
+	background-color:transparent;
+}
+
+.button:hover {
+	background-color: #EFEFEF;
+}
+
+.button:active {
+	background-color: #E5E5E5;
+}
