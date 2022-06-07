@@ -41,7 +41,7 @@ const handleChange = (e) => {
 const SendingCm = () =>{ //댓글 등록 
     
     //local 댓글 쓰기
-    setViewContent(viewContent.concat({...cmContent}));
+  //  setViewContent(viewContent.concat({...cmContent}));
 
     //comment Post
     call("/qa/"+ location.state.seq +"/comment", "POST", 
@@ -149,11 +149,10 @@ console.log(viewContent);
 
                     {/* <div className='view-comment-container'> */}
 
-                    <ul>
+                    <div>
                           <Comment comments={viewContent}></Comment>
-                         
-              
-                         </ul>
+                        
+                    </div>
 
                     {/* </div> */}
 

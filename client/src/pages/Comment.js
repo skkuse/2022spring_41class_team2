@@ -70,7 +70,7 @@ const Comment = ({comments}) => {
                         <div style={{ border: '1px solid #333' }} key={element.comment_seq}>
 
                           <div className="view-comment-header">
-                              <span style = {{color: "#333"}}>{cmName}&nbsp;</span>
+                              <span style = {{color: "#333"}}>{element.user_name}&nbsp;</span>
                               <span style = {{color: "#333"}}>{displayCreatedAt(element.comment_createtime)}</span>
                           </div>
                           
@@ -78,7 +78,7 @@ const Comment = ({comments}) => {
                             {element.comment_content.split("\n").map((line) => { 
                               return (
                                 <span>
-                                  {line['comment_content']}
+                                  {line}
                                   <br />
                                 </span>
                               );
