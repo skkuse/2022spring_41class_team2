@@ -13,7 +13,7 @@ def create_comment_endpoints(app, comment_service):
     def saveComment(qa_seq):
         try:
             request_data = request.json
-            comment_content = request_data['comment_content']
+            comment_content = request_data['comment_content']['comment']
             user_email = request_data['user_email']
             comment_service.saveComment(user_email, qa_seq, comment_content)
             response = {'error': "", 'status_code': 200, "data": []}

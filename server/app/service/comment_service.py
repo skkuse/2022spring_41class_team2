@@ -10,6 +10,7 @@ class CommentService() :
         try :
             user_seq = self.user_model.findUser(user_email)['user_seq']
             qa_createtime = datetime.now()
+            
             self.comment_model.saveComment(user_seq, qa_seq, qa_content, qa_createtime)
             return True
         except Exception as e:
