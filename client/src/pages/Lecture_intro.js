@@ -49,22 +49,12 @@ function Lecture_intro() {
                 response => {
                     if (response['data']['attending_lecture']) {
                         if (response['data']['attending_lecture'].includes(data.lecture_content_title)) { setattending(1) }
-                        console.log(response['data']['attending_lecture'])
-                        console.log(data.lecture_content_title)
+                        
                     }
                 }
             ).catch(
                 error => {
                     console.log(error)
-                }
-            )
-        call('/lectures/lectureContents/' + data.lecture_content_seq + '/exercise', 'GET')
-            .then(
-                response => {
-                    if(response['data'][0] != null){
-                        setDisable(false);
-                    }
-                    
                 }
             )
     }
@@ -74,6 +64,7 @@ function Lecture_intro() {
     }, []);
 
     useEffect(() => {
+        setDisable(false);
         if (attending != 0) {
             call("/lectures/lectureContents/" + data.lecture_content_seq, "GET")
                 .then(
@@ -86,6 +77,15 @@ function Lecture_intro() {
                             set_lecture_content(response['data']);
                         }
 
+                    }
+                )
+            call('/lectures/lectureContents/' + data.lecture_content_seq + '/exercise', 'GET')
+                .then(
+                    response => {
+                        if(response['data'][0] == null){
+                            setDisable(true);
+                        }
+                        
                     }
                 )
         }
@@ -127,21 +127,15 @@ function Lecture_intro() {
 
                 <div className='lec_article'>
 
-
+                    
                     <button className='clickedStudy' onClick={() => {
                         attending_lecture()
                         user_attending_info()
                     }}>수강 하기</button>
-
-                    <button className="button_QA" disabled={disable} ><Link to={{
-                        pathname: "/codeEdit",
-                        state: {
-                            data: data,
-                        }
-                    }}>
-                        실습 하기
-                    </Link></button>
-                    <div className="userState">{attending === 0 ? "수강 전" : "수강 중"}</div>
+                    <Link to={{pathname: "/codeEdit", state: { data: data }}}>
+                        <button className="clickedStudy" disabled={disable}>실습 하기</button>    
+                    </Link>
+                    <div className="userState" disabled = {true}>{attending === 0 ? "수강 전" : "수강 중"}</div>
                 </div>
 
                 <div className='lec_section'>
