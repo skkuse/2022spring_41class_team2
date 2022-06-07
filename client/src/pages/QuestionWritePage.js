@@ -116,7 +116,7 @@ const handleChange = (e) => {
                         isLecture: location.state.isLecture,
                         lecture_content_seq: location.state.lecture_content_seq,
                         lecture_content_title: location.state.lecture_content_title,
-
+                        
                     }
 
                 }}>

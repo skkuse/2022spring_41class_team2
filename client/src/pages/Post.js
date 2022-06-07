@@ -27,7 +27,8 @@ const Posts = ({ posts, loading }) => {
   const [title, setTitle] = useState("ghi");
   const [seq, setSeq] = useState("");
   const [isLecture, setIsLecture] = useState(false);
-
+  console.log("으악")
+  console.log(posts)
   const location = useLocation();
   console.log(location.state);
 
@@ -52,7 +53,7 @@ const Posts = ({ posts, loading }) => {
       //{post.qa_title} 
      
       <li className ="post-question-item-li" key={post.qa_seq} >
-
+        
         <Link to={{
                   pathname: '/qaView',
                   state: {

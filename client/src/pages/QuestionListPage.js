@@ -36,7 +36,6 @@ function QuestionListPage({location}) {
         .then(
           response => {
               setPosts(response['data'][0])
-              console.log(lecture_content_title,"질문");
               
           }
         )
@@ -59,7 +58,6 @@ function QuestionListPage({location}) {
     }
     fetchData();
   },[]);
-
   /* page 별로 postsPerPage 만큼 보여주는 것*/
   const indexOfLast = currentPage * postsPerPage;
   const indexOfFirst = indexOfLast - postsPerPage;

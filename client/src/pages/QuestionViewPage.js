@@ -61,8 +61,8 @@ const CancleCm = () => {
   setText('')//작성 내용 초기화
 
 }
-
-
+console.log("으악")
+console.log(location.state)
 useEffect( () => { //no params, 익명 함수 
   function fetchData() {
 

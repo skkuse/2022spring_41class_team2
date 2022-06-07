@@ -134,15 +134,18 @@ function Lecture_intro() {
                         attending_lecture()
                         user_attending_info()
                     }}>수강 하기</button>
-
-                    <button className="button_QA" disabled={disable} ><Link to={{
-                        pathname: "/codeEdit",
-                        state: {
-                            data:data
-                        }
-                    }}>
-                        실습 하기
-                    </Link></button>
+                    <Link to={{
+                            pathname: "/codeEdit",
+                            state: {
+                                data:data
+                            }
+                        }}>
+                    <button className="button_QA" disabled={disable} >
+                        
+                            실습 하기
+                        
+                    </button>
+                    </Link>
                     <div className="userState">{attending === 0 ? "수강 전" : "수강 중"}</div>
                 </div>
 

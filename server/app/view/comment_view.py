@@ -30,8 +30,6 @@ def create_comment_endpoints(app, comment_service):
     def getComment(qa_seq):
         try:
             comment_content = comment_service.getComment(qa_seq)
-            print(comment_content)
-            
             if comment_content == 400 :
                 data = {'error': "", 'status_code': 400, "data": [e.args]}
                 return jsonify(data), 400

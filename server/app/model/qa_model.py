@@ -29,7 +29,7 @@ class QA_MODEL:
 
     def getLectureQnA_model(self, lecuture_content_seq):
         print(lecuture_content_seq)
-        SQL = "select user_name, qa_title, qa_content, create_time from qa left join user on user.user_seq = qa.user_seq where qa.lecture_content_seq = %s;"
+        SQL = "select user_name, qa_title, qa_content, create_time, qa_seq from qa left join user on user.user_seq = qa.user_seq where qa.lecture_content_seq = %s;"
         result = self.db_connection.executeAll(SQL, [lecuture_content_seq])
         print(result)
         return result
