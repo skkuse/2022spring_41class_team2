@@ -71,8 +71,7 @@ function QuestionListPage({location}) {
   }
 
   return (
-    <div className="QuestionListPage">
-      <body className="question-list-page">
+    <div className="question-list-page">
         
         <div id="upper" className="v12_13 v12_13_1">
 						<div className="v12_12">
@@ -106,8 +105,7 @@ function QuestionListPage({location}) {
                         <Pagination postsPerPage={postsPerPage} totalPosts={posts.length} paginate={setCurrentPage}></Pagination>
                     </div>
                 </div>
-      
-      </body>
+    
     </div>
   );
 }

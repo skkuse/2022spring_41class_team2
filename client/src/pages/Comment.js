@@ -48,7 +48,7 @@ const Comment = ({comments}) => {
   const displayCreatedAt = (createdAt) => {
     let startTime = new Date(createdAt);
     let nowTime = Date.now();
-    if (parseInt(startTime - nowTime) > -60000) {
+    if (parseInt(startTime - nowTime) > -20000) { //5시간전
       return <Moment format="방금 전">{startTime}</Moment>;
     }
     if (parseInt(startTime - nowTime) < -86400000) {
@@ -58,16 +58,14 @@ const Comment = ({comments}) => {
       return <Moment fromNow>{startTime}</Moment>;
     }
   };
-
   console.log(comments);
  
   return (
     <>
  <ul className="view-comment-container">
-  {/* <PageItemUl className="comment"> */}
   {comments && comments.map(element =>
-                    <li className>
-                        <div style={{ border: '1px solid #333' }} key={element.comment_seq}>
+                    <li key={element.comment_seq}>
+                        <div style={{ border: '1px solid #333' }} >
 
                           <div className="view-comment-header">
                               <span style = {{color: "#333"}}>{element.user_name}&nbsp;</span>
@@ -87,8 +85,6 @@ const Comment = ({comments}) => {
                         </div>
                       </li>
                       )}
-
-{/* </PageItemUl> */}
 </ul>
   </>
   );

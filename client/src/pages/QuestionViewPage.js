@@ -79,8 +79,6 @@ useEffect( () => { //no params, 익명 함수
 
 },[]);
 
-// useEffect(() => { setMovies(result) }, [])
-
 console.log(viewContent);
 
     return (
@@ -102,7 +100,6 @@ console.log(viewContent);
               </div>
           </header>
 
-        <body>
               <div className="viewPage">
 
                         <button className="return-button" type="button" 
@@ -119,9 +116,11 @@ console.log(viewContent);
                             <span className="v_q_item">질문 경로</span>
                     </div>
 
-
-                    <div className="view-question-body">
-                    {location.state.content} {/*작성내용*/}
+                     {/*작성 내용 html 형태로 변환*/}
+                    <div className="view-question-body"
+                    dangerouslySetInnerHTML = { {  __html : location.state.content } }>
+                   
+                    {/* {location.state.content}  */}
                     </div>
                     <div className="comment-container">
                       <div className="comment-header">
@@ -159,9 +158,6 @@ console.log(viewContent);
                 </div>{/*view-form-wrapper*/}
 
               </div>{/*view-container*/}
-
-        </body>
-
         </div> //className : p
 
     );

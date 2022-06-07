@@ -18,7 +18,6 @@ function QuestionWritePage() {
   });
 
   
-
   const [title, setTitle] = useState('');
   const [content,setContent] = useState('');
   const [route, setRoute] = useState(data.lecture_content_title);
@@ -40,15 +39,11 @@ const handleChange = (e) => {
    setQaContent({
     ...qaContent,
     content: e
-                      })
+      })
   
 }
 
-
   const SendingQa = () =>{
-   
- 
-    ///lectures/{lecture_seq}/lectureContent/{lecture_content_seq}/userSeqs/{user_seq}/qa
 
     if(data.isLecture){
         //강의별 질문 등록 
@@ -56,14 +51,13 @@ const handleChange = (e) => {
         {"qa_title" : qaContent.title, "qa_content" : qaContent.content})
         .then(
             response => {
-              console.log("qa_title", qaContent.title); //제목만 뽑기 가능!
+              console.log("qa_title", qaContent.title); //QA 제목 
               console.log("강의별 질문 등록");
             }
         )
 
     }
     else{
-
       
       //자유질문 
       call("/lectureContent/-1/qa", "POST", 
@@ -88,20 +82,17 @@ const handleChange = (e) => {
   const CancleQa = () => {
 
     setTitle('');
-    //setContent('');
-
-    
   }
 
   useEffect(() => {
     setRoute(location.state.lecture_content_title);  
-    console.log(location.state.lecture_content_title);
+  //  console.log(location.state.lecture_content_title);
   }, [route]);
 
 
   return (
     <div className="QuestionPage">
-      <body>
+     
           <div id="upper" className="v12_13 v12_13_1">
                 <div className="v12_12">
                   <div className="v5_26">
@@ -139,17 +130,9 @@ const handleChange = (e) => {
                   <div>질문 경로</div>
                    <input className="route-input" type='text' placeholder='특별한 경로 없음'
                    value={location.state.lecture_content_title} /> 
-                   {/* <select className="select-course" 
-                   onChange={handleChangeSelect} key = {Selected}>  
-                    {selectList.map((item) => (
-                      <option value={item.name} key={item.key}>
-                        {item.name}
-                      </option>
-                    ))}
-                  </select>  */}
-              
                 </div>
-                <div className="title">
+
+                <div className="title"> 
                   <div>제목</div>
                   <input className="title-input"
                       type='text'
@@ -194,7 +177,7 @@ const handleChange = (e) => {
 
             </div>
         </main>
-     </body>
+     
   </div>
   );
 }
