@@ -70,7 +70,8 @@ useEffect( () => { //no params, 익명 함수
         .then(
           response => {
               setViewContent(response['data'][0])
-              console.log(response);
+              console.log("으악!!")
+              console.log(response)
           }
         )
   
@@ -146,11 +147,11 @@ useEffect( () => { //no params, 익명 함수
 
                     <div className='view-comment-container'>
 
-                    <ul className = "comment-list">
+                    <li className = "comment-list">
                           <Comment viewContent={viewContent}></Comment>
                          
               
-                        </ul>
+                        </li>
 
                     </div>
 

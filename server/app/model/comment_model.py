@@ -13,7 +13,6 @@ class COMMENT_MODEL:
     
     def getComment(self, qa_seq):
         print(qa_seq)
-        SQL = "select * from comment where qa_seq = %s;"
+        SQL = "select * from comment as c, user as u where qa_seq = %s and c.user_seq = u.user_seq  ;"
         result = self.db_connection.executeAll(SQL, [qa_seq])
-        print(result)
         return result

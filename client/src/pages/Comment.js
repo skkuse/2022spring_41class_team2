@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { version } from 'react';
 import styled from "styled-components";
 import * as QuestionViewPage from './QuestionViewPage'
 import { useState } from 'react';
@@ -24,18 +24,19 @@ padding: 1px;
 `;
 
 
-const Comment = ({viewContent}) => {
+const Comment = (props) => {
+  const viewContent = props.viewContent
+  console.log(viewContent)
+  const [cmName, setName] = useState("");
+  const [email, setEmail] = useState("");
 
-    const [cmName, setName] = useState("");
-    const [email, setEmail] = useState("");
-
-    call("/user", "GET")
-    .then(
-      response => {
-        setName(response['data']['name']);
-        setEmail(response['data']['email']);
-      }
-    )
+  call("/user", "GET")
+  .then(
+    response => {
+      setName(response['data']['name']);
+      setEmail(response['data']['email']);
+    }
+  )
   
   const displayCreatedAt = (createdAt) => {
     let startTime = new Date(createdAt);
@@ -64,10 +65,10 @@ const Comment = ({viewContent}) => {
                           </div>
                           
                           <div className="view-comment-body">
-                            {element.comment.split("\n").map((line) => { 
+                            {element.comment.map((line) => { 
                               return (
                                 <span>
-                                  {line}
+                                  {line['comment_content']}
                                   <br />
                                 </span>
                               );
