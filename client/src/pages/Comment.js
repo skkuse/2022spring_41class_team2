@@ -7,6 +7,22 @@ import Moment from 'react-moment';
 
 import { call } from '../service/APIService';
 
+const PageItemUl = styled.ul`
+display: flex;
+flex-direction: column;
+width: 1059px;
+height: 657px;
+
+align-items: center;
+
+list-style: none;
+text-align: center;
+border-radius: 3px;
+padding: 1px;
+// border-top: 3px solid #186ead;
+// border-bottom: 3px solid #186ead;
+`;
+
 
 const Comment = ({viewContent}) => {
 
@@ -34,12 +50,12 @@ const Comment = ({viewContent}) => {
       return <Moment fromNow>{startTime}</Moment>;
     }
   };
-
-  
  
   return (
     <>
+  <PageItemUl className="comment">
   {viewContent.map(element =>
+                    <li>
                         <div style={{ border: '1px solid #333' }}>
 
                           <div className="view-comment-header">
@@ -58,7 +74,10 @@ const Comment = ({viewContent}) => {
                             })}
                           </div>
                         </div>
+                      </li>
                       )}
+
+</PageItemUl>
   </>
   );
 };

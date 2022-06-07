@@ -70,7 +70,7 @@ useEffect( () => { //no params, 익명 함수
         .then(
           response => {
               setViewContent(response['data'][0])
-              console.log("댓글 받아오기");
+              console.log(response);
           }
         )
   
@@ -146,7 +146,12 @@ useEffect( () => { //no params, 익명 함수
 
                     <div className='view-comment-container'>
 
-                    <Comment viewContent={viewContent}></Comment>
+                    <ul className = "comment-list">
+                          <Comment viewContent={viewContent}></Comment>
+                         
+              
+                        </ul>
+
                     </div>
 
                 </div>{/*view-form-wrapper*/}
