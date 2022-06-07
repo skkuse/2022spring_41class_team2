@@ -11,16 +11,14 @@ import "ace-builds/src-noconflict/ext-language_tools";
 
 function TestCodePage() {
 
-    const location = useLocation();
-   // console.log(location.state);
-   
+    const location = useLocation();   
     const [code, setCode] = useState('');
     const [problem, setProblem] = useState('');
     const [result, setResult] = useState('Null');
     const [codeResult, setCodeResult] = useState('Null');
     const [isLecture, setIsLEcture] = useState(true);
-    const lecture_content_seq = location.state.lecture_content_seq;
-    const lecture_content_title = location.state.lecture_content_title;
+    const lecture_content_seq = location.state.data.lecture_content_seq;
+    const lecture_content_title = location.state.data.lecture_content_title;
     const data = location.state.data;
 
     const SendingCode = () => {

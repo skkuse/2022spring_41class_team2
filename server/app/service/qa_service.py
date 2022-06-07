@@ -2,6 +2,7 @@ from datetime import datetime
 from google.oauth2 import id_token
 from google.auth.transport import requests
 
+import os
 
 CLIENT_ID = os.environ.get("GOOGLE_CLIENT_ID", '923198322735-8m8aomqof0no00kcp1u145hr9ung1gbq.apps.googleusercontent.com')
 

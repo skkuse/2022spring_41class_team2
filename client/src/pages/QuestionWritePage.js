@@ -52,7 +52,7 @@ const handleChange = (e) => {
 
     if(data.isLecture){
         //강의별 질문 등록 
-        call("lectures/1/lectureContent/"+data.lecture_content_title+"/userSeqs/{user_seq}/qa", "POST", 
+        call("/lectureContent/"+data.lecture_content_title+"/qa", "POST", 
         {"qa_title" : qaContent.title, "qa_content" : qaContent.content})
         .then(
             response => {
@@ -66,10 +66,11 @@ const handleChange = (e) => {
 
       
       //자유질문 
-      call("/lectures/1/lectureContent/-1/userSeq/2/qa", "POST", 
+      call("/lectureContent/-1/qa", "POST", 
       {"qa_title" : qaContent.title, "qa_content" : qaContent.content})
       .then(
           response => {
+            console.log(response)
             console.log("qa_title", qaContent.title); //제목만 뽑기 가능!
             console.log("자유질문 등록");
           }
