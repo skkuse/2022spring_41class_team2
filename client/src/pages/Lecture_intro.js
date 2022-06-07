@@ -9,6 +9,8 @@ function Lecture_intro() {
     const location = useLocation();
     const data = location.state.data;
 
+    //console.log(data.lecture_content_title);
+
     const [lecture_content, set_lecture_content] = useState("");
     const [completed, setcompleted] = useState("");
     const [attending, setattending] = useState(0);
@@ -64,7 +66,7 @@ function Lecture_intro() {
                     if (response['data']['attending_lecture']) {
                         if (response['data']['attending_lecture'].includes(data.lecture_content_title)) { setattending(1) }
                         console.log(response['data']['attending_lecture'])
-                        console.log(data.lecture_content_title)
+                      //  console.log(data.lecture_content_title)
                     }
                 }
             ).catch(
@@ -145,6 +147,7 @@ function Lecture_intro() {
                     <button className="button_QA" disabled={disable} ><Link to={{
                         pathname: "/codeEdit",
                         state: {
+                            lecture_content_title: data.lecture_content_title,
                             lecture_content_seq: data.lecture_content_seq,
                         }
                     }}>

@@ -61,7 +61,8 @@ const Posts = ({ posts, loading }) => {
                     user_name: post.user_name,
                     date: post.create_time,
                     content: post.qa_content,
-                    isLecture: location.state.isLecture
+                    isLecture: location.state.isLecture,
+                    lecture_content_title: location.state.lecture_content_title,
                     
                   }
         }}>

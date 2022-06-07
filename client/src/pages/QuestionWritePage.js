@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import '../css/QuestionWritePage.css';
@@ -9,39 +9,92 @@ import { call } from '../service/APIService';
 
 function QuestionWritePage() {
 
+  const location = useLocation();
+  const data = location.state;
+
   const [qaContent, setQaContent] = useState({
     title: '',
     content: ''
   });
 
-  const location = useLocation();
+  
 
-  console.log(location.state);
+  const [title, setTitle] = useState('');
+  const [content,setContent] = useState('');
+  const [route, setRoute] = useState(data.lecture_content_title);
 
 
   const getValue = e => {
     const { name, value } = e.target;
+    setTitle(value);
+
     setQaContent({
       ...qaContent,
       [name]: value
     })
-    console.log(qaContent);
+
   };
+
+  
+const handleChange = (e) => {
+   setQaContent({
+    ...qaContent,
+    content: e
+                      })
+  
+}
+
 
   const SendingQa = () =>{
    
-    alert('질문 등록 완료.')
+ 
     ///lectures/{lecture_seq}/lectureContent/{lecture_content_seq}/userSeqs/{user_seq}/qa
 
-    //자유질문 
+    if(data.isLecture){
+        //강의별 질문 등록 
+        call("lectures/1/lectureContent/"+data.lecture_content_title+"/userSeqs/{user_seq}/qa", "POST", 
+        {"qa_title" : qaContent.title, "qa_content" : qaContent.content})
+        .then(
+            response => {
+              console.log("qa_title", qaContent.title); //제목만 뽑기 가능!
+              console.log("강의별 질문 등록");
+            }
+        )
+
+    }
+    else{
+
+      
+      //자유질문 
       call("/lectures/1/lectureContent/-1/userSeq/2/qa", "POST", 
       {"qa_title" : qaContent.title, "qa_content" : qaContent.content})
       .then(
           response => {
             console.log("qa_title", qaContent.title); //제목만 뽑기 가능!
+            console.log("자유질문 등록");
           }
       )
+
+    }
+
+      setTitle('');
+
+      alert('질문 등록 완료.')
   }
+
+  const CancleQa = () => {
+
+    setTitle('');
+    //setContent('');
+
+    
+  }
+
+  useEffect(() => {
+    setRoute(location.state.lecture_content_title);  
+    console.log(location.state.lecture_content_title);
+  }, [route]);
+
 
   return (
     <div className="QuestionPage">
@@ -68,6 +121,7 @@ function QuestionWritePage() {
                     state: {
                         isLecture: location.state.isLecture,
                         lecture_content_seq: location.state.lecture_content_seq,
+                        lecture_content_title: location.state.lecture_content_title,
 
                     }
 
@@ -80,23 +134,26 @@ function QuestionWritePage() {
               <div className='form-wrapper'>
                 <div className="question-route">
                   <div>질문 경로</div>
-                  <input className="route-input" type='text' placeholder='특별한 경로 없음' />
-                  {/* <select id="select-course-name">  
-                    <option value="course-name">강의명</option>
-                    <option value="c1">course1</option>
-                    <option value="c2">course2</option>
-                    <option value="c3">course3</option>
-                    <option value="c4">course4</option>
-                  </select> */}
+                   <input className="route-input" type='text' placeholder='특별한 경로 없음'
+                   value={location.state.lecture_content_title} /> 
+                   {/* <select className="select-course" 
+                   onChange={handleChangeSelect} key = {Selected}>  
+                    {selectList.map((item) => (
+                      <option value={item.name} key={item.key}>
+                        {item.name}
+                      </option>
+                    ))}
+                  </select>  */}
               
                 </div>
                 <div className="title">
                   <div>제목</div>
                   <input className="title-input"
-                    type='text'
+                      type='text'
                       placeholder='제목'
                       onChange={getValue}
                       name='title'
+                      value={title}
                   />
  
                   </div>
@@ -105,8 +162,8 @@ function QuestionWritePage() {
                     config={{
                       removePlugins: ["EasyImage","ImageUpload","MediaEmbed"]
                     }}
-                  
-                    data=""
+                    
+                    data={content}
                     onReady={editor => {
                       // You can store the "editor" and use when it is needed.
                       console.log('Editor is ready to use!', editor);
@@ -121,17 +178,13 @@ function QuestionWritePage() {
 
                     onChange={(event, editor) => {
                       const data = editor.getData();
-                      //console.log({ event, editor, data });
-                      setQaContent({
-                        ...qaContent,
-                        content: data
-                      })
-                      console.log(qaContent);
+                      handleChange(data);
+                      
                     }}
                   />
 
                 <div className="assign-button">
-                  <button className="cancel-button">취소</button>
+                  <button className="cancel-button" onClick = {CancleQa}>취소</button>
                   <button className="submit-button" onClick = {SendingQa}>등록</button>
                 </div>
               </div>

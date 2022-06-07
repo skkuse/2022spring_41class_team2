@@ -16,7 +16,7 @@ function NotLogined() {
 				</div>
 				<div>
 					<Link to="/login">
-						<button className="button" type="button">QA</button>
+						<button className="button" type="button">Q&A</button>
 					</Link>
 				</div>
 
@@ -32,6 +32,8 @@ function NotLogined() {
 
 function Logined() {
 	const [isLecture, setIsLecture] = useState(false);
+	const lecture_content_title = "자유질문";
+
 
 	return (
 		<div id="nav">
@@ -47,10 +49,11 @@ function Logined() {
 					pathname: "/qaList",
 					state: {
 						isLecture: isLecture,
+						lecture_content_title: lecture_content_title,
 					}
 				
 					}}>
-						<button className="button" type="button">QA</button>
+						<button className="button" type="button">Q&A</button>
 					</Link>
 				</div>
 

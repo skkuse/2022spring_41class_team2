@@ -11,6 +11,7 @@ import "ace-builds/src-noconflict/ext-language_tools";
 function TestCodePage() {
 
     const location = useLocation();
+   // console.log(location.state);
    
     const [code, setCode] = useState('');
     const [problem, setProblem] = useState('');
@@ -18,6 +19,7 @@ function TestCodePage() {
     const [codeResult, setCodeResult] = useState('Null');
     const [isLecture, setIsLEcture] = useState(true);
     const lecture_content_seq = location.state.lecture_content_seq;
+    const lecture_content_title = location.state.lecture_content_title;
 
     const SendingCode = () => {
         setResult("채점 중 입니다....")
@@ -148,6 +150,7 @@ function TestCodePage() {
                     state: {
                         isLecture: isLecture,
                         lecture_content_seq: lecture_content_seq,
+                        lecture_content_title: lecture_content_title,
 
                     }
 
