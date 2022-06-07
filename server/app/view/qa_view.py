@@ -7,15 +7,16 @@ from flask_cors import cross_origin
 
 def create_qa_endpoints(app, qa_service):
 
-    @app.route('/lectures/<lecture_seq>/lectureContent/<lecture_content_seq>/userSeqs/<user_seq>/qa', methods = ['POST'])
+    @app.route('/lectureContent/<lecture_content_seq>/qa', methods = ['POST'])
     @cross_origin()
-    def saveQA(lecture_seq, lecture_content_seq, user_seq):
+    def saveQA(lecture_content_seq):
         try:
             request_data = request.json
+            token = request.headers.get("Authorization").split(' ')[1]
             qa_title = request_data['qa_title']
             qa_content = request_data['qa_content']
             if lecture_content_seq != "-1" :
-                isDone = qa_service.saveQA(lecture_content_seq, user_seq,qa_title, qa_content)
+                isDone = qa_service.saveQA(lecture_content_seq, token ,qa_title, qa_content)
                 if isDone:
                     response = {'error': "", 'status_code': 200, "data": []}
                     return jsonify(response), 200
@@ -23,7 +24,7 @@ def create_qa_endpoints(app, qa_service):
                     response = {'error': "", 'status_code': 400, "data": []}
                     return jsonify(response), 400
             else :
-                isDone = qa_service.saveQA(None, user_seq ,qa_title, qa_content)
+                isDone = qa_service.saveQA(None, token ,qa_title, qa_content)
                 if isDone:
                     response = {'error': "", 'status_code': 200, "data": []}
                     return jsonify(response), 200
