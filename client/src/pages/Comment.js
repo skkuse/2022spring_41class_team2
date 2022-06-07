@@ -8,7 +8,7 @@ import Moment from 'react-moment';
 import { call } from '../service/APIService';
 
 
-const SingleComment = ({viewContent}) => {
+const Comment = ({viewContent}) => {
 
     const [cmName, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -62,4 +62,4 @@ const SingleComment = ({viewContent}) => {
   </>
   );
 };
-export default SingleComment;
+export default Comment;

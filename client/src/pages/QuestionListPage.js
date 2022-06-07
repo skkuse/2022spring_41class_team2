@@ -17,6 +17,7 @@ function QuestionListPage({location}) {
 
   const [isLecture, setIsLecture] = useState(false);
   
+  const [lecture_content_title, setLecture_content_title] = useState(data.lecture_content_title);
 
   const getUserInfo = () => {
 		var token = sessionStorage.getItem("ACCESS_TOKEN");
@@ -42,7 +43,7 @@ function QuestionListPage({location}) {
         .then(
           response => {
               setPosts(response['data'][0])
-              console.log("강의별 질문");
+              console.log(lecture_content_title,"질문");
               
           }
         )
@@ -53,7 +54,8 @@ function QuestionListPage({location}) {
           .then(
             response => {
                 setPosts(response['data'][0])
-                console.log("자유질문");
+                console.log(lecture_content_title,"질문");
+                
             }
           )
         

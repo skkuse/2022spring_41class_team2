@@ -40,29 +40,28 @@ const handleChange = (e) => {
       
 const SendingCm = () =>{ //댓글 등록 
     
-    setViewContent(viewContent.concat({...cmContent}));
+    //local 댓글 쓰기
+    //setViewContent(viewContent.concat({...cmContent})); 
 
     call("/user", "GET")
       .then(
         response => {
             setName(response['data']['name']);
-             setEmail(response['data']['email']);
+            setEmail(response['data']['email']);
             console.log(response);
         }
       )
-
-    setText('')//작성 내용 초기화
 
     //comment Post
     call("/qa/"+ location.state.seq +"/comment", "POST", 
     { "comment_content" : cmContent , "user_email" : email})
       .then(
         response => {
-          console.log(cmContent); 
+          console.log("댓글 작성", cmContent, email); 
         }
     )
-    // lectures/lectureContents/{contents_seq}/qa
-    //lecture_content_seq 별로 질문 가져오기 
+
+    setText('')//작성 내용 초기화
 
 }
 
@@ -111,12 +110,6 @@ useEffect( () => { //no params, 익명 함수
 
         <body>
               <div className="viewPage">
-
-                      {/* <Link to="/qaList">
-                  
-                            <button className="return-button" type="button"> &lt;목록가기</button>
-                
-                        </Link> */}
 
                         <button className="return-button" type="button" 
                         onClick={ () => {
